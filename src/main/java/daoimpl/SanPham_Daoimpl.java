@@ -7,6 +7,7 @@ package daoimpl;
 import dao.*;
 import entity.SanPham;
 import java.util.List;
+import util.XJdbc;
 import util.XQuery;
 
 /**
@@ -63,10 +64,10 @@ public class SanPham_Daoimpl implements SanPham_Dao {
             + "join LoaiGiay lg on sp.idLoaiGiay = lg.id\n"
             + "join ChatLieu cl on sp.idchatLieu = cl.id\n"
             + "join NhaCungCap ncc on sp.idNhaCungCap = ncc.id where ncc.tenNCC like ?";
-
+    private String sqlCreate = "insert into SanPham values (?,?,?,?,?,?,?,?,?,?,?,?)";
     @Override
     public void create(SanPham entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        XJdbc.executeUpdate(sqlCreate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap());
     }
 
     @Override

@@ -8,7 +8,9 @@ import controller.ControllerSanPham_CRUD;
 import daoimpl.*;
 import entity.*;
 import entity.SanPham;
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -19,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -348,6 +351,11 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
         tblSanPham.setRowHeight(25);
         tblSanPham.getTableHeader().setResizingAllowed(false);
         tblSanPham.getTableHeader().setReorderingAllowed(false);
+        tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSanPhamMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblSanPham);
 
         javax.swing.GroupLayout jpSanPhamLayout = new javax.swing.GroupLayout(jpSanPham);
@@ -897,7 +905,7 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
             if (result == JFileChooser.APPROVE_OPTION) {
                 File file = f.getSelectedFile();
                 Image img = ImageIO.read(file);
-                fileAnh = file.getName();
+                fileAnh = file.getPath();
                 int w = lblAnhSP.getWidth();
                 int h = lblAnhSP.getHeight();
                 lblAnhSP.setIcon(new ImageIcon(img.getScaledInstance(w, h, Image.SCALE_SMOOTH)));
@@ -997,6 +1005,11 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
         rdoDungHoatDong.setSelected(!nhaCungCap.isTrangThai());
     }//GEN-LAST:event_tblNCCMouseClicked
 
+    private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tblSanPhamMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgTrangThai;
@@ -1084,7 +1097,14 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
 
     @Override
     public SanPham getForm() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        int idMau = repoM.findByName(cboMau.getSelectedItem().toString()).getId();
+        int size = repoKC.findByName(cboKichCo.getSelectedItem().toString()).getId();
+        int idLoaiGiay = repoL.findByName(cboLoai.getSelectedItem().toString()).getId();
+        int idchatLieu = repoCL.findByName(cboChatLieu.getSelectedItem().toString()).getId();
+        int idNhaCungCap = repoNCC.findByName(cboNhaCungCap.getSelectedItem().toString()).getId();
+        return new SanPham(txtTenSP.getText(), new BigDecimal(txtGiaNhap.getText()), new BigDecimal(txtGiaBan.getText()), Integer.parseInt(txtSoLuong.getText()),
+                idMau, size, idLoaiGiay, idchatLieu, fileAnh, rdoConHang.isSelected(), txtMoTa.getText(), idNhaCungCap);
     }
 
     @Override
@@ -1172,7 +1192,8 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
 
     @Override
     public void create() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        SanPham sanPham = this.getForm();
+        repoSP.create(sanPham);
     }
 
     @Override

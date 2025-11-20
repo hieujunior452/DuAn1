@@ -11,5 +11,5 @@ import entity.NhaCungCap;
  * @author Administrator
  */
 public interface NhaCungCap_Dao extends Dao_CRUD<NhaCungCap, Integer>{
-    
+    NhaCungCap findByName(String ten);
 }

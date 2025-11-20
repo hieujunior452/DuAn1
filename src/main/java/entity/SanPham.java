@@ -33,6 +33,21 @@ public class SanPham {
     public SanPham() {
     }
 
+    public SanPham(String tenGiay, BigDecimal giaNhap, BigDecimal donGia, int soLuong, int idMau, int size, int idLoaiGiay, int idchatLieu, String hinh, boolean trangThai, String moTa, int idNhaCungCap) {
+        this.tenGiay = tenGiay;
+        this.giaNhap = giaNhap;
+        this.donGia = donGia;
+        this.soLuong = soLuong;
+        this.idMau = idMau;
+        this.size = size;
+        this.idLoaiGiay = idLoaiGiay;
+        this.idchatLieu = idchatLieu;
+        this.hinh = hinh;
+        this.trangThai = trangThai;
+        this.moTa = moTa;
+        this.idNhaCungCap = idNhaCungCap;
+    }
+    
     public SanPham(int id, String tenGiay, int soLuong, BigDecimal giaNhap, int idMau, int size, int idLoaiGiay, int idchatLieu, String hinh, BigDecimal donGia, boolean trangThai, String moTa, int idNhaCungCap) {
         this.id = id;
         this.tenGiay = tenGiay;

@@ -18,6 +18,7 @@ import util.XQuery;
 public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
 
     private String sqlFindAll = "select * from LoaiGiay";
+    private String sqlFindByName = "select * from LoaiGiay where tenLoai = ?";
     private String sqlCreate = "insert into LoaiGiay values (?)";
     private String sqlDeleteByName = "delete from LoaiGiay where tenLoai = ?";
 
@@ -55,6 +56,11 @@ public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
                 JOptionPane.showMessageDialog(null, "Không thể xóa đang có sản phẩm thuộc loại này", "Thông báo!", JOptionPane.WARNING_MESSAGE);
             }
         }
+    }
+
+    @Override
+    public LoaiGiay findByName(String ten) {
+        return XQuery.getSingleBean(LoaiGiay.class, sqlFindByName, ten);
     }
 
 }

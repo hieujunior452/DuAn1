@@ -18,6 +18,7 @@ import util.XQuery;
 public class ChatLieu_Daoimpl implements ChatLieu_Dao {
 
     private String sqlFindAll = "select * from ChatLieu";
+    private String sqlFindByName = "select * from ChatLieu where tenChatLieu = ?";
     private String sqlCreate = "insert into ChatLieu values (?)";
     private String sqlDeleteByName = "delete from ChatLieu where tenChatLieu = ?";
 
@@ -57,4 +58,9 @@ public class ChatLieu_Daoimpl implements ChatLieu_Dao {
         }
     }
 
+    @Override
+    public ChatLieu findByName(String ten) {
+        return XQuery.getSingleBean(ChatLieu.class, sqlFindByName, ten);
+    }
+    
 }

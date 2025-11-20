@@ -593,7 +593,7 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             if (result == JFileChooser.APPROVE_OPTION) {
                 File file = f.getSelectedFile();
                 Image img = ImageIO.read(file);
-                fileAnh = file.getName();
+                fileAnh = file.getPath();
                 int w = lblAnhNV.getWidth();
                 int h = lblAnhNV.getHeight();
                 lblAnhNV.setIcon(new ImageIcon(img.getScaledInstance(w, h, Image.SCALE_SMOOTH)));
@@ -812,7 +812,7 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
         rdoNu.setSelected(!entity.isGioiTinh());
         rdoDiLam.setSelected(entity.isTrangThai());
         rdoNghiLam.setSelected(!entity.isTrangThai());
-        ImageIcon icon = new ImageIcon(getClass().getResource("/image/" + entity.getHinh()));
+        ImageIcon icon = new ImageIcon(entity.getHinh());
         fileAnh = entity.getHinh();
         Image img = icon.getImage();
         lblAnhNV.setIcon(new ImageIcon(img.getScaledInstance(lblAnhNV.getWidth(), lblAnhNV.getHeight(), Image.SCALE_SMOOTH)));
@@ -821,7 +821,7 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
     @Override
     public NhanVien getForm() {
         int idCV = repoCV.findByName(cboChucVu.getSelectedItem().toString()).getId();
-        return new NhanVien(txtMaNV.getText(), txtMatKhau.getPassword().toString(), txtHoVaTen.getText(), txtNgaySinh.getDate(), rdoNam.isSelected(), txtDiaChi.getText(), txtSDT.getText(), txtEmail.getText(), idCV, fileAnh, rdoDiLam.isSelected());
+        return new NhanVien(txtMaNV.getText(), new String(txtMatKhau.getPassword()), txtHoVaTen.getText(), txtNgaySinh.getDate(), rdoNam.isSelected(), txtDiaChi.getText(), txtSDT.getText(), txtEmail.getText(), idCV, fileAnh, rdoDiLam.isSelected());
     }
 
     @Override

@@ -18,6 +18,7 @@ import util.XQuery;
 public class Mau_Daoimpl implements Mau_Dao {
 
     private String sqlFindAll = "select * from Mau";
+    private String sqlFindByName = "select * from Mau where tenMau = ?";
     private String sqlCreate = "insert into Mau values (?)";
     private String sqlDeleteByTen = "delete from Mau where tenMau = ?";
 
@@ -56,6 +57,11 @@ public class Mau_Daoimpl implements Mau_Dao {
                 JOptionPane.showMessageDialog(null, "Không thể xóa đang có sản phẩm thuộc màu này", "Thông báo!", JOptionPane.WARNING_MESSAGE);
             }
         }
+    }
+
+    @Override
+    public Mau findByName(String ten) {
+        return XQuery.getSingleBean(Mau.class, sqlFindByName, ten);
     }
 
 }

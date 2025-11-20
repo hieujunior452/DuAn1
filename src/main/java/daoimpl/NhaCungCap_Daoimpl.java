@@ -14,6 +14,7 @@ import util.XQuery;
  */
 public class NhaCungCap_Daoimpl implements NhaCungCap_Dao{
     private String sqlFindAll = "select * from NhaCungCap";
+    private String sqlFindByName = "select * from NhaCungCap where tenNCC = ?";
     private String sqlFindById = "select * from NhaCungCap where id = ?";
     private String sqlCreate = "insert into NhaCungCap values (?,?,?,?,?)";
     private String sqlUpdate = "update NhaCungCap set tenNCC=?, diaChi=?, sDT=?, email=?, trangThai=? where id=?";
@@ -42,6 +43,11 @@ public class NhaCungCap_Daoimpl implements NhaCungCap_Dao{
     @Override
     public NhaCungCap findById(Integer id) {
         return XQuery.getSingleBean(NhaCungCap.class, sqlFindById, id);
+    }
+
+    @Override
+    public NhaCungCap findByName(String ten) {
+        return XQuery.getSingleBean(NhaCungCap.class, sqlFindByName, ten);
     }
     
 }

@@ -16,6 +16,7 @@ import util.XQuery;
 public class KichCo_Daoimpl implements KichCo_Dao{
 
     private String sqlFindAll = "select * from KichCo";
+    private String sqlFindByName = "select * from KichCo where tenKichCo = ?";
     private String sqlCreate = "insert into KichCo values (?)";
     private String sqlDeleteByName = "delete from KichCo where tenKichCo = ?";
     @Override
@@ -52,6 +53,11 @@ public class KichCo_Daoimpl implements KichCo_Dao{
                 JOptionPane.showMessageDialog(null, "Không thể xóa đang có sản phẩm thuộc kích cỡ này", "Thông báo!", JOptionPane.WARNING_MESSAGE);
             }
         }
+    }
+
+    @Override
+    public KichCo findByName(String ten) {
+        return XQuery.getSingleBean(KichCo.class, sqlFindByName, ten);
     }
     
 }
