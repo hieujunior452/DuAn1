@@ -15,7 +15,7 @@ import javax.mail.internet.*;
 public class MailSender {
 
     private static String fromEmail = "tkredao02@gmail.com";
-    private static String appPassword = "tqrw zado ddbb rmqt";
+    private static String appPassword = "jaqs tfqt wbpt njul";
 
     public static void sendMailPassword(String toEmail, String fullName, String userName, String password) {
 

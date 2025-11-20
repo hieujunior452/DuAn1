@@ -34,7 +34,7 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
     private String sqlDeleteNhanVien = "delete from NhanVien where maNhanVien = ?";
 
     @Override
-    public NhanVien create(NhanVien entity) {
+    public void create(NhanVien entity) {
         try {
             int create = XJdbc.executeUpdate(sqlThemNhanVien, entity.getMaNhanVien(), entity.getMatKhau(), entity.getHoVaTen(), entity.getNgaySinh(),
                     entity.isGioiTinh(), entity.getDiaChi(), entity.getsDT(), entity.getEmail(), entity.getIdCV(), entity.getHinh(), entity.isTrangThai());
@@ -50,8 +50,6 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
                 JOptionPane.showMessageDialog(null, "Có lỗi xảy ra trong quá trình thêm nhân viên: \n" + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-        return null;
     }
 
     @Override

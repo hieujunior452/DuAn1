@@ -9,7 +9,7 @@ package entity;
  * @author Administrator
  */
 public class NhaCungCap {
-     public int id;
+    public int id;
     public String tenNCC;
     public String diaChi;
     public String sDT;
@@ -19,6 +19,14 @@ public class NhaCungCap {
     public NhaCungCap() {
     }
 
+    public NhaCungCap(String tenNCC, String diaChi, String sDT, String email, boolean trangThai) {
+        this.tenNCC = tenNCC;
+        this.diaChi = diaChi;
+        this.sDT = sDT;
+        this.email = email;
+        this.trangThai = trangThai;
+    }
+    
     public NhaCungCap(int id, String tenNCC, String diaChi, String sDT, String email, boolean trangThai) {
         this.id = id;
         this.tenNCC = tenNCC;

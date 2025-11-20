@@ -16,6 +16,10 @@ public class KichCo {
     public KichCo() {
     }
 
+    public KichCo(String tenKichCo) {
+        this.tenKichCo = tenKichCo;
+    }
+    
     public KichCo(int id, String tenKichCo) {
         this.id = id;
         this.tenKichCo = tenKichCo;

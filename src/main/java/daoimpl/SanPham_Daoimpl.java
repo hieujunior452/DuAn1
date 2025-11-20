@@ -65,7 +65,7 @@ public class SanPham_Daoimpl implements SanPham_Dao {
             + "join NhaCungCap ncc on sp.idNhaCungCap = ncc.id where ncc.tenNCC like ?";
 
     @Override
-    public SanPham create(SanPham entity) {
+    public void create(SanPham entity) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -103,6 +103,8 @@ public class SanPham_Daoimpl implements SanPham_Dao {
             case 4:
                 return XQuery.getBeanList(SanPham.class, sqlFindByLoai, id);
             case 5:
+                return XQuery.getBeanList(SanPham.class, sqlFindByChatLieu, id);
+            case 6:
                 return XQuery.getBeanList(SanPham.class, sqlFindByNhaCungCap, id);
             default:
                 return null;

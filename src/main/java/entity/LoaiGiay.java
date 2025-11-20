@@ -15,6 +15,10 @@ public class LoaiGiay {
     public LoaiGiay() {
     }
 
+    public LoaiGiay(String tenLoai) {
+        this.tenLoai = tenLoai;
+    }
+    
     public LoaiGiay(int id, String tenLoai) {
         this.id = id;
         this.tenLoai = tenLoai;

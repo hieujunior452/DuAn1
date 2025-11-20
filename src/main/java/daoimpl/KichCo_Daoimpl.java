@@ -6,6 +6,8 @@ package daoimpl;
 import dao.*;
 import entity.KichCo;
 import java.util.List;
+import javax.swing.JOptionPane;
+import util.XJdbc;
 import util.XQuery;
 /**
  *
@@ -14,9 +16,11 @@ import util.XQuery;
 public class KichCo_Daoimpl implements KichCo_Dao{
 
     private String sqlFindAll = "select * from KichCo";
+    private String sqlCreate = "insert into KichCo values (?)";
+    private String sqlDeleteByName = "delete from KichCo where tenKichCo = ?";
     @Override
-    public KichCo create(KichCo entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create(KichCo entity) {
+        XJdbc.executeUpdate(sqlCreate, entity.getTenKichCo());
     }
 
     @Override
@@ -37,6 +41,17 @@ public class KichCo_Daoimpl implements KichCo_Dao{
     @Override
     public KichCo findById(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void deleteByName(String ten) {
+        try {
+        XJdbc.executeUpdate(sqlDeleteByName, ten);
+        } catch (Exception e) {
+            if (e.getMessage().contains("The DELETE statement conflicted with the REFERENCE constraint")) {
+                JOptionPane.showMessageDialog(null, "Không thể xóa đang có sản phẩm thuộc kích cỡ này", "Thông báo!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }
     
 }

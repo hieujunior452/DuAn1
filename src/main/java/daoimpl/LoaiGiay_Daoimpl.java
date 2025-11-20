@@ -3,20 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package daoimpl;
+
 import dao.*;
 import entity.LoaiGiay;
 import java.util.List;
+import javax.swing.JOptionPane;
+import util.XJdbc;
 import util.XQuery;
+
 /**
  *
  * @author Administrator
  */
-public class LoaiGiay_Daoimpl implements LoaiGiay_Dao{
+public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
+
     private String sqlFindAll = "select * from LoaiGiay";
+    private String sqlCreate = "insert into LoaiGiay values (?)";
+    private String sqlDeleteByName = "delete from LoaiGiay where tenLoai = ?";
 
     @Override
-    public LoaiGiay create(LoaiGiay entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create(LoaiGiay entity) {
+        XJdbc.executeUpdate(sqlCreate, entity.getTenLoai());
     }
 
     @Override
@@ -38,5 +45,16 @@ public class LoaiGiay_Daoimpl implements LoaiGiay_Dao{
     public LoaiGiay findById(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    @Override
+    public void deleteByName(String name) {
+        try {
+            XJdbc.executeUpdate(sqlDeleteByName, name);
+        } catch (Exception e) {
+            if (e.getMessage().contains("The DELETE statement conflicted with the REFERENCE constraint")) {
+                JOptionPane.showMessageDialog(null, "Không thể xóa đang có sản phẩm thuộc loại này", "Thông báo!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+
 }

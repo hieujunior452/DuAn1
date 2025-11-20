@@ -11,5 +11,5 @@ import entity.LoaiGiay;
  * @author Administrator
  */
 public interface LoaiGiay_Dao extends Dao_CRUD<LoaiGiay, Integer>{
-    
+    void deleteByName(String name);
 }

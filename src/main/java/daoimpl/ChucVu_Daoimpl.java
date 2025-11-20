@@ -16,14 +16,14 @@ import util.XQuery;
 public class ChucVu_Daoimpl implements ChucVu_Dao{
     
     private String sqlFindAll = "select * from ChucVu";
-    private String sqlFindByName = "select * from ChucVu where id = ?";
+    private String sqlFindByName = "select * from ChucVu where tenChucVu = ?";
     private String sqlFindByMaCV = "select * from ChucVu where id = ?";
     private String sqlDeleteByMaCV = "delete from ChucVu where id = ?";
     private String sqlThemChucVu = "insert into ChucVu(maChucVu, tenChucVu) values (?, ?)";
     private String sqlCapNhatChucVu = "update ChucVu set tenChucVu = ? where id = ?";
 
     @Override
-    public ChucVu create(ChucVu entity) {
+    public void create(ChucVu entity) {
         try {
             int create = XJdbc.executeUpdate(sqlThemChucVu, entity.getTenChucVu());
             if (create > 0) {
@@ -38,8 +38,6 @@ public class ChucVu_Daoimpl implements ChucVu_Dao{
                 JOptionPane.showMessageDialog(null, "Có lỗi xảy ra trong quá trình thêm chức vụ: \n" + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-        return null;
     }
 
     @Override

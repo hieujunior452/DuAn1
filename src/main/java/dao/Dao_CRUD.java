@@ -13,7 +13,7 @@ import java.util.List;
 public interface Dao_CRUD<T, ID>{
    // public interface CrudDAO<T, ID> {
 
-    T create(T entity);
+    void create(T entity);
 
     void update(T entity);
 

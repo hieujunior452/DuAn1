@@ -6,6 +6,7 @@ package daoimpl;
 import dao.*;
 import entity.NhaCungCap;
 import java.util.List;
+import util.XJdbc;
 import util.XQuery;
 /**
  *
@@ -13,20 +14,24 @@ import util.XQuery;
  */
 public class NhaCungCap_Daoimpl implements NhaCungCap_Dao{
     private String sqlFindAll = "select * from NhaCungCap";
+    private String sqlFindById = "select * from NhaCungCap where id = ?";
+    private String sqlCreate = "insert into NhaCungCap values (?,?,?,?,?)";
+    private String sqlUpdate = "update NhaCungCap set tenNCC=?, diaChi=?, sDT=?, email=?, trangThai=? where id=?";
+    private String sqlDelete = "delete from NhaCungCap where id = ?";
 
     @Override
-    public NhaCungCap create(NhaCungCap entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create(NhaCungCap entity) {
+        XJdbc.executeUpdate(sqlCreate, entity.getTenNCC(), entity.getDiaChi(), entity.getsDT(), entity.getEmail(), entity.isTrangThai());
     }
 
     @Override
     public void update(NhaCungCap entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        XJdbc.executeUpdate(sqlUpdate, entity.getTenNCC(), entity.getDiaChi(), entity.getsDT(), entity.getEmail(), entity.isTrangThai(), entity.getId());
     }
 
     @Override
     public void deleteById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        XJdbc.executeUpdate(sqlDelete, id);
     }
 
     @Override
@@ -36,7 +41,7 @@ public class NhaCungCap_Daoimpl implements NhaCungCap_Dao{
 
     @Override
     public NhaCungCap findById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return XQuery.getSingleBean(NhaCungCap.class, sqlFindById, id);
     }
     
 }
