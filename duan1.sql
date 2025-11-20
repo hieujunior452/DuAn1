@@ -49,7 +49,7 @@ CREATE TABLE NhanVien (
     sDT VARCHAR(15) NOT NULL,
     email VARCHAR(100) NOT NULL,
     idCV INT NOT NULL FOREIGN KEY REFERENCES ChucVu(id),
-    hinh VARCHAR(255) NOT NULL,
+    hinh VARCHAR(255),
     trangThai BIT NOT NULL
 );
 GO
@@ -100,10 +100,10 @@ CREATE TABLE SanPham (
     size INT NOT NULL FOREIGN KEY REFERENCES KichCo(id),
     idLoaiGiay INT NOT NULL FOREIGN KEY REFERENCES LoaiGiay(id),
     idChatLieu INT NOT NULL FOREIGN KEY REFERENCES ChatLieu(id),
-    hinh VARCHAR(255) NOT NULL,
+    hinh VARCHAR(255),
     donGia MONEY NOT NULL,
     trangThai BIT NOT NULL,
-    moTa NVARCHAR(MAX) NOT NULL,
+    moTa NVARCHAR(MAX),
     idNhaCungCap INT NULL FOREIGN KEY REFERENCES NhaCungCap(id)
 );
 GO
