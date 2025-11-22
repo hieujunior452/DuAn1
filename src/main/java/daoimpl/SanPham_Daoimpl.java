@@ -7,6 +7,7 @@ package daoimpl;
 import dao.*;
 import entity.SanPham;
 import java.util.List;
+import javax.swing.JOptionPane;
 import util.XJdbc;
 import util.XQuery;
 
@@ -65,6 +66,15 @@ public class SanPham_Daoimpl implements SanPham_Dao {
             + "join ChatLieu cl on sp.idchatLieu = cl.id\n"
             + "join NhaCungCap ncc on sp.idNhaCungCap = ncc.id where ncc.tenNCC like ?";
     private String sqlCreate = "insert into SanPham values (?,?,?,?,?,?,?,?,?,?,?,?)";
+    private String sqlFindByID = "select * from SanPham sp \n"
+            + "join Mau m on sp.idMau = m.id\n"
+            + "join KichCo kc on sp.size = kc.id\n"
+            + "join LoaiGiay lg on sp.idLoaiGiay = lg.id\n"
+            + "join ChatLieu cl on sp.idchatLieu = cl.id\n"
+            + "join NhaCungCap ncc on sp.idNhaCungCap = ncc.id where sp.id = ?";
+    private String sqlDelete = "delete from SanPham where id = ?";
+    private String sqlUpdate = "update SanPham set tenGiay=?, soLuong=?,giaNhap=?,idMau=?,size=?,idLoaiGiay=?,idChatLieu=?,hinh=?,donGia=?,trangThai=?,moTa=?,idNhaCungCap=? where id=?";
+    
     @Override
     public void create(SanPham entity) {
         XJdbc.executeUpdate(sqlCreate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap());
@@ -72,12 +82,15 @@ public class SanPham_Daoimpl implements SanPham_Dao {
 
     @Override
     public void update(SanPham entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        XJdbc.executeUpdate(sqlUpdate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap(), entity.getId());
     }
 
     @Override
     public void deleteById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int delete = XJdbc.executeUpdate(sqlDelete, id);
+        if (delete > 0) {
+            JOptionPane.showMessageDialog(null, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     @Override
@@ -87,7 +100,7 @@ public class SanPham_Daoimpl implements SanPham_Dao {
 
     @Override
     public SanPham findById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return XQuery.getSingleBean(SanPham.class, sqlFindByID, id);
     }
 
     @Override

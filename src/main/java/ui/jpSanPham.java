@@ -4,7 +4,6 @@
  */
 package ui;
 
-import controller.ControllerSanPham_CRUD;
 import daoimpl.*;
 import entity.*;
 import entity.SanPham;
@@ -23,12 +22,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import controller.Controller_SanPham;
 
 /**
  *
  * @author Administrator
  */
-public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_CRUD {
+public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham {
 
     /**
      * Creates new form jpSanPham
@@ -132,119 +132,158 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
         jScrollPane5 = new javax.swing.JScrollPane();
         txtDiaChiNCC = new javax.swing.JTextArea();
 
-        setBackground(new java.awt.Color(102, 102, 102));
+        setBackground(new java.awt.Color(207, 231, 255));
+        setForeground(new java.awt.Color(13, 71, 161));
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
 
-        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(207, 231, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(13, 71, 161));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1280, 720));
         jTabbedPane1.setRequestFocusEnabled(false);
 
-        jpSanPham.setBackground(new java.awt.Color(102, 102, 102));
+        jpSanPham.setBackground(new java.awt.Color(207, 231, 255));
         jpSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin sản phẩm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jpSanPham.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(13, 71, 161));
         jLabel1.setText("ID");
+        jLabel1.setToolTipText("");
         jLabel1.setAlignmentY(1.0F);
 
         jLabel2.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(13, 71, 161));
         jLabel2.setText("Tên SP");
+        jLabel2.setToolTipText("");
         jLabel2.setAlignmentY(1.0F);
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(13, 71, 161));
         jLabel3.setText("Giá nhập");
+        jLabel3.setToolTipText("");
         jLabel3.setAlignmentY(1.0F);
 
         jLabel4.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(13, 71, 161));
         jLabel4.setText("Giá bán");
+        jLabel4.setToolTipText("");
         jLabel4.setAlignmentY(1.0F);
 
         jLabel5.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(13, 71, 161));
         jLabel5.setText("Số lượng");
+        jLabel5.setToolTipText("");
         jLabel5.setAlignmentY(1.0F);
 
+        txtSoLuong.setForeground(new java.awt.Color(13, 71, 161));
+        txtSoLuong.setToolTipText("");
         txtSoLuong.setAlignmentY(1.0F);
 
+        txtGiaBan.setForeground(new java.awt.Color(13, 71, 161));
+        txtGiaBan.setToolTipText("");
         txtGiaBan.setAlignmentY(1.0F);
 
+        txtGiaNhap.setForeground(new java.awt.Color(13, 71, 161));
+        txtGiaNhap.setToolTipText("");
         txtGiaNhap.setAlignmentY(1.0F);
 
+        txtTenSP.setForeground(new java.awt.Color(13, 71, 161));
+        txtTenSP.setToolTipText("");
         txtTenSP.setAlignmentY(1.0F);
         txtTenSP.setPreferredSize(new java.awt.Dimension(200, 25));
 
+        txtID.setForeground(new java.awt.Color(13, 71, 161));
+        txtID.setToolTipText("");
         txtID.setAlignmentY(1.0F);
         txtID.setFocusable(false);
         txtID.setPreferredSize(new java.awt.Dimension(200, 25));
 
         jLabel6.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(13, 71, 161));
         jLabel6.setText("Màu");
+        jLabel6.setToolTipText("");
         jLabel6.setAlignmentY(1.0F);
 
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(13, 71, 161));
         jLabel7.setText("Kích cỡ");
+        jLabel7.setToolTipText("");
         jLabel7.setAlignmentY(1.0F);
 
         jLabel8.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(13, 71, 161));
         jLabel8.setText("Loại");
+        jLabel8.setToolTipText("");
         jLabel8.setAlignmentY(1.0F);
 
         jLabel9.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(13, 71, 161));
         jLabel9.setText("Chất liệu");
+        jLabel9.setToolTipText("");
         jLabel9.setAlignmentY(1.0F);
 
         jLabel10.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(13, 71, 161));
         jLabel10.setText("Nhà cung cấp");
+        jLabel10.setToolTipText("");
         jLabel10.setAlignmentY(1.0F);
 
+        cboNhaCungCap.setForeground(new java.awt.Color(13, 71, 161));
         cboNhaCungCap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNhaCungCap.setToolTipText("");
 
+        cboChatLieu.setForeground(new java.awt.Color(13, 71, 161));
         cboChatLieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboChatLieu.setToolTipText("");
 
+        cboLoai.setForeground(new java.awt.Color(13, 71, 161));
         cboLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLoai.setToolTipText("");
 
+        cboKichCo.setForeground(new java.awt.Color(13, 71, 161));
         cboKichCo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboKichCo.setToolTipText("");
 
+        cboMau.setForeground(new java.awt.Color(13, 71, 161));
         cboMau.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboMau.setToolTipText("");
 
         jLabel11.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(13, 71, 161));
         jLabel11.setText("Mô tả");
+        jLabel11.setToolTipText("");
         jLabel11.setAlignmentY(1.0F);
+
+        jScrollPane1.setForeground(new java.awt.Color(13, 71, 161));
+        jScrollPane1.setToolTipText("");
 
         txtMoTa.setColumns(20);
         txtMoTa.setRows(5);
         jScrollPane1.setViewportView(txtMoTa);
 
         jLabel12.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setForeground(new java.awt.Color(13, 71, 161));
         jLabel12.setText("Trạng thái");
+        jLabel12.setToolTipText("");
         jLabel12.setAlignmentY(1.0F);
 
-        rdoConHang.setBackground(new java.awt.Color(102, 102, 102));
+        rdoConHang.setBackground(new java.awt.Color(207, 231, 255));
         btgTrangThai.add(rdoConHang);
-        rdoConHang.setForeground(new java.awt.Color(255, 255, 255));
+        rdoConHang.setForeground(new java.awt.Color(13, 71, 161));
         rdoConHang.setText("Còn hàng");
+        rdoConHang.setToolTipText("");
 
-        rdoHetHang.setBackground(new java.awt.Color(102, 102, 102));
+        rdoHetHang.setBackground(new java.awt.Color(207, 231, 255));
         btgTrangThai.add(rdoHetHang);
-        rdoHetHang.setForeground(new java.awt.Color(255, 255, 255));
+        rdoHetHang.setForeground(new java.awt.Color(13, 71, 161));
         rdoHetHang.setText("Hết hàng");
+        rdoHetHang.setToolTipText("");
 
-        lblAnhSP.setForeground(new java.awt.Color(255, 255, 255));
+        lblAnhSP.setForeground(new java.awt.Color(13, 71, 161));
         lblAnhSP.setText("Ảnh NV");
+        lblAnhSP.setToolTipText("");
         lblAnhSP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblAnhSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -252,40 +291,54 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
             }
         });
 
+        btnThem.setBackground(new java.awt.Color(30, 136, 229));
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create.png"))); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.setToolTipText("");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
 
+        btnLamMoi.setBackground(new java.awt.Color(30, 136, 229));
+        btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnLamMoi.setText("Làm mới");
+        btnLamMoi.setToolTipText("");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
             }
         });
 
+        btnXoa.setBackground(new java.awt.Color(30, 136, 229));
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
+        btnXoa.setToolTipText("");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
 
+        btnSua.setBackground(new java.awt.Color(30, 136, 229));
+        btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.setToolTipText("");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel4.setBackground(new java.awt.Color(207, 231, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setForeground(new java.awt.Color(13, 71, 161));
+        jPanel4.setToolTipText("");
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -293,6 +346,7 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
             }
         });
 
+        cboTimKiem.setForeground(new java.awt.Color(13, 71, 161));
         cboTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Tên SP", "Màu", "Kích cỡ", "Loại", "Chất liệu", "Nhà cung cấp" }));
         cboTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,8 +384,11 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
                 .addContainerGap())
         );
 
-        tblSanPham.setBackground(new java.awt.Color(102, 102, 102));
-        tblSanPham.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setForeground(new java.awt.Color(13, 71, 161));
+        jScrollPane2.setToolTipText("");
+
+        tblSanPham.setBackground(new java.awt.Color(207, 231, 255));
+        tblSanPham.setForeground(new java.awt.Color(13, 71, 161));
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -502,11 +559,13 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
 
         jTabbedPane1.addTab("Sản Phẩm", jpSanPham);
 
-        jpChiTiet.setBackground(new java.awt.Color(102, 102, 102));
+        jpChiTiet.setBackground(new java.awt.Color(207, 231, 255));
         jpChiTiet.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin chi tiết", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jpChiTiet.setForeground(new java.awt.Color(255, 255, 255));
+        jpChiTiet.setForeground(new java.awt.Color(13, 71, 161));
 
-        tblNCC.setBackground(new java.awt.Color(102, 102, 102));
+        jScrollPane3.setForeground(new java.awt.Color(13, 71, 161));
+
+        tblNCC.setBackground(new java.awt.Color(207, 231, 255));
         tblNCC.setForeground(new java.awt.Color(255, 255, 255));
         tblNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -534,7 +593,10 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
         });
         jScrollPane3.setViewportView(tblNCC);
 
-        tblChiTiet.setBackground(new java.awt.Color(102, 102, 102));
+        jScrollPane4.setForeground(new java.awt.Color(13, 71, 161));
+
+        tblChiTiet.setAutoCreateRowSorter(true);
+        tblChiTiet.setBackground(new java.awt.Color(207, 231, 255));
         tblChiTiet.setForeground(new java.awt.Color(255, 255, 255));
         tblChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -562,51 +624,57 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
         });
         jScrollPane4.setViewportView(tblChiTiet);
 
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setForeground(new java.awt.Color(13, 71, 161));
         jLabel13.setText("ID");
         jLabel13.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setForeground(new java.awt.Color(13, 71, 161));
         jLabel14.setText("Tên NCC");
         jLabel14.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setForeground(new java.awt.Color(13, 71, 161));
         jLabel15.setText("Địa chỉ");
         jLabel15.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setForeground(new java.awt.Color(13, 71, 161));
         jLabel16.setText("SDT");
         jLabel16.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(13, 71, 161));
         jLabel17.setText("Email");
         jLabel17.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setForeground(new java.awt.Color(13, 71, 161));
         jLabel18.setText("Trạng thái");
         jLabel18.setPreferredSize(new java.awt.Dimension(43, 25));
 
+        txtTenNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtTenNCC.setText("jTextField1");
         txtTenNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
+        txtSDTNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtSDTNCC.setText("jTextField1");
         txtSDTNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
+        txtEmailNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtEmailNCC.setText("jTextField1");
         txtEmailNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
+        txtIDNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtIDNCC.setText("jTextField1");
         txtIDNCC.setFocusable(false);
         txtIDNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
         btgTrangThaiNCC.add(rdoHoatDong);
-        rdoHoatDong.setForeground(new java.awt.Color(255, 255, 255));
+        rdoHoatDong.setForeground(new java.awt.Color(13, 71, 161));
         rdoHoatDong.setText("Hoạt động");
 
         btgTrangThaiNCC.add(rdoDungHoatDong);
-        rdoDungHoatDong.setForeground(new java.awt.Color(255, 255, 255));
+        rdoDungHoatDong.setForeground(new java.awt.Color(13, 71, 161));
         rdoDungHoatDong.setText("Dừng hoạt dộng");
 
+        btnLamMoi1.setBackground(new java.awt.Color(30, 136, 229));
+        btnLamMoi1.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnLamMoi1.setText("Làm mới");
         btnLamMoi1.addActionListener(new java.awt.event.ActionListener() {
@@ -615,34 +683,40 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
             }
         });
 
+        txtMauCT.setForeground(new java.awt.Color(13, 71, 161));
         txtMauCT.setText("jTextField1");
         txtMauCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
+        txtChatLieuCT.setForeground(new java.awt.Color(13, 71, 161));
         txtChatLieuCT.setText("jTextField1");
         txtChatLieuCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
+        txtLoaiCT.setForeground(new java.awt.Color(13, 71, 161));
         txtLoaiCT.setText("jTextField1");
         txtLoaiCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
+        txtKichCoCT.setForeground(new java.awt.Color(13, 71, 161));
         txtKichCoCT.setText("jTextField1");
         txtKichCoCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setForeground(new java.awt.Color(13, 71, 161));
         jLabel19.setText("Chất liệu");
         jLabel19.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setForeground(new java.awt.Color(13, 71, 161));
         jLabel20.setText("Loại");
         jLabel20.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setForeground(new java.awt.Color(13, 71, 161));
         jLabel21.setText("Kích cỡ");
         jLabel21.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setForeground(new java.awt.Color(13, 71, 161));
         jLabel22.setText("Màu");
         jLabel22.setPreferredSize(new java.awt.Dimension(43, 25));
 
+        btnThemMau.setBackground(new java.awt.Color(30, 136, 229));
+        btnThemMau.setForeground(new java.awt.Color(255, 255, 255));
         btnThemMau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create.png"))); // NOI18N
         btnThemMau.setText("Thêm");
         btnThemMau.setFocusable(false);
@@ -652,6 +726,8 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
             }
         });
 
+        btnXoaMau.setBackground(new java.awt.Color(30, 136, 229));
+        btnXoaMau.setForeground(new java.awt.Color(255, 255, 255));
         btnXoaMau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         btnXoaMau.setText("Xóa");
         btnXoaMau.addActionListener(new java.awt.event.ActionListener() {
@@ -659,6 +735,8 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
                 btnXoaMauActionPerformed(evt);
             }
         });
+
+        jScrollPane5.setForeground(new java.awt.Color(13, 71, 161));
 
         txtDiaChiNCC.setColumns(20);
         txtDiaChiNCC.setRows(5);
@@ -1007,7 +1085,7 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
         // TODO add your handling code here:
-
+        this.edit();
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
 
@@ -1092,7 +1170,23 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
 
     @Override
     public void setForm(SanPham entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        txtID.setText(String.valueOf(entity.getId()));
+        txtTenSP.setText(entity.getTenGiay());
+        txtGiaNhap.setText(String.valueOf(entity.getGiaNhap()));
+        txtGiaBan.setText(String.valueOf(entity.getDonGia()));
+        txtSoLuong.setText(String.valueOf(entity.getSoLuong()));
+        txtMoTa.setText(entity.getMoTa());
+        cboMau.setSelectedItem(entity.getTenMau());
+        cboKichCo.setSelectedItem(entity.getTenKichCo());
+        cboLoai.setSelectedItem(entity.getTenLoai());
+        cboChatLieu.setSelectedItem(entity.getTenChatLieu());
+        cboNhaCungCap.setSelectedItem(entity.getTenNCC());
+        rdoConHang.setSelected(entity.isTrangThai());
+        rdoHetHang.setSelected(!entity.isTrangThai());
+        ImageIcon icon = new ImageIcon(entity.getHinh());
+        fileAnh = entity.getHinh();
+        Image img = icon.getImage();
+        lblAnhSP.setIcon(new ImageIcon(img.getScaledInstance(lblAnhSP.getWidth(), lblAnhSP.getHeight(), Image.SCALE_SMOOTH)));
     }
 
     @Override
@@ -1107,12 +1201,23 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
                 idMau, size, idLoaiGiay, idchatLieu, fileAnh, rdoConHang.isSelected(), txtMoTa.getText(), idNhaCungCap);
     }
 
+    public SanPham getFormUpdate() {
+
+        int idMau = repoM.findByName(cboMau.getSelectedItem().toString()).getId();
+        int size = repoKC.findByName(cboKichCo.getSelectedItem().toString()).getId();
+        int idLoaiGiay = repoL.findByName(cboLoai.getSelectedItem().toString()).getId();
+        int idchatLieu = repoCL.findByName(cboChatLieu.getSelectedItem().toString()).getId();
+        int idNhaCungCap = repoNCC.findByName(cboNhaCungCap.getSelectedItem().toString()).getId();
+        return new SanPham(Integer.parseInt(txtID.getText()), txtTenSP.getText(), new BigDecimal(txtGiaNhap.getText()), new BigDecimal(txtGiaBan.getText()), Integer.parseInt(txtSoLuong.getText()),
+                idMau, size, idLoaiGiay, idchatLieu, fileAnh, rdoConHang.isSelected(), txtMoTa.getText(), idNhaCungCap);
+    }
+
     @Override
     public void fillToTable() {
         modelSP = (DefaultTableModel) tblSanPham.getModel();
         modelSP.setRowCount(0);
         for (SanPham sanPham : repoSP.findAll()) {
-            modelSP.addRow(new Object[]{sanPham.getId(), sanPham.getTenGiay(), this.formatMoney(sanPham.getGiaNhap()) + " VNĐ", this.formatMoney(sanPham.getDonGia()) + " VNĐ", sanPham.getSoLuong(), sanPham.getTenMau(), sanPham.getTenKichCo(),
+            modelSP.addRow(new Object[]{sanPham.getId(), sanPham.getTenGiay(), this.formatMoney(sanPham.getGiaNhap()), this.formatMoney(sanPham.getDonGia()), sanPham.getSoLuong(), sanPham.getTenMau(), sanPham.getTenKichCo(),
                 sanPham.getTenLoai(), sanPham.getTenChatLieu(), sanPham.getTenNCC(), sanPham.isTrangThai() ? "Còn hàng" : "Hết hàng"});
         }
         modelCT = (DefaultTableModel) tblChiTiet.getModel();
@@ -1147,7 +1252,7 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
         if (money == null) {
             return "";
         }
-        DecimalFormat df = new DecimalFormat("#,###");
+        DecimalFormat df = new DecimalFormat("#,### VNĐ");
         return df.format(money);
     }
 
@@ -1187,7 +1292,9 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
 
     @Override
     public void edit() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int id = Integer.parseInt(tblSanPham.getValueAt(tblSanPham.getSelectedRow(), 0).toString());
+        SanPham sanPham = repoSP.findById(id);
+        this.setForm(sanPham);
     }
 
     @Override
@@ -1198,17 +1305,38 @@ public class jpSanPham extends javax.swing.JPanel implements ControllerSanPham_C
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (txtID.getText().length() < 0) {
+            JOptionPane.showMessageDialog(this, "ID không được để trống!", "Thông báo!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        SanPham sanPham = this.getFormUpdate();
+        repoSP.update(sanPham);
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (tblSanPham.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng muốn xóa!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        repoSP.deleteById(Integer.parseInt(tblSanPham.getValueAt(tblSanPham.getSelectedRow(), 0).toString()));
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        txtID.setText("");
+        txtTenSP.setText("");
+        txtGiaNhap.setText("");
+        txtGiaBan.setText("");
+        txtSoLuong.setText("");
+        txtMoTa.setText("");
+        cboMau.setSelectedIndex(-1);
+        cboKichCo.setSelectedIndex(-1);
+        cboLoai.setSelectedIndex(-1);
+        cboChatLieu.setSelectedIndex(-1);
+        cboNhaCungCap.setSelectedIndex(-1);
+        btgTrangThai.clearSelection();
+        lblAnhSP.setIcon(null);
     }
 
     @Override

@@ -4,7 +4,6 @@
  */
 package ui;
 
-import controller.ControllerNhanVien_CRUD;
 import daoimpl.*;
 import entity.ChucVu;
 import entity.NhanVien;
@@ -19,12 +18,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import controller.Controller_NhanVien;
 
 /**
  *
  * @author Administrator
  */
-public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien_CRUD {
+public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVien {
 
     /**
      * Creates new form jpNhanVien
@@ -113,41 +113,42 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
         jScrollPane3 = new javax.swing.JScrollPane();
         tblChucVu = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(102, 102, 102));
+        setBackground(new java.awt.Color(224, 242, 254));
+        setForeground(new java.awt.Color(13, 71, 161));
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
 
-        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(224, 242, 254));
+        jTabbedPane1.setForeground(new java.awt.Color(13, 71, 161));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jpNhanVien.setBackground(new java.awt.Color(102, 102, 102));
+        jpNhanVien.setBackground(new java.awt.Color(224, 242, 254));
         jpNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        jpNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        jpNhanVien.setForeground(new java.awt.Color(13, 71, 161));
 
-        lblMaNV.setForeground(new java.awt.Color(255, 255, 255));
+        lblMaNV.setForeground(new java.awt.Color(13, 71, 161));
         lblMaNV.setText("Mã NV");
 
-        lblHoVaTen.setForeground(new java.awt.Color(255, 255, 255));
+        lblHoVaTen.setForeground(new java.awt.Color(13, 71, 161));
         lblHoVaTen.setText("Họ và Tên");
 
-        lblNgaySinh.setForeground(new java.awt.Color(255, 255, 255));
+        lblNgaySinh.setForeground(new java.awt.Color(13, 71, 161));
         lblNgaySinh.setText("Ngày sinh");
 
-        lblDiaChi.setForeground(new java.awt.Color(255, 255, 255));
+        lblDiaChi.setForeground(new java.awt.Color(13, 71, 161));
         lblDiaChi.setText("Địa chỉ");
 
-        lblSDT.setForeground(new java.awt.Color(255, 255, 255));
+        lblSDT.setForeground(new java.awt.Color(13, 71, 161));
         lblSDT.setText("SDT");
 
-        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setForeground(new java.awt.Color(13, 71, 161));
         lblEmail.setText("Email");
 
-        lblMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        lblMatKhau.setForeground(new java.awt.Color(13, 71, 161));
         lblMatKhau.setText("Mật khẩu");
 
-        lblChucVu.setForeground(new java.awt.Color(255, 255, 255));
+        lblChucVu.setForeground(new java.awt.Color(13, 71, 161));
         lblChucVu.setText("Chức vụ");
 
         lblAnhNV.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,7 +162,7 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
 
         cboChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lblGioiTinh.setForeground(new java.awt.Color(255, 255, 255));
+        lblGioiTinh.setForeground(new java.awt.Color(13, 71, 161));
         lblGioiTinh.setText("Giới tính");
 
         txtDiaChi.setColumns(20);
@@ -169,22 +170,22 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
         jScrollPane1.setViewportView(txtDiaChi);
 
         btgSex.add(rdoNam);
-        rdoNam.setForeground(new java.awt.Color(255, 255, 255));
+        rdoNam.setForeground(new java.awt.Color(13, 71, 161));
         rdoNam.setText("Nam");
 
         btgSex.add(rdoNu);
-        rdoNu.setForeground(new java.awt.Color(255, 255, 255));
+        rdoNu.setForeground(new java.awt.Color(13, 71, 161));
         rdoNu.setText("Nữ");
 
         btgTrangThai.add(rdoNghiLam);
-        rdoNghiLam.setForeground(new java.awt.Color(255, 255, 255));
+        rdoNghiLam.setForeground(new java.awt.Color(13, 71, 161));
         rdoNghiLam.setText("Nghỉ làm");
 
         btgTrangThai.add(rdoDiLam);
-        rdoDiLam.setForeground(new java.awt.Color(255, 255, 255));
+        rdoDiLam.setForeground(new java.awt.Color(13, 71, 161));
         rdoDiLam.setText("Đi làm");
 
-        lblTrangThai.setForeground(new java.awt.Color(255, 255, 255));
+        lblTrangThai.setForeground(new java.awt.Color(13, 71, 161));
         lblTrangThai.setText("Trạng thái");
 
         txtNgaySinh.setDateFormatString("d/M/yyyy");
@@ -192,6 +193,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
         txtMatKhau.setText("123456");
         txtMatKhau.setFocusable(false);
 
+        btnThem.setBackground(new java.awt.Color(30, 136, 229));
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +203,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
+        btnSua.setBackground(new java.awt.Color(30, 136, 229));
+        btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -208,6 +213,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
+        btnXoa.setBackground(new java.awt.Color(30, 136, 229));
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -216,6 +223,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
+        btnLamMoi.setBackground(new java.awt.Color(30, 136, 229));
+        btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -224,15 +233,17 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel4.setBackground(new java.awt.Color(224, 242, 254));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
+        txtTimKiem.setForeground(new java.awt.Color(13, 71, 161));
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
             }
         });
 
+        cboTimKiem.setForeground(new java.awt.Color(13, 71, 161));
         cboTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Mã NV", "Họ và Tên", "SDT", "Email", "Chức Vụ" }));
         cboTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,6 +251,7 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
+        cboChucVuTimKiem.setForeground(new java.awt.Color(13, 71, 161));
         cboChucVuTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboChucVuTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,8 +283,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
                 .addContainerGap())
         );
 
-        tblNhanVien.setBackground(new java.awt.Color(102, 102, 102));
-        tblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        tblNhanVien.setBackground(new java.awt.Color(224, 242, 254));
+        tblNhanVien.setForeground(new java.awt.Color(13, 71, 161));
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -438,8 +450,10 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
 
         jTabbedPane1.addTab("Nhân Viên", jpNhanVien);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(224, 242, 254));
 
+        btnLamMoiCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnLamMoiCV.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoiCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnLamMoiCV.setText("Làm mới");
         btnLamMoiCV.addActionListener(new java.awt.event.ActionListener() {
@@ -448,6 +462,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
+        btnXoaCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnXoaCV.setForeground(new java.awt.Color(255, 255, 255));
         btnXoaCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         btnXoaCV.setText("Xóa");
         btnXoaCV.addActionListener(new java.awt.event.ActionListener() {
@@ -456,6 +472,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
+        btnSuaCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnSuaCV.setForeground(new java.awt.Color(255, 255, 255));
         btnSuaCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         btnSuaCV.setText("Sửa");
         btnSuaCV.addActionListener(new java.awt.event.ActionListener() {
@@ -464,6 +482,8 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
             }
         });
 
+        btnThemCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnThemCV.setForeground(new java.awt.Color(255, 255, 255));
         btnThemCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create.png"))); // NOI18N
         btnThemCV.setText("Thêm");
         btnThemCV.addActionListener(new java.awt.event.ActionListener() {
@@ -474,14 +494,14 @@ public class jpNhanVien extends javax.swing.JPanel implements ControllerNhanVien
 
         txtID.setFocusable(false);
 
-        lblID.setForeground(new java.awt.Color(255, 255, 255));
+        lblID.setForeground(new java.awt.Color(13, 71, 161));
         lblID.setText("ID");
 
-        lblEmail1.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail1.setForeground(new java.awt.Color(13, 71, 161));
         lblEmail1.setText("Tên chức vụ");
 
-        tblChucVu.setBackground(new java.awt.Color(102, 102, 102));
-        tblChucVu.setForeground(new java.awt.Color(255, 255, 255));
+        tblChucVu.setBackground(new java.awt.Color(224, 242, 254));
+        tblChucVu.setForeground(new java.awt.Color(13, 71, 161));
         tblChucVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

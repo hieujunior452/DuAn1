@@ -6,6 +6,7 @@ package ui;
 
 import entity.NhanVien;
 import java.awt.Panel;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -18,7 +19,15 @@ public class frmTrangChu extends javax.swing.JFrame {
     /**
      * Creates new form frmTrangChu
      */
-    public static NhanVien nhanVienHienTai = new NhanVien();
+    public static NhanVien nhanVienHienTai = new NhanVien(
+            "hieu", "123456", "hieu",
+            java.sql.Date.valueOf("2026-11-13"),
+            true,
+            "hhhhhhhhh", "hhhhhhhhhh", "hhhhhhhhh",
+            1,
+            "C:\\Users\\Administrator\\Pictures\\Screenshots\\9c492c3ca0127b4319ea94183a68681a.png",
+            true
+    );
 
     public frmTrangChu() {
         initComponents();
@@ -53,13 +62,14 @@ public class frmTrangChu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang chủ");
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(187, 222, 251));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setRequestFocusEnabled(false);
         jPanel2.setVerifyInputWhenFocusTarget(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        btnTrangchu.setBackground(new java.awt.Color(204, 204, 204));
+        btnTrangchu.setBackground(new java.awt.Color(30, 136, 229));
+        btnTrangchu.setForeground(new java.awt.Color(255, 255, 255));
         btnTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
         btnTrangchu.setText("Trang chủ ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -72,7 +82,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 41, 0, 23);
         jPanel2.add(btnTrangchu, gridBagConstraints);
 
-        btnKhachhang.setBackground(new java.awt.Color(204, 204, 204));
+        btnKhachhang.setBackground(new java.awt.Color(30, 136, 229));
+        btnKhachhang.setForeground(new java.awt.Color(255, 255, 255));
         btnKhachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconKH.png"))); // NOI18N
         btnKhachhang.setText("Khách hàng ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -84,7 +95,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(29, 41, 0, 23);
         jPanel2.add(btnKhachhang, gridBagConstraints);
 
-        btnNhanvien.setBackground(new java.awt.Color(204, 204, 204));
+        btnNhanvien.setBackground(new java.awt.Color(30, 136, 229));
+        btnNhanvien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconNV.png"))); // NOI18N
         btnNhanvien.setText("Nhân viên ");
         btnNhanvien.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +114,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(27, 41, 0, 23);
         jPanel2.add(btnNhanvien, gridBagConstraints);
 
-        btnKhuyenmai.setBackground(new java.awt.Color(204, 204, 204));
+        btnKhuyenmai.setBackground(new java.awt.Color(30, 136, 229));
+        btnKhuyenmai.setForeground(new java.awt.Color(255, 255, 255));
         btnKhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/coupon (1).png"))); // NOI18N
         btnKhuyenmai.setText("Khuyến mại ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -114,7 +127,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(24, 41, 0, 23);
         jPanel2.add(btnKhuyenmai, gridBagConstraints);
 
-        btnSanpham.setBackground(new java.awt.Color(204, 204, 204));
+        btnSanpham.setBackground(new java.awt.Color(30, 136, 229));
+        btnSanpham.setForeground(new java.awt.Color(255, 255, 255));
         btnSanpham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/box.png"))); // NOI18N
         btnSanpham.setText("Sản phẩm");
         btnSanpham.addActionListener(new java.awt.event.ActionListener() {
@@ -132,9 +146,15 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(27, 41, 0, 23);
         jPanel2.add(btnSanpham, gridBagConstraints);
 
-        btnBanhang.setBackground(new java.awt.Color(204, 204, 204));
+        btnBanhang.setBackground(new java.awt.Color(30, 136, 229));
+        btnBanhang.setForeground(new java.awt.Color(255, 255, 255));
         btnBanhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconBanHang.png"))); // NOI18N
         btnBanhang.setText("Bán hàng ");
+        btnBanhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBanhangActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -145,7 +165,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(26, 41, 0, 23);
         jPanel2.add(btnBanhang, gridBagConstraints);
 
-        btnThongke.setBackground(new java.awt.Color(204, 204, 204));
+        btnThongke.setBackground(new java.awt.Color(30, 136, 229));
+        btnThongke.setForeground(new java.awt.Color(255, 255, 255));
         btnThongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Best.png"))); // NOI18N
         btnThongke.setText("Thống kê ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -158,7 +179,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(30, 41, 0, 23);
         jPanel2.add(btnThongke, gridBagConstraints);
 
-        btnHoadon.setBackground(new java.awt.Color(204, 204, 204));
+        btnHoadon.setBackground(new java.awt.Color(30, 136, 229));
+        btnHoadon.setForeground(new java.awt.Color(255, 255, 255));
         btnHoadon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Properties.png"))); // NOI18N
         btnHoadon.setText("Hóa đơn ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -171,7 +193,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(31, 41, 0, 23);
         jPanel2.add(btnHoadon, gridBagConstraints);
 
-        btnThoat.setBackground(new java.awt.Color(204, 204, 204));
+        btnThoat.setBackground(new java.awt.Color(30, 136, 229));
+        btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Closed door.png"))); // NOI18N
         btnThoat.setText("Thoát");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -185,7 +208,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         jPanel2.add(btnThoat, gridBagConstraints);
 
         lblTenNguoiDung.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblTenNguoiDung.setForeground(new java.awt.Color(255, 255, 255));
+        lblTenNguoiDung.setForeground(new java.awt.Color(13, 71, 161));
         lblTenNguoiDung.setText("Nguyễn Ngọc Hiếu");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -194,6 +217,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 41, 0, 0);
         jPanel2.add(lblTenNguoiDung, gridBagConstraints);
 
+        lblAnh.setForeground(new java.awt.Color(13, 71, 161));
         lblAnh.setText("Ảnh");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -205,7 +229,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 35, 0, 0);
         jPanel2.add(lblAnh, gridBagConstraints);
 
-        jpMain.setBackground(new java.awt.Color(102, 102, 102));
+        jpMain.setBackground(new java.awt.Color(224, 242, 254));
         jpMain.setPreferredSize(new java.awt.Dimension(1280, 720));
         jpMain.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -249,6 +273,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setPanel(new jpSanPham());
     }//GEN-LAST:event_btnSanphamActionPerformed
+
+    private void btnBanhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanhangActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(new jpBanHang());
+    }//GEN-LAST:event_btnBanhangActionPerformed
 
     /**
      * @param args the command line arguments

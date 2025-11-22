@@ -47,22 +47,29 @@ public class SanPham {
         this.moTa = moTa;
         this.idNhaCungCap = idNhaCungCap;
     }
-    
-    public SanPham(int id, String tenGiay, int soLuong, BigDecimal giaNhap, int idMau, int size, int idLoaiGiay, int idchatLieu, String hinh, BigDecimal donGia, boolean trangThai, String moTa, int idNhaCungCap) {
+
+    public SanPham(int id, String tenGiay, BigDecimal giaNhap, BigDecimal donGia, int soLuong, int idMau, int size, int idLoaiGiay, int idchatLieu, String hinh, boolean trangThai, String moTa, int idNhaCungCap) {
         this.id = id;
         this.tenGiay = tenGiay;
-        this.soLuong = soLuong;
         this.giaNhap = giaNhap;
+        this.donGia = donGia;
+        this.soLuong = soLuong;
         this.idMau = idMau;
         this.size = size;
         this.idLoaiGiay = idLoaiGiay;
         this.idchatLieu = idchatLieu;
         this.hinh = hinh;
-        this.donGia = donGia;
         this.trangThai = trangThai;
         this.moTa = moTa;
         this.idNhaCungCap = idNhaCungCap;
+        this.tenMau = tenMau;
+        this.tenLoai = tenLoai;
+        this.tenChatLieu = tenChatLieu;
+        this.tenNCC = tenNCC;
+        this.tenKichCo = tenKichCo;
     }
+    
+    
 
     public int getId() {
         return id;

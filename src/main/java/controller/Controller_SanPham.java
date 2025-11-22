@@ -4,12 +4,12 @@
  */
 package controller;
 
-import entity.NhanVien;
+import entity.SanPham;
 
 /**
  *
  * @author Administrator
  */
-public interface ControllerNhanVien_CRUD extends Controller_CRUD<NhanVien>{
+public interface Controller_SanPham extends Controller_CRUD<SanPham>{
     
 }

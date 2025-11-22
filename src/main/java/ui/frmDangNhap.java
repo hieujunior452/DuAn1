@@ -57,18 +57,18 @@ public class frmDangNhap extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(187, 222, 251));
 
         lblDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblDangNhap.setForeground(new java.awt.Color(255, 255, 255));
+        lblDangNhap.setForeground(new java.awt.Color(13, 71, 161));
         lblDangNhap.setText("Đăng nhập");
 
         lblTaiKhoan.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
+        lblTaiKhoan.setForeground(new java.awt.Color(13, 71, 161));
         lblTaiKhoan.setText("Tài khoản");
 
         lblMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        lblMatKhau.setForeground(new java.awt.Color(13, 71, 161));
         lblMatKhau.setText("Mật khẩu");
 
         txtTaiKhoan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -83,6 +83,8 @@ public class frmDangNhap extends javax.swing.JFrame {
             }
         });
 
+        btnDangNhap.setBackground(new java.awt.Color(30, 136, 229));
+        btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Login.png"))); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +93,8 @@ public class frmDangNhap extends javax.swing.JFrame {
             }
         });
 
+        btnQuenMatKhau.setBackground(new java.awt.Color(30, 136, 229));
+        btnQuenMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         btnQuenMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnQuenMatKhau.setText("Quên mật khẩu");
         btnQuenMatKhau.addActionListener(new java.awt.event.ActionListener() {
