@@ -258,10 +258,10 @@ public class frmTrangChu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setPanel(JPanel panel) {
-        jpMain.removeAll();  // Xóa tất cả các component hiện tại trong jpMain
-        jpMain.add(panel);    // Thêm panel mới vào jpMain
-        jpMain.revalidate();  // Làm mới lại layout của jpMain
-        jpMain.repaint();     // Vẽ lại giao diện của jpMain
+        jpMain.removeAll();
+        jpMain.add(panel);
+        jpMain.revalidate(); 
+        jpMain.repaint();
     }
 
     private void btnNhanvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanvienActionPerformed
