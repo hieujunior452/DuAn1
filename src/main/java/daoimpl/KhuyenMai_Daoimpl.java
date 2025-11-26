@@ -33,7 +33,7 @@ public class KhuyenMai_Daoimpl implements KhuyenMai_Dao{
 
     @Override
     public List<KhuyenMai> findAll() {
-        return null;
+        return XQuery.getBeanList(KhuyenMai.class, sqlFindAll);
     }
 
     @Override

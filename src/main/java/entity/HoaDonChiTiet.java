@@ -19,12 +19,11 @@ public class HoaDonChiTiet {
     public BigDecimal giamGia;
     public BigDecimal thanhTien;
     public String ghiChu;
-    private boolean trangThai;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(int id, int idHoaDon, int idSanPham, int soLuong, BigDecimal donGia, BigDecimal giamGia, BigDecimal thanhTien, String ghiChu, boolean trangThai) {
+    public HoaDonChiTiet(int id, int idHoaDon, int idSanPham, int soLuong, BigDecimal donGia, BigDecimal giamGia, BigDecimal thanhTien, String ghiChu) {
         this.id = id;
         this.idHoaDon = idHoaDon;
         this.idSanPham = idSanPham;
@@ -33,7 +32,6 @@ public class HoaDonChiTiet {
         this.giamGia = giamGia;
         this.thanhTien = thanhTien;
         this.ghiChu = ghiChu;
-        this.trangThai = trangThai;
     }
 
     public BigDecimal getGiamGia() {
@@ -43,15 +41,6 @@ public class HoaDonChiTiet {
     public void setGiamGia(BigDecimal giamGia) {
         this.giamGia = giamGia;
     }
-
-    public boolean isTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(boolean trangThai) {
-        this.trangThai = trangThai;
-    }
-
 
     public int getId() {
         return id;

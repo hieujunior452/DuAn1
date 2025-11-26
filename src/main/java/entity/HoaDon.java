@@ -20,14 +20,15 @@ public class HoaDon {
     private BigDecimal tongTien;
     private BigDecimal tienKhachDua;
     private BigDecimal tienTraLai;
+    private int idGiamGia;
     private String phuongThucThanhToan;
-    private boolean trangThai;
+    private int trangThai;
     private String ghiChu;
     private String hoVaTen;
     public HoaDon() {
     }
 
-    public HoaDon(String maHoaDon, BigDecimal tongTien,String phuongThucThanhToan, boolean trangThai, String ghiChu) {
+    public HoaDon(String maHoaDon, BigDecimal tongTien,String phuongThucThanhToan, int trangThai, String ghiChu) {
         this.maHoaDon = maHoaDon;
         this.tongTien = tongTien;
         this.phuongThucThanhToan = phuongThucThanhToan;
@@ -35,7 +36,7 @@ public class HoaDon {
         this.ghiChu = ghiChu;
     }
 
-    public HoaDon(String maHoaDon, BigDecimal tongTien, BigDecimal tienKhachDua, BigDecimal tienTraLai, String phuongThucThanhToan, boolean trangThai, String ghiChu) {
+    public HoaDon(String maHoaDon, BigDecimal tongTien, BigDecimal tienKhachDua, BigDecimal tienTraLai, String phuongThucThanhToan, int trangThai, String ghiChu) {
         this.maHoaDon = maHoaDon;
         this.tongTien = tongTien;
         this.tienKhachDua = tienKhachDua;
@@ -45,9 +46,7 @@ public class HoaDon {
         this.ghiChu = ghiChu;
     }
     
-    
-
-    public HoaDon(int id, String maHoaDon, Date ngayTao, int idKhachHang, String maNhanVien, BigDecimal tongTien, BigDecimal tienKhachDua, BigDecimal tienTraLai, String phuongThucThanhToan, boolean trangThai, String ghiChu) {
+    public HoaDon(int id, String maHoaDon, Date ngayTao, int idKhachHang, String maNhanVien, BigDecimal tongTien, BigDecimal tienKhachDua, BigDecimal tienTraLai, String phuongThucThanhToan, int trangThai, String ghiChu) {
         this.id = id;
         this.maHoaDon = maHoaDon;
         this.ngayTao = ngayTao;
@@ -61,12 +60,20 @@ public class HoaDon {
         this.ghiChu = ghiChu;
     }
 
-    public String gethoVaTen() {
+    public int getIdGiamGia() {
+        return idGiamGia;
+    }
+
+    public void setIdGiamGia(int idGiamGia) {
+        this.idGiamGia = idGiamGia;
+    }
+
+    public String getHoVaTen() {
         return hoVaTen;
     }
 
-    public void sethoVaTen(String tenKhachHang) {
-        this.hoVaTen = tenKhachHang;
+    public void setHoVaTen(String hoVaTen) {
+        this.hoVaTen = hoVaTen;
     }
 
     public BigDecimal getTienKhachDua() {
@@ -141,11 +148,11 @@ public class HoaDon {
         this.phuongThucThanhToan = phuongThucThanhToan;
     }
 
-    public boolean isTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(boolean trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
 

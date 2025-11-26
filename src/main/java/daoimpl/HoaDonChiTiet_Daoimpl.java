@@ -17,6 +17,7 @@ public class HoaDonChiTiet_Daoimpl implements HoaDonChiTiet_Dao{
     private String sqlFindByID = "select * from HoaDonChiTiet where idHoaDon = ?";
     private String sqlDeleteByIDHoaDon = "delete from HoaDonChiTiet where idHoaDon = ?";
     private String sqlCreate = "INSERT INTO HoaDonChiTiet (idHoaDon, idSanPham, soLuong, donGia, giamGia, thanhTien) VALUES(?,?,?,?,?,?)";
+    private String sqlUpdate = "Update HoaDonChiTiet set giamGia=?, thanhTien=? where id = ?";
     @Override
     public void create(HoaDonChiTiet entity) {
         XJdbc.executeUpdate(sqlCreate, entity.getIdHoaDon(), entity.getIdSanPham(), entity.getSoLuong(), entity.getDonGia(), entity.getGiamGia(), entity.getThanhTien());
@@ -24,7 +25,7 @@ public class HoaDonChiTiet_Daoimpl implements HoaDonChiTiet_Dao{
 
     @Override
     public void update(HoaDonChiTiet entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        XJdbc.executeUpdate(sqlUpdate, entity.getGiamGia(), entity.getThanhTien(), entity.getId());
     }
 
     @Override
@@ -40,6 +41,10 @@ public class HoaDonChiTiet_Daoimpl implements HoaDonChiTiet_Dao{
                 
     }
 
+    public List<HoaDonChiTiet> findByIdList(Integer id) {
+        return XQuery.getBeanList(HoaDonChiTiet.class, sqlFindByID, id);
+    }
+    
     @Override
     public HoaDonChiTiet findById(Integer id) {
         return XQuery.getSingleBean(HoaDonChiTiet.class, sqlFindByID, id);

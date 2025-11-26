@@ -144,7 +144,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jTabbedPane1.setRequestFocusEnabled(false);
 
         jpSanPham.setBackground(new java.awt.Color(207, 231, 255));
-        jpSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin sản phẩm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jpSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin sản phẩm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
         jpSanPham.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -336,7 +336,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         });
 
         jPanel4.setBackground(new java.awt.Color(207, 231, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(13, 71, 161));
         jPanel4.setToolTipText("");
 

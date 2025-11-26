@@ -9,6 +9,7 @@ import daoimpl.*;
 import entity.HoaDon;
 import entity.HoaDonChiTiet;
 import entity.KhachHang;
+import entity.KhuyenMai;
 import entity.SanPham;
 import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
@@ -43,6 +44,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         initComponents();
         txtNhanVien.setText(frmTrangChu.nhanVienHienTai.getMaNhanVien());
         this.fillToTable();
+        this.fillToComboBox();
     }
 
     /**
@@ -155,11 +157,11 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
 
             },
             new String [] {
-                "ID SP", "Tên sản phẩm", "Số lượng", "Đơn giá", "Giảm giá", "Thành tiền", "Trạng thái"
+                "ID SP", "Tên sản phẩm", "Số lượng", "Đơn giá", "Giảm giá", "Thành tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -271,6 +273,11 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
 
         cboVoucher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Không dùng" }));
         cboVoucher.setPreferredSize(new java.awt.Dimension(200, 25));
+        cboVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboVoucherActionPerformed(evt);
+            }
+        });
 
         txtTienThua.setFocusable(false);
         txtTienThua.setPreferredSize(new java.awt.Dimension(200, 25));
@@ -532,9 +539,10 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         txtTenKH.setText(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString());
         KhachHang kh = new KhachHang();
         for (HoaDon hoaDon : repoHD.findAll()) {
-            if (!hoaDon.isTrangThai()) {
+            if (hoaDon.getTrangThai() == 0) {
                 if (hoaDon.getMaHoaDon().equals(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 0))) {
                     txtMaHD.setText(hoaDon.getMaHoaDon());
+                    cboVoucher.setSelectedItem(hoaDon.getIdGiamGia());
                     kh = repoKH.findById(hoaDon.getIdKhachHang());
                     break;
                 }
@@ -560,13 +568,23 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
 
     private void btnHuyDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyDonActionPerformed
         // TODO add your handling code here:
-        this.delete();
-        this.clear();
-        this.fillToTable();
+        int kt = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn hủy hóa đơn này không!", "Thông báo", JOptionPane.YES_NO_OPTION);
+        if (kt == 0) {
+            repoHD.update(new HoaDon(txtMaHD.getText(), parseMoney(txtTongTien.getText()), parseMoney(txtTienKhachDua.getText()), parseMoney(txtTienThua.getText()), cboThanhToan.getSelectedItem().toString(), 2, txtGhiChu.getText()));
+            this.delete();
+            this.clear();
+            this.fillToTable();
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnHuyDonActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
+        if (tblHoaDon.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn hóa đơn nào!\nVui lòng hóa đơn cần thanh toán!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         if (cboThanhToan.getSelectedIndex() == 0) {
             if (txtTienKhachDua.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền khách đưa!", "Thông báo", JOptionPane.WARNING_MESSAGE);
@@ -580,7 +598,8 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
             }
             int kt = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn thanh toán không!", "Thông báo", JOptionPane.YES_NO_OPTION);
             if (kt == 0) {
-                repoHD.update(new HoaDon(txtMaHD.getText(), parseMoney(txtTongTien.getText()), parseMoney(txtTienKhachDua.getText()), parseMoney(txtTienThua.getText()), cboThanhToan.getSelectedItem().toString(), true, txtGhiChu.getText()));
+                repoHD.update(new HoaDon(txtMaHD.getText(), parseMoney(txtTongTien.getText()), parseMoney(txtTienKhachDua.getText()), parseMoney(txtTienThua.getText()), cboThanhToan.getSelectedItem().toString(), 1, txtGhiChu.getText()));
+                this.clear();
                 this.fillToTable();
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -588,14 +607,56 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
             frmGetQRThanhToan qr = new frmGetQRThanhToan((JFrame) SwingUtilities.getWindowAncestor(this), parseMoney(txtTongTien.getText()).toString(), txtMaHD.getText());
             qr.setVisible(true);
             if (frmGetQRThanhToan.result == 1) {
-                repoHD.updateCK(new HoaDon(txtMaHD.getText(), parseMoney(txtTongTien.getText()), cboThanhToan.getSelectedItem().toString(), true, txtGhiChu.getText()));
+                repoHD.updateCK(new HoaDon(txtMaHD.getText(), parseMoney(txtTongTien.getText()), cboThanhToan.getSelectedItem().toString(), 1, txtGhiChu.getText()));
+                this.clear();
                 this.fillToTable();
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        this.clear();
-        this.fillToTable();
     }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void cboVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVoucherActionPerformed
+        // TODO add your handling code here:
+        if (!txtMaHD.getText().isEmpty()) {
+            int idHD = repoHD.findByMaHD(txtMaHD.getText()).getId();
+            int phanTram = 0;
+            if (cboVoucher.getSelectedIndex() > 0) {
+                phanTram = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getPhanTramGiam();
+            }
+            String voucher = cboVoucher.getSelectedItem().toString().toLowerCase();
+            for (HoaDonChiTiet hdct : repoHDCT.findByIdList(idHD)) {
+
+                BigDecimal tongGia = hdct.getDonGia().multiply(BigDecimal.valueOf(hdct.getSoLuong()));
+                BigDecimal giamGia = BigDecimal.ZERO;
+                if (phanTram > 0) {
+                    String loaiSP = repoSP.findById(hdct.getIdSanPham()).getTenLoai().toLowerCase();
+                    if (voucher.contains("giày") && voucher.contains(loaiSP)) {
+                        giamGia = tongGia.multiply(BigDecimal.valueOf(phanTram)).divide(BigDecimal.valueOf(100));
+                    } else if (!voucher.contains("giày")) {
+                        giamGia = tongGia.multiply(BigDecimal.valueOf(phanTram)).divide(BigDecimal.valueOf(100));
+                    } else {
+                        giamGia = BigDecimal.ZERO;
+                    }
+                }
+                hdct.setGiamGia(giamGia);
+                hdct.setThanhTien(tongGia.subtract(giamGia));
+                repoHDCT.update(hdct);
+            }
+            fillToTable();
+            updateTongTien();
+        }
+
+//        HDCT.setIdHoaDon(idHD);
+//        HDCT.setIdSanPham(sanPham.getId());
+//        HDCT.setSoLuong();
+//        HDCT.setDonGia(sanPham.getDonGia());
+//        BigDecimal tongGia = sanPham.getDonGia().multiply(BigDecimal.valueOf(soLuong));
+//        BigDecimal giamGia = BigDecimal.ZERO;
+//
+//        HDCT.setGiamGia(giamGia);
+//        HDCT.setThanhTien(tongGia.subtract(giamGia));
+//        repoHDCT.create(HDCT);
+    }//GEN-LAST:event_cboVoucherActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -666,8 +727,18 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         modelHD = (DefaultTableModel) tblHoaDon.getModel();
         modelHD.setRowCount(0);
         for (HoaDon hoaDon : repoHD.findAll()) {
-            if (!hoaDon.isTrangThai()) {
-                modelHD.addRow(new Object[]{hoaDon.getMaHoaDon(), hoaDon.gethoVaTen(), hoaDon.isTrangThai() ? "Hoàn thành" : "Chưa hoàn thành", hoaDon.getNgayTao()});
+            if (hoaDon.getTrangThai() == 0) {
+                String trangThai = switch (hoaDon.getTrangThai()) {
+                    case 0 ->
+                        "Chưa thanh toán";
+                    case 1 ->
+                        "Đã thanh toán";
+                    case 2 ->
+                        "Đã hủy";
+                    default ->
+                        "Không xác định";
+                };
+                modelHD.addRow(new Object[]{hoaDon.getMaHoaDon(), hoaDon.getHoVaTen(), trangThai, hoaDon.getNgayTao()});
             }
         }
         modelHDCT = (DefaultTableModel) tblGioHang.getModel();
@@ -690,7 +761,11 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
 
     @Override
     public void fillToComboBox() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        cboVoucher.removeAllItems();
+        cboVoucher.addItem("Không dùng");
+        for (KhuyenMai khuyenMai : repoKM.findAll()) {
+            cboVoucher.addItem(khuyenMai.getTenKM());
+        }
     }
 
     @Override
@@ -701,9 +776,9 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
     @Override
     public void create() {
         int idkh = repoKH.getOrCreateCustomer(txtTenKH.getText(), txtSDTKH.getText(), txtEmailKH.getText());
-        UUID uid = UUID.randomUUID();
+        String uid = new frmDangNhap().passwordRandom();
         while (repoHD.findByMaHD(uid.toString()) != null) {
-            uid = UUID.randomUUID();
+            uid = new frmDangNhap().passwordRandom();
         }
         txtMaHD.setText(uid.toString());
         HoaDon hoadon = new HoaDon();
@@ -711,6 +786,10 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         hoadon.setIdKhachHang(idkh);
         hoadon.setMaNhanVien(frmTrangChu.nhanVienHienTai.getMaNhanVien());
         hoadon.setPhuongThucThanhToan(cboThanhToan.getSelectedItem().toString());
+        if (cboVoucher.getSelectedIndex() > 0) {
+            int idGG = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getId();
+        }
+        hoadon.setIdGiamGia(idkh);
         hoadon.setNgayTao(new Date());
         repoHD.create(hoadon);
 

@@ -1,4 +1,6 @@
-﻿CREATE TABLE Mau(
+﻿use ShoeStoreDB;
+go
+CREATE TABLE Mau(
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenMau NVARCHAR(100) NOT NULL UNIQUE
 );
@@ -49,7 +51,7 @@ CREATE TABLE NhanVien (
     sDT VARCHAR(15) NOT NULL,
     email VARCHAR(100) NOT NULL,
     idCV INT NOT NULL FOREIGN KEY REFERENCES ChucVu(id),
-    hinh VARCHAR(255),
+    hinh VARCHAR(255) NOT NULL,
     trangThai BIT NOT NULL
 );
 GO
@@ -57,10 +59,9 @@ GO
 CREATE TABLE Khachhang (
     id INT IDENTITY(1,1) PRIMARY KEY,
     hoVaTen NVARCHAR(100) NOT NULL,
-    gioiTinh BIT NOT NULL,
     diaChi NVARCHAR(255) NOT NULL,
     sDT VARCHAR(15) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
     soLuong INT,
     tongTien MONEY
 );
@@ -72,22 +73,24 @@ CREATE TABLE HoaDon (
     ngayTao DATE NOT NULL DEFAULT GETDATE(),
     idKhachHang INT NOT NULL FOREIGN KEY REFERENCES Khachhang(id),
     maNhanVien VARCHAR(20) NOT NULL FOREIGN KEY REFERENCES NhanVien(maNhanVien),
-    tongTien MONEY NOT NULL DEFAULT 0,
-    giamGia MONEY NOT NULL DEFAULT 0,
     phuongThucThanhToan NVARCHAR(50) NOT NULL,
-    trangThai BIT NOT NULL DEFAULT 1,
+	tongTien MONEY DEFAULT 0,
+	tienKhachDua money DEFAULT 0,
+	tienTraLai money DEFAULT 0,
+	idGiamGia INT FOREIGN KEY REFERENCES KhuyenMai(id),
+    trangThai int NOT NULL DEFAULT 0,
     ghiChu NVARCHAR(MAX) NULL
 );
 GO
 
 CREATE TABLE HoaDonChiTiet (
     id INT IDENTITY(1,1) PRIMARY KEY,
-    idHoaDon INT NOT NULL FOREIGN KEY REFERENCES HoaDon(id),
-    idSanPham INT NOT NULL FOREIGN KEY REFERENCES SanPham(id),
-    soLuong INT NOT NULL CHECK (soLuong > 0),
-    donGia MONEY NOT NULL,
-    thanhTien MONEY NOT NULL DEFAULT 0,
-    ghiChu NVARCHAR(MAX) NULL
+    idHoaDon INT FOREIGN KEY REFERENCES HoaDon(id),
+    idSanPham INT FOREIGN KEY REFERENCES SanPham(id),
+    soLuong INT CHECK (soLuong > 0),
+    donGia MONEY ,
+	giamGia MONEY NOT NULL DEFAULT 0,
+    thanhTien MONEY
 );
 GO
 
@@ -100,10 +103,10 @@ CREATE TABLE SanPham (
     size INT NOT NULL FOREIGN KEY REFERENCES KichCo(id),
     idLoaiGiay INT NOT NULL FOREIGN KEY REFERENCES LoaiGiay(id),
     idChatLieu INT NOT NULL FOREIGN KEY REFERENCES ChatLieu(id),
-    hinh VARCHAR(255),
+    hinh VARCHAR(255) NOT NULL,
     donGia MONEY NOT NULL,
     trangThai BIT NOT NULL,
-    moTa NVARCHAR(MAX),
+    moTa NVARCHAR(MAX) NOT NULL,
     idNhaCungCap INT NULL FOREIGN KEY REFERENCES NhaCungCap(id)
 );
 GO
@@ -177,4 +180,25 @@ VALUES
     (N'NV001', 'password123', N'Nguyễn Văn A', '1990-01-01', 1, N'123 TP.HCM', '0123456789', 'nva@example.com', 1, 'avatar1.jpg', 1),
     (N'NV002', 'password456', N'Trần Thị B', '1995-05-05', 0, N'456 Hà Nội', '0987654321', 'ttb@example.com', 2, 'avatar2.jpg', 1),
     (N'NV003', 'password789', N'Lê Văn C', '1985-10-10', 1, N'789 Đà Nẵng', '0112233445', 'lvc@example.com', 2, 'avatar3.jpg', 1);
+	go
+	INSERT INTO HoaDon (maHoaDon, idKhachHang, maNhanVien, phuongThucThanhToan, tongTien, tienKhachDua, tienTraLai, ghiChu, trangThai)
+VALUES 
+    ('HD002', 6, 'hieu', N'Tiền mặt', 0, 5000000, 0, N'Khách mua nhiều sản phẩm', 0);
+
+	INSERT INTO HoaDonChiTiet (idHoaDon, idSanPham, soLuong, donGia, giamGia, thanhTien)
+VALUES 
+    (6, 1, 2, 2000000, 0, 4000000),
+    (6, 2, 1, 1800000, 0, 1800000),
+    (6, 4, 3, 800000, 10000, 2390000);
+
+	INSERT INTO Khachhang (hoVaTen, diaChi, sDT, email, soLuong, tongTien)
+VALUES (N'Phạm Minh Đức', N'123 Quận 1, TP.HCM', '0912345678', 'ducpm@example.com', 0, 0);
+select SCOPE_IDENTITY() as id
+select * from HoaDon
+select * from Khachhang
+INSERT INTO Khachhang (hoVaTen, sDT) OUTPUT INSERTED.id VALUES ('123','123');
+
+
+ALTER TABLE Khachhang
+ADD CONSTRAINT UQ_KhachHang_sDT UNIQUE (sDT);
 

@@ -272,7 +272,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblShowPassworldMouseClicked
 
-    private String passwordRandom() {
+    public String passwordRandom() {
         String pass = "1234567890qwertyuiopasdfghjklzxcvbnmQƯERTYUIOPASDFGHJKLZXCVBNM";
         SecureRandom sd = new SecureRandom();
         StringBuilder sb = new StringBuilder(6);

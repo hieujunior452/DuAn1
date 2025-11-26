@@ -30,10 +30,10 @@ public class HoaDon_Daoimpl implements HoaDon_Dao {
 
     @Override
     public void update(HoaDon entity) {
-        XJdbc.executeUpdate(sqlUpdtaeByMaHD, entity.getTongTien(), entity.getTienKhachDua(), entity.getTienTraLai(), entity.isTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
+        XJdbc.executeUpdate(sqlUpdtaeByMaHD, entity.getTongTien(), entity.getTienKhachDua(), entity.getTienTraLai(), entity.getTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
     }
     public void updateCK(HoaDon entity) {
-        XJdbc.executeUpdate(sqlUpdtaeByMaHDCK, entity.getTongTien(), entity.isTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
+        XJdbc.executeUpdate(sqlUpdtaeByMaHDCK, entity.getTongTien(), entity.getTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
     }
     @Override
     public void deleteById(Integer id) {

@@ -124,7 +124,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jpNhanVien.setBackground(new java.awt.Color(224, 242, 254));
-        jpNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jpNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
         jpNhanVien.setForeground(new java.awt.Color(13, 71, 161));
 
         lblMaNV.setForeground(new java.awt.Color(13, 71, 161));
@@ -234,7 +234,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         });
 
         jPanel4.setBackground(new java.awt.Color(224, 242, 254));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
 
         txtTimKiem.setForeground(new java.awt.Color(13, 71, 161));
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
