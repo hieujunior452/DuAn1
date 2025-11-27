@@ -15,6 +15,7 @@ import util.XQuery;
 public class HoaDonChiTiet_Daoimpl implements HoaDonChiTiet_Dao{
     private String sqlFindAll = "select * from HoaDonChiTiet";
     private String sqlFindByID = "select * from HoaDonChiTiet where idHoaDon = ?";
+    private String sqlFindByMaHD = "select * from HoaDonChiTiet hdct join HoaDon hd on hdct.idHoaDon = hd.id where hd.maHoaDon = ?";
     private String sqlDeleteByIDHoaDon = "delete from HoaDonChiTiet where idHoaDon = ?";
     private String sqlCreate = "INSERT INTO HoaDonChiTiet (idHoaDon, idSanPham, soLuong, donGia, giamGia, thanhTien) VALUES(?,?,?,?,?,?)";
     private String sqlUpdate = "Update HoaDonChiTiet set giamGia=?, thanhTien=? where id = ?";
@@ -44,7 +45,9 @@ public class HoaDonChiTiet_Daoimpl implements HoaDonChiTiet_Dao{
     public List<HoaDonChiTiet> findByIdList(Integer id) {
         return XQuery.getBeanList(HoaDonChiTiet.class, sqlFindByID, id);
     }
-    
+     public List<HoaDonChiTiet> findByMaHDList(String maHD) {
+        return XQuery.getBeanList(HoaDonChiTiet.class, sqlFindByMaHD, maHD);
+    }
     @Override
     public HoaDonChiTiet findById(Integer id) {
         return XQuery.getSingleBean(HoaDonChiTiet.class, sqlFindByID, id);

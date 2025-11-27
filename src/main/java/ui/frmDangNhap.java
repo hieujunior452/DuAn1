@@ -57,7 +57,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
 
-        jPanel1.setBackground(new java.awt.Color(187, 222, 251));
+        jPanel1.setBackground(new java.awt.Color(207, 231, 255));
 
         lblDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblDangNhap.setForeground(new java.awt.Color(13, 71, 161));
@@ -83,7 +83,7 @@ public class frmDangNhap extends javax.swing.JFrame {
             }
         });
 
-        btnDangNhap.setBackground(new java.awt.Color(30, 136, 229));
+        btnDangNhap.setBackground(java.awt.Color.blue);
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Login.png"))); // NOI18N
         btnDangNhap.setText("Đăng nhập");
@@ -93,7 +93,7 @@ public class frmDangNhap extends javax.swing.JFrame {
             }
         });
 
-        btnQuenMatKhau.setBackground(new java.awt.Color(30, 136, 229));
+        btnQuenMatKhau.setBackground(java.awt.Color.blue);
         btnQuenMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         btnQuenMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnQuenMatKhau.setText("Quên mật khẩu");
@@ -183,44 +183,39 @@ public class frmDangNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập mã nhân viên!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
         boolean found = false;
-        JOptionPane.showMessageDialog(this, "Vui lòng trờ...", "Vui lòng trờ!", DISPOSE_ON_CLOSE);
-        for (NhanVien user : repoNV.findAll()) {
-            if (username.trim().equalsIgnoreCase(user.getMaNhanVien())) {
-                found = true;
-
-                String otpRandom = passwordRandom();
-                MailSender.sendMailOTP(user.getEmail(), user.getHoVaTen(), user.getMaNhanVien(), otpRandom);
-
-                int attempt = 0;
-                while (attempt < 3) {
-                    String otpGet = JOptionPane.showInputDialog(this, "Nhập OTP nhận được từ email đăng ký!", "Quên mật khẩu", JOptionPane.INFORMATION_MESSAGE);
-
-                    if (otpGet == null) {
-                        return;
-                    }
-
-                    if (otpGet.trim().equals(otpRandom)) {
-                        String newPassword = passwordRandom();
-                        repoNV.updatePassword(newPassword, user.getMaNhanVien());
-                        MailSender.sendMailPassword(user.getEmail(), user.getHoVaTen(), user.getMaNhanVien(), newPassword);
-                        JOptionPane.showMessageDialog(this, "Mật khẩu mới đã được gửi về email đăng ký của bạn!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
-                        return;
-                    } else {
-                        attempt++;
-                        if (attempt == 3) {
-                            return;
-                        }
-                        JOptionPane.showMessageDialog(this, "OTP không đúng! Bạn còn " + (3 - attempt) + " lần thử.", "Sai OTP", JOptionPane.WARNING_MESSAGE);
-                    }
-                }
-
-                JOptionPane.showMessageDialog(this, "Bạn đã nhập sai OTP quá 3 lần. Vui lòng thử lại sau!", "Thất bại", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+        NhanVien nhanVien = repoNV.findByMaNV(username);
+        if (nhanVien == null) {
+            JOptionPane.showMessageDialog(this, "Không tìm thấy mã nhân viên trong hệ thống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-
+        if (username.trim().equalsIgnoreCase(nhanVien.getMaNhanVien())) {
+            found = true;
+            String otpRandom = passwordRandom();
+            MailSender.sendMailOTP(nhanVien.getEmail(), nhanVien.getHoVaTen(), nhanVien.getMaNhanVien(), otpRandom);
+            int attempt = 0;
+            while (attempt < 3) {
+                String otpGet = JOptionPane.showInputDialog(this, "Nhập OTP nhận được từ email đăng ký!", "Quên mật khẩu", JOptionPane.INFORMATION_MESSAGE);
+                if (otpGet == null) {
+                    return;
+                }
+                if (otpGet.trim().equals(otpRandom)) {
+                    String newPassword = passwordRandom();
+                    repoNV.updatePassword(newPassword, nhanVien.getMaNhanVien());
+                    MailSender.sendMailPassword(nhanVien.getEmail(), nhanVien.getHoVaTen(), nhanVien.getMaNhanVien(), newPassword);
+                    JOptionPane.showMessageDialog(this, "Mật khẩu mới đã được gửi về email đăng ký của bạn!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                } else {
+                    attempt++;
+                    if (attempt == 3) {
+                        break;
+                    }
+                    JOptionPane.showMessageDialog(this, "OTP không đúng! Bạn còn " + (3 - attempt) + " lần thử.", "Sai OTP", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Bạn đã nhập sai OTP quá 3 lần. Vui lòng thử lại sau!", "Thất bại", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if (!found) {
             JOptionPane.showMessageDialog(this, "Không tìm thấy mã nhân viên trong hệ thống!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
@@ -242,21 +237,41 @@ public class frmDangNhap extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
+
         boolean found = false;
         String taiKhoan = txtTaiKhoan.getText().trim();
         String matKhauNhap = new String(txtMatKhau.getPassword());
 
-        for (NhanVien user : repoNV.findAll()) {
-            if (taiKhoan.trim().equalsIgnoreCase(user.getMaNhanVien()) && matKhauNhap.trim().equals(user.getMatKhau())) {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                frmTrangChu.nhanVienHienTai = user;
-                new frmTrangChu().setVisible(true);
-                found = true;
-                break;
-            }
+        if (taiKhoan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tài khoản", "Thông báo!", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-        if (found == false) {
+        if (matKhauNhap.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu", "Thông báo!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+//        for (NhanVien user : repoNV.findAll()) {
+//            if (taiKhoan.trim().equalsIgnoreCase(user.getMaNhanVien()) && matKhauNhap.trim().equals(user.getMatKhau())) {
+//                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//                frmTrangChu.nhanVienHienTai = user;
+//                new frmTrangChu().setVisible(true);
+//                found = true;
+//                break;
+//            }
+//        }
+        NhanVien nhanVien = repoNV.findByMaNV(taiKhoan);
+        if (nhanVien == null) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (nhanVien.getMaNhanVien().trim().equalsIgnoreCase(taiKhoan) && nhanVien.getMatKhau().trim().equalsIgnoreCase(matKhauNhap)) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            frmTrangChu.nhanVienHienTai = nhanVien;
+            new frmTrangChu().setVisible(true);
+            found = true;
+        }
+        if (!found) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
@@ -273,7 +288,7 @@ public class frmDangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_lblShowPassworldMouseClicked
 
     public String passwordRandom() {
-        String pass = "1234567890qwertyuiopasdfghjklzxcvbnmQƯERTYUIOPASDFGHJKLZXCVBNM";
+        String pass = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         SecureRandom sd = new SecureRandom();
         StringBuilder sb = new StringBuilder(6);
         for (int i = 0; i < 6; i++) {

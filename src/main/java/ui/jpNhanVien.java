@@ -19,6 +19,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import controller.Controller_NhanVien;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.util.Date;
 
 /**
  *
@@ -33,7 +36,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
     private ChucVu_Daoimpl repoCV = new ChucVu_Daoimpl();
     private DefaultTableModel modelNV = new DefaultTableModel();
     private DefaultTableModel modelCV = new DefaultTableModel();
-    private String fileAnh = null;
+    private String fileAnh = "";
 
     public jpNhanVien() {
         initComponents();
@@ -113,17 +116,17 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         jScrollPane3 = new javax.swing.JScrollPane();
         tblChucVu = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(224, 242, 254));
+        setBackground(new java.awt.Color(207, 231, 255));
         setForeground(new java.awt.Color(13, 71, 161));
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
 
-        jTabbedPane1.setBackground(new java.awt.Color(224, 242, 254));
+        jTabbedPane1.setBackground(new java.awt.Color(207, 231, 255));
         jTabbedPane1.setForeground(new java.awt.Color(13, 71, 161));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jpNhanVien.setBackground(new java.awt.Color(224, 242, 254));
+        jpNhanVien.setBackground(new java.awt.Color(207, 231, 255));
         jpNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
         jpNhanVien.setForeground(new java.awt.Color(13, 71, 161));
 
@@ -138,6 +141,14 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
         lblDiaChi.setForeground(new java.awt.Color(13, 71, 161));
         lblDiaChi.setText("Địa chỉ");
+
+        txtHoVaTen.setPreferredSize(new java.awt.Dimension(0, 25));
+
+        txtMaNV.setPreferredSize(new java.awt.Dimension(0, 25));
+
+        txtEmail.setPreferredSize(new java.awt.Dimension(0, 25));
+
+        txtSDT.setPreferredSize(new java.awt.Dimension(0, 25));
 
         lblSDT.setForeground(new java.awt.Color(13, 71, 161));
         lblSDT.setText("SDT");
@@ -161,6 +172,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         });
 
         cboChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboChucVu.setPreferredSize(new java.awt.Dimension(0, 25));
 
         lblGioiTinh.setForeground(new java.awt.Color(13, 71, 161));
         lblGioiTinh.setText("Giới tính");
@@ -171,6 +183,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
         btgSex.add(rdoNam);
         rdoNam.setForeground(new java.awt.Color(13, 71, 161));
+        rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
         btgSex.add(rdoNu);
@@ -183,57 +196,64 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
         btgTrangThai.add(rdoDiLam);
         rdoDiLam.setForeground(new java.awt.Color(13, 71, 161));
+        rdoDiLam.setSelected(true);
         rdoDiLam.setText("Đi làm");
 
         lblTrangThai.setForeground(new java.awt.Color(13, 71, 161));
         lblTrangThai.setText("Trạng thái");
 
         txtNgaySinh.setDateFormatString("d/M/yyyy");
+        txtNgaySinh.setPreferredSize(new java.awt.Dimension(0, 25));
 
         txtMatKhau.setText("123456");
         txtMatKhau.setFocusable(false);
+        txtMatKhau.setPreferredSize(new java.awt.Dimension(0, 25));
 
-        btnThem.setBackground(new java.awt.Color(30, 136, 229));
+        btnThem.setBackground(java.awt.Color.blue);
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create.png"))); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.setPreferredSize(new java.awt.Dimension(0, 35));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
 
-        btnSua.setBackground(new java.awt.Color(30, 136, 229));
+        btnSua.setBackground(java.awt.Color.blue);
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.setPreferredSize(new java.awt.Dimension(0, 35));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
 
-        btnXoa.setBackground(new java.awt.Color(30, 136, 229));
+        btnXoa.setBackground(java.awt.Color.blue);
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
+        btnXoa.setPreferredSize(new java.awt.Dimension(0, 35));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
 
-        btnLamMoi.setBackground(new java.awt.Color(30, 136, 229));
+        btnLamMoi.setBackground(java.awt.Color.blue);
         btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnLamMoi.setText("Làm mới");
+        btnLamMoi.setPreferredSize(new java.awt.Dimension(0, 35));
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(224, 242, 254));
+        jPanel4.setBackground(new java.awt.Color(207, 231, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
 
         txtTimKiem.setForeground(new java.awt.Color(13, 71, 161));
@@ -283,7 +303,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                 .addContainerGap())
         );
 
-        tblNhanVien.setBackground(new java.awt.Color(224, 242, 254));
+        tblNhanVien.setBackground(new java.awt.Color(207, 231, 255));
         tblNhanVien.setForeground(new java.awt.Color(13, 71, 161));
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -373,7 +393,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                                         .addGap(18, 18, 18)
                                         .addGroup(jpNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(btnLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                                             .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(jpNhanVienLayout.createSequentialGroup()
@@ -425,15 +445,15 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblAnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpNhanVienLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
+                        .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
                 .addGroup(jpNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rdoNam)
@@ -444,7 +464,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -606,12 +626,16 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
     private void lblAnhNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhNVMouseClicked
         try {
-            JFileChooser f = new JFileChooser();
-            File defaultDirectory = new File("resources/image");
-            f.setCurrentDirectory(defaultDirectory);
-            int result = f.showOpenDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = f.getSelectedFile();
+            FileDialog fd = new FileDialog((Frame) null, "Chọn ảnh nhân viên", FileDialog.LOAD);
+            fd.setDirectory("");
+            fd.setFile("*.jpg;*.png");
+            fd.setVisible(true);
+            if (fd.getFile() != null) {
+                File file = new File(fd.getDirectory(), fd.getFile());
+                if (!file.getName().matches("(?i).+\\.(jpg|jpeg|png)$")) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn file ảnh (.jpg, .png)");
+                    return;
+                }
                 Image img = ImageIO.read(file);
                 fileAnh = file.getPath();
                 int w = lblAnhNV.getWidth();
@@ -619,7 +643,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                 lblAnhNV.setIcon(new ImageIcon(img.getScaledInstance(w, h, Image.SCALE_SMOOTH)));
             }
         } catch (IOException ex) {
-            Logger.getLogger(jpNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_lblAnhNVMouseClicked
 
@@ -628,14 +652,66 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         this.edit();
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
+    public boolean isCheckNV() {
+        System.out.println(fileAnh);
+        if (txtHoVaTen.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập tên nhân viên!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtHoVaTen.requestFocus();
+            return true;
+        } else if (txtNgaySinh.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập ngày sinh!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtNgaySinh.requestFocus();
+            return true;
+        } else if (txtDiaChi.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập địa chỉ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtDiaChi.requestFocus();
+            return true;
+        } else if (txtSDT.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng số điện thoại!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtSDT.requestFocus();
+            return true;
+        } else if (txtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng số email!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtEmail.requestFocus();
+            return true;
+        } else if (!txtHoVaTen.getText().matches("[A-Za-zÀ-ỹ ]+")) {
+            JOptionPane.showMessageDialog(this, "Tên nhân viên chỉ được chứa chữ cái!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtHoVaTen.requestFocus();
+            return true;
+        } else if (!txtSDT.getText().matches("^(0[3|5|7|8|9])[0-9]{8}$")) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtSDT.requestFocus();
+            return true;
+        } else if (!txtEmail.getText().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+            JOptionPane.showMessageDialog(this, "Email không hợp lệ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtEmail.requestFocus();
+            return true;
+        } else if (txtNgaySinh.getDate().after(new Date())) {
+            JOptionPane.showMessageDialog(this, "Ngày sinh không được lớn hơn ngày hiện tại!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtNgaySinh.requestFocus();
+            return true;
+        } else if (fileAnh.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn ảnh của nhân viên!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            this.lblAnhNVMouseClicked(null);
+            
+            return true;
+        }
+        return false;
+    }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        if (isCheckNV()) {
+            return;
+        }
         this.create();
         this.fillToTable();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        if (isCheckNV()) {
+            return;
+        }
         this.update();
         this.fillToTable();
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -668,28 +744,28 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         if (ma.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập mã chức vụ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtID.requestFocus();
-            return false;
+            return true;
         }
 
         if (ten.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập tên chức vụ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtTenCV.requestFocus();
-            return false;
+            return true;
         }
 
         if (!ma.matches("[A-Za-z0-9]+")) {
             JOptionPane.showMessageDialog(this, "Mã chức vụ chỉ được chứa chữ và số!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtID.requestFocus();
-            return false;
+            return true;
         }
 
         if (!ten.matches("[A-Za-zÀ-ỹ ]+")) {
             JOptionPane.showMessageDialog(this, "Tên chức vụ chỉ được chứa chữ cái!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtTenCV.requestFocus();
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
     private void btnXoaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaCVActionPerformed
         // TODO add your handling code here:
@@ -704,7 +780,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
     private void btnSuaCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaCVActionPerformed
         // TODO add your handling code here:
-        if (!checkCV()) {
+        if (checkCV()) {
             return;
         }
         repoCV.update(new ChucVu(Integer.parseInt(txtID.getText()), txtTenCV.getText()));
@@ -714,7 +790,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
     private void btnThemCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCVActionPerformed
         // TODO add your handling code here:
-        if (!checkCV()) {
+        if (checkCV()) {
             return;
         }
         repoCV.create(new ChucVu(Integer.parseInt(txtID.getText()), txtTenCV.getText()));

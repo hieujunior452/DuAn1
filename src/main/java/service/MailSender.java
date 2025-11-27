@@ -4,6 +4,7 @@
  */
 package service;
 
+import java.io.File;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -100,6 +101,54 @@ public class MailSender {
 
             message.setContent(content, "text/html; charset=UTF-8");
             Transport.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void sendHoaDon(String toEmail, String fullName, String maHD, String pdfPath) {
+        try {
+
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+
+            Session session = Session.getInstance(props, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, appPassword);
+                }
+            });
+
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromEmail, "Cửa hàng Giày", "UTF-8"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
+            message.setSubject("Hóa đơn mua hàng - Mã: " + maHD, "UTF-8");
+
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            String content = """
+                <html><body style='font-family: Arial; font-size:14px'>
+                <p>Xin chào <b>%s</b>,</p>
+                <p>Cám ơn bạn đã mua hàng tại Cửa hàng Giày!</p>
+                <p>Chúng tôi gửi kèm hóa đơn mua hàng của bạn (mã đơn: <b>%s</b>).</p>
+                <br>
+                <p>Trân trọng,</p>
+                <b>Cửa hàng Giày</b>
+                </body></html>
+            """.formatted(fullName, maHD);
+            messageBodyPart.setContent(content, "text/html; charset=UTF-8");
+
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+            File file = new File(pdfPath);
+            attachmentPart.attachFile(file);
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            multipart.addBodyPart(attachmentPart);
+            message.setContent(multipart);
+            Transport.send(message);
+            System.out.println("Đã gửi hóa đơn PDF thành công!");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

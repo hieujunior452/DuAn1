@@ -58,10 +58,14 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
         btnHuy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(java.awt.Color.blue);
 
+        lblQR.setBackground(java.awt.Color.blue);
         lblQR.setText("QR");
         lblQR.setPreferredSize(new java.awt.Dimension(540, 540));
 
+        btnHoanThanh.setBackground(java.awt.Color.blue);
+        btnHoanThanh.setForeground(new java.awt.Color(255, 255, 255));
         btnHoanThanh.setText("Hoàn thành");
         btnHoanThanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +73,8 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
             }
         });
 
+        btnHuy.setBackground(java.awt.Color.blue);
+        btnHuy.setForeground(new java.awt.Color(255, 255, 255));
         btnHuy.setText("Hủy");
         btnHuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

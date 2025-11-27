@@ -96,10 +96,8 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
     }
 
     @Override
-    public NhanVien
-            findByMaNV(String maNV) {
-        return XQuery.getSingleBean(NhanVien.class,
-                sqlFindByMaNV, maNV);
+    public NhanVien findByMaNV(String maNV) {
+        return XQuery.getSingleBean(NhanVien.class, sqlFindByMaNV, maNV);
     }
 
     @Override

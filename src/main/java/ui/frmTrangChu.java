@@ -68,7 +68,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         jPanel2.setVerifyInputWhenFocusTarget(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        btnTrangchu.setBackground(new java.awt.Color(30, 136, 229));
+        btnTrangchu.setBackground(java.awt.Color.blue);
         btnTrangchu.setForeground(new java.awt.Color(255, 255, 255));
         btnTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
         btnTrangchu.setText("Trang chủ ");
@@ -82,7 +82,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 41, 0, 23);
         jPanel2.add(btnTrangchu, gridBagConstraints);
 
-        btnKhachhang.setBackground(new java.awt.Color(30, 136, 229));
+        btnKhachhang.setBackground(java.awt.Color.blue);
         btnKhachhang.setForeground(new java.awt.Color(255, 255, 255));
         btnKhachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconKH.png"))); // NOI18N
         btnKhachhang.setText("Khách hàng ");
@@ -95,7 +95,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(29, 41, 0, 23);
         jPanel2.add(btnKhachhang, gridBagConstraints);
 
-        btnNhanvien.setBackground(new java.awt.Color(30, 136, 229));
+        btnNhanvien.setBackground(java.awt.Color.blue);
         btnNhanvien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconNV.png"))); // NOI18N
         btnNhanvien.setText("Nhân viên ");
@@ -114,7 +114,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(27, 41, 0, 23);
         jPanel2.add(btnNhanvien, gridBagConstraints);
 
-        btnKhuyenmai.setBackground(new java.awt.Color(30, 136, 229));
+        btnKhuyenmai.setBackground(java.awt.Color.blue);
         btnKhuyenmai.setForeground(new java.awt.Color(255, 255, 255));
         btnKhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/coupon (1).png"))); // NOI18N
         btnKhuyenmai.setText("Khuyến mại ");
@@ -127,7 +127,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(24, 41, 0, 23);
         jPanel2.add(btnKhuyenmai, gridBagConstraints);
 
-        btnSanpham.setBackground(new java.awt.Color(30, 136, 229));
+        btnSanpham.setBackground(java.awt.Color.blue);
         btnSanpham.setForeground(new java.awt.Color(255, 255, 255));
         btnSanpham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/box.png"))); // NOI18N
         btnSanpham.setText("Sản phẩm");
@@ -146,7 +146,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(27, 41, 0, 23);
         jPanel2.add(btnSanpham, gridBagConstraints);
 
-        btnBanhang.setBackground(new java.awt.Color(30, 136, 229));
+        btnBanhang.setBackground(java.awt.Color.blue);
         btnBanhang.setForeground(new java.awt.Color(255, 255, 255));
         btnBanhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconBanHang.png"))); // NOI18N
         btnBanhang.setText("Bán hàng ");
@@ -165,7 +165,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(26, 41, 0, 23);
         jPanel2.add(btnBanhang, gridBagConstraints);
 
-        btnThongke.setBackground(new java.awt.Color(30, 136, 229));
+        btnThongke.setBackground(java.awt.Color.blue);
         btnThongke.setForeground(new java.awt.Color(255, 255, 255));
         btnThongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Best.png"))); // NOI18N
         btnThongke.setText("Thống kê ");
@@ -179,7 +179,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(30, 41, 0, 23);
         jPanel2.add(btnThongke, gridBagConstraints);
 
-        btnHoadon.setBackground(new java.awt.Color(30, 136, 229));
+        btnHoadon.setBackground(java.awt.Color.blue);
         btnHoadon.setForeground(new java.awt.Color(255, 255, 255));
         btnHoadon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Properties.png"))); // NOI18N
         btnHoadon.setText("Hóa đơn ");
@@ -193,7 +193,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(31, 41, 0, 23);
         jPanel2.add(btnHoadon, gridBagConstraints);
 
-        btnThoat.setBackground(new java.awt.Color(30, 136, 229));
+        btnThoat.setBackground(java.awt.Color.blue);
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Closed door.png"))); // NOI18N
         btnThoat.setText("Thoát");
@@ -229,7 +229,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 35, 0, 0);
         jPanel2.add(lblAnh, gridBagConstraints);
 
-        jpMain.setBackground(new java.awt.Color(224, 242, 254));
+        jpMain.setBackground(new java.awt.Color(207, 231, 255));
         jpMain.setPreferredSize(new java.awt.Dimension(1280, 720));
         jpMain.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -248,9 +248,9 @@ public class frmTrangChu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
