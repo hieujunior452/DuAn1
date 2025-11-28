@@ -48,7 +48,6 @@ public class Mau_Daoimpl implements Mau_Dao {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
     public void deleteByName(String ten) {
         try {
             XJdbc.executeUpdate(sqlDeleteByTen, ten);
@@ -59,7 +58,6 @@ public class Mau_Daoimpl implements Mau_Dao {
         }
     }
 
-    @Override
     public Mau findByName(String ten) {
         return XQuery.getSingleBean(Mau.class, sqlFindByName, ten);
     }

@@ -47,7 +47,6 @@ public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
     public void deleteByName(String name) {
         try {
             XJdbc.executeUpdate(sqlDeleteByName, name);
@@ -58,7 +57,6 @@ public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
         }
     }
 
-    @Override
     public LoaiGiay findByName(String ten) {
         return XQuery.getSingleBean(LoaiGiay.class, sqlFindByName, ten);
     }

@@ -4,6 +4,12 @@
  */
 package ui;
 
+import daoimpl.KhachHang_Daoimpl;
+import entity.KhachHang;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
@@ -13,8 +19,12 @@ public class jpKhachHang extends javax.swing.JPanel {
     /**
      * Creates new form jpKhachHang
      */
+    private DefaultTableModel modelKH = new DefaultTableModel();
+    private KhachHang_Daoimpl repoKH = new KhachHang_Daoimpl();
+    
     public jpKhachHang() {
         initComponents();
+        fillToTable(0);
     }
 
     /**
@@ -26,21 +36,118 @@ public class jpKhachHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        cboSapXep = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        tblKhachhang = new javax.swing.JScrollPane();
+        tblKhachHang = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(207, 231, 255));
         setPreferredSize(new java.awt.Dimension(1280, 720));
+
+        jPanel1.setBackground(new java.awt.Color(207, 231, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
+
+        cboSapXep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mặc định", "Số lượng đã mua", "Số tiền đã mua" }));
+        cboSapXep.setPreferredSize(new java.awt.Dimension(72, 30));
+        cboSapXep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboSapXepActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(13, 71, 161));
+        jLabel1.setText("Sắp xếp khách hàng");
+        jLabel1.setPreferredSize(new java.awt.Dimension(105, 30));
+
+        tblKhachHang.setBackground(new java.awt.Color(207, 231, 255));
+        tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Họ và tên", "SDT", "Email", "Số lượng", "Số tiền"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblKhachhang.setViewportView(tblKhachHang);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tblKhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, 1246, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tblKhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cboSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSapXepActionPerformed
+        // TODO add your handling code here:
+        fillToTable(cboSapXep.getSelectedIndex());
+    }//GEN-LAST:event_cboSapXepActionPerformed
+    private String formatMoney(BigDecimal money) {
+        if (money == null) {
+            return "";
+        }
+        DecimalFormat df = new DecimalFormat("#,### VNĐ");
+        return df.format(money);
+    }
+    public void fillToTable(int index){
+        modelKH = (DefaultTableModel) tblKhachHang.getModel();
+        modelKH.setRowCount(0);
+        for (KhachHang khachHang : repoKH.findAll(index)) {
+            modelKH.addRow(new Object[]{khachHang.getId(), khachHang.getsDT(), khachHang.getsDT(), khachHang.getEmail(), khachHang.getSoLuong(), formatMoney(khachHang.getTongTien())});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cboSapXep;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTable tblKhachHang;
+    private javax.swing.JScrollPane tblKhachhang;
     // End of variables declaration//GEN-END:variables
 }

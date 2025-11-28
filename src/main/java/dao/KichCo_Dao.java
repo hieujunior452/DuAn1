@@ -11,6 +11,4 @@ import entity.KichCo;
  * @author Administrator
  */
 public interface KichCo_Dao extends Dao_CRUD<KichCo, Integer>{
-    void deleteByName(String ten);
-    KichCo findByName(String ten);
 }

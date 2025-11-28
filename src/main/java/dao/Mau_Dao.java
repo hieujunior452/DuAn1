@@ -11,7 +11,5 @@ import entity.Mau;
  * @author Administrator
  */
 public interface Mau_Dao extends Dao_CRUD<Mau, Integer>{
-    void deleteByName(String ten);
-    Mau findByName(String ten);
     
 }

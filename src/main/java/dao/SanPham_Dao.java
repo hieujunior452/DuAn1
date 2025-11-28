@@ -12,5 +12,4 @@ import java.util.List;
  * @author Administrator
  */
 public interface SanPham_Dao extends Dao_CRUD<SanPham, Integer> {
-    List<SanPham> findByToTable(String id, int index);
 }

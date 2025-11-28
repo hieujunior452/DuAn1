@@ -103,7 +103,6 @@ public class SanPham_Daoimpl implements SanPham_Dao {
         return XQuery.getSingleBean(SanPham.class, sqlFindByID, id);
     }
 
-    @Override
     public List<SanPham> findByToTable(String id, int index) {
         switch (index) {
             case 0:

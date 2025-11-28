@@ -11,6 +11,4 @@ import entity.ChatLieu;
  * @author Administrator
  */
 public interface ChatLieu_Dao extends Dao_CRUD<ChatLieu, Integer>{
-    void deleteByName(String name);
-    ChatLieu findByName(String ten);
 }

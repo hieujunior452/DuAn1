@@ -86,6 +86,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnKhachhang.setForeground(new java.awt.Color(255, 255, 255));
         btnKhachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconKH.png"))); // NOI18N
         btnKhachhang.setText("Khách hàng ");
+        btnKhachhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhachhangActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -278,6 +283,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setPanel(new jpBanHang());
     }//GEN-LAST:event_btnBanhangActionPerformed
+
+    private void btnKhachhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachhangActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(new jpKhachHang());
+    }//GEN-LAST:event_btnKhachhangActionPerformed
 
     /**
      * @param args the command line arguments

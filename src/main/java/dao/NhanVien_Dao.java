@@ -12,8 +12,4 @@ import java.util.List;
  * @author Administrator
  */
 public interface NhanVien_Dao extends Dao_CRUD<NhanVien, Integer>{
-    void updatePassword(String passworld, String maNhanVien);
-    NhanVien findByMaNV(String maNV);
-    List<NhanVien> findByToTable(String id, int index);
-    void deleteByMaSV(String maSV);
 }

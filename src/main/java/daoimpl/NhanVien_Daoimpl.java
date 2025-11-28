@@ -64,7 +64,6 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
 
     }
 
-    @Override
     public void updatePassword(String passworld, String maNhanVien) {
         XJdbc.executeUpdate(sqlUpdatePassworld, passworld, maNhanVien);
     }
@@ -74,7 +73,6 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
 
     }
 
-    @Override
     public void deleteByMaSV(String maSV) {
         int delete = XJdbc.executeUpdate(sqlDeleteNhanVien, maSV);
         if (delete > 0) {
@@ -95,12 +93,10 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
     public NhanVien findByMaNV(String maNV) {
         return XQuery.getSingleBean(NhanVien.class, sqlFindByMaNV, maNV);
     }
 
-    @Override
     public List<NhanVien> findByToTable(String id, int index) {
         switch (index) {
             case 0:

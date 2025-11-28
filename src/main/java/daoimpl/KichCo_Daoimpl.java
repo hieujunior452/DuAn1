@@ -44,7 +44,6 @@ public class KichCo_Daoimpl implements KichCo_Dao{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
     public void deleteByName(String ten) {
         try {
         XJdbc.executeUpdate(sqlDeleteByName, ten);
@@ -55,7 +54,6 @@ public class KichCo_Daoimpl implements KichCo_Dao{
         }
     }
 
-    @Override
     public KichCo findByName(String ten) {
         return XQuery.getSingleBean(KichCo.class, sqlFindByName, ten);
     }

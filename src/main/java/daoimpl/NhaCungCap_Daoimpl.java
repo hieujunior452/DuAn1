@@ -45,7 +45,6 @@ public class NhaCungCap_Daoimpl implements NhaCungCap_Dao{
         return XQuery.getSingleBean(NhaCungCap.class, sqlFindById, id);
     }
 
-    @Override
     public NhaCungCap findByName(String ten) {
         return XQuery.getSingleBean(NhaCungCap.class, sqlFindByName, ten);
     }

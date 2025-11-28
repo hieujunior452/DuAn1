@@ -60,17 +60,14 @@ public class ChucVu_Daoimpl implements ChucVu_Dao{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
     public ChucVu findByName(String name) {
         return XQuery.getSingleBean(ChucVu.class, sqlFindByName, name);
     }
 
-    @Override
     public void deleteByMaCV(String maCV) {
         XJdbc.executeUpdate(sqlDeleteByMaCV, maCV);
     }
 
-    @Override
     public ChucVu findbyMaChucVu(String maCV) {
         return XQuery.getSingleBean(ChucVu.class, sqlFindByMaCV, maCV);
     }

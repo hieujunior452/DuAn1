@@ -11,7 +11,4 @@ import entity.ChucVu;
  * @author Administrator
  */
 public interface ChucVu_Dao extends Dao_CRUD<ChucVu, Integer>{
-    ChucVu findByName(String name);
-    void deleteByMaCV(String maCV);
-    ChucVu findbyMaChucVu(String maCV);
 }
