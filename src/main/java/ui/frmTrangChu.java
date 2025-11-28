@@ -188,6 +188,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnHoadon.setForeground(new java.awt.Color(255, 255, 255));
         btnHoadon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Properties.png"))); // NOI18N
         btnHoadon.setText("Hóa đơn ");
+        btnHoadon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoadonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
@@ -254,7 +259,7 @@ public class frmTrangChu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
                     .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -288,6 +293,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setPanel(new jpKhachHang());
     }//GEN-LAST:event_btnKhachhangActionPerformed
+
+    private void btnHoadonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoadonActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(new jpHoaDon());
+    }//GEN-LAST:event_btnHoadonActionPerformed
 
     /**
      * @param args the command line arguments

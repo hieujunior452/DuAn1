@@ -61,6 +61,7 @@ public class jpKhachHang extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(105, 30));
 
         tblKhachHang.setBackground(new java.awt.Color(207, 231, 255));
+        tblKhachHang.setForeground(new java.awt.Color(13, 71, 161));
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -77,6 +78,7 @@ public class jpKhachHang extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblKhachHang.setRowHeight(25);
         tblKhachhang.setViewportView(tblKhachHang);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

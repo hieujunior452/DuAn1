@@ -572,13 +572,13 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jTabbedPane1.addTab("Sản Phẩm", jpSanPham);
 
         jpChiTiet.setBackground(new java.awt.Color(207, 231, 255));
-        jpChiTiet.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin chi tiết", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jpChiTiet.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin chi tiết", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(13, 71, 161))); // NOI18N
         jpChiTiet.setForeground(new java.awt.Color(13, 71, 161));
 
         jScrollPane3.setForeground(new java.awt.Color(13, 71, 161));
 
         tblNCC.setBackground(new java.awt.Color(207, 231, 255));
-        tblNCC.setForeground(new java.awt.Color(255, 255, 255));
+        tblNCC.setForeground(new java.awt.Color(13, 71, 161));
         tblNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -609,7 +609,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
         tblChiTiet.setAutoCreateRowSorter(true);
         tblChiTiet.setBackground(new java.awt.Color(207, 231, 255));
-        tblChiTiet.setForeground(new java.awt.Color(255, 255, 255));
+        tblChiTiet.setForeground(new java.awt.Color(13, 71, 161));
         tblChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -19,8 +19,9 @@ public class HoaDon_Daoimpl implements HoaDon_Dao {
     private String sqlFindAll = "select * from HoaDon hd join KhachHang kh on hd.idKhachHang = kh.id";
     private String sqlFindByMaHD = "select * from HoaDon hd join KhachHang kh on hd.idKhachHang = kh.id where hd.maHoaDon = ?";
     private String sqlDeleteById = "delete from HoaDon where id = ?";
-    private String sqlUpdtaeByMaHD = "update HoaDon set tongTien = ?, tienKhachDua = ?, tienTraLai = ?, trangThai = ?, ghiChu = ? where maHoaDon = ?";
-    private String sqlUpdtaeByMaHDCK = "update HoaDon set tongTien = ?, trangThai = ?, ghiChu = ?  where maHoaDon = ?";
+    private String sqlUpdateByMaHD = "update HoaDon set tongTien = ?, ngayThanhToan = ?, tienKhachDua = ?, tienTraLai = ?, trangThai = ?, ghiChu = ?, idKhuyenMai = ? where maHoaDon = ?";
+    private String sqlUpdateByMaHDCK = "update HoaDon set tongTien = ?, ngayThanhToan = ?, trangThai = ?, ghiChu = ?, idKhuyenMai = ?  where maHoaDon = ?";
+    private String sqlUpdateHuyDon = "update HoaDon set tongTien = ?, trangThai = ?, ghiChu = ?  where maHoaDon = ?";
     private String sqlCreate = "INSERT INTO HoaDon (maHoaDon, ngayTao, idKhachHang, maNhanVien, phuongThucThanhToan) " + "VALUES (?, ?, ?, ?, ?)";
 
     @Override
@@ -30,10 +31,13 @@ public class HoaDon_Daoimpl implements HoaDon_Dao {
 
     @Override
     public void update(HoaDon entity) {
-        XJdbc.executeUpdate(sqlUpdtaeByMaHD, entity.getTongTien(), entity.getTienKhachDua(), entity.getTienTraLai(), entity.getTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
+        XJdbc.executeUpdate(sqlUpdateByMaHD, entity.getTongTien(), entity.getNgayThanhToan(), entity.getTienKhachDua(), entity.getTienTraLai(), entity.getTrangThai(), entity.getGhiChu(), entity.getIdKhuyenMai(), entity.getMaHoaDon());
+    }
+    public void updateHuyDon(HoaDon entity) {
+        XJdbc.executeUpdate(sqlUpdateHuyDon, entity.getTongTien(), entity.getTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
     }
     public void updateCK(HoaDon entity) {
-        XJdbc.executeUpdate(sqlUpdtaeByMaHDCK, entity.getTongTien(), entity.getTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
+        XJdbc.executeUpdate(sqlUpdateByMaHDCK, entity.getTongTien(), entity.getNgayThanhToan(), entity.getTrangThai(), entity.getGhiChu(), entity.getIdKhuyenMai(), entity.getMaHoaDon());
     }
     @Override
     public void deleteById(Integer id) {
