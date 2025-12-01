@@ -61,7 +61,6 @@ public class jpKhachHang extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(105, 30));
 
         tblKhachHang.setBackground(new java.awt.Color(207, 231, 255));
-        tblKhachHang.setForeground(new java.awt.Color(13, 71, 161));
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -143,7 +143,6 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         jScrollPane1.setBackground(new java.awt.Color(207, 231, 255));
 
         tblHoaDon.setBackground(new java.awt.Color(207, 231, 255));
-        tblHoaDon.setForeground(new java.awt.Color(13, 71, 161));
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -189,7 +188,6 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         jpGioHang.setPreferredSize(new java.awt.Dimension(640, 240));
 
         tblGioHang.setBackground(new java.awt.Color(207, 231, 255));
-        tblGioHang.setForeground(new java.awt.Color(13, 71, 161));
         tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -235,7 +233,6 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         jpSanPham.setPreferredSize(new java.awt.Dimension(640, 240));
 
         tblSanPham.setBackground(new java.awt.Color(207, 231, 255));
-        tblSanPham.setForeground(new java.awt.Color(13, 71, 161));
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -462,7 +459,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                         .addComponent(txtTongTien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTienKhachDua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jpDonHangLayout.setVerticalGroup(
             jpDonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,7 +531,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                     .addComponent(jpHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jpDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -680,7 +677,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         }
         txtSDTKH.setText(kh.getsDT());
         txtEmailKH.setText(kh.getEmail());
-        this.fillToTable();
+        fillToTableFind();
         this.updateTongTien();
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
@@ -1041,9 +1038,14 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                     default ->
                         "Không xác định";
                 };
-                modelHD.addRow(new Object[]{hoaDon.getMaHoaDon(), hoaDon.getHoVaTen(), trangThai, hoaDon.getNgayTao().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy "))});
+                modelHD.addRow(new Object[]{hoaDon.getMaHoaDon(), hoaDon.getHoVaTen(), trangThai, hoaDon.getNgayTao().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy"))});
             }
         }
+        
+    }
+
+    @Override
+    public void fillToTableFind() {
         modelHDCT = (DefaultTableModel) tblGioHang.getModel();
         modelHDCT.setRowCount(0);
         if (!txtMaHD.getText().isEmpty()) {
@@ -1058,16 +1060,13 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
     }
 
     @Override
-    public void fillToTableFind() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public void fillToComboBox() {
         cboVoucher.removeAllItems();
         cboVoucher.addItem("Không dùng");
         for (KhuyenMai khuyenMai : repoKM.findAll()) {
-            cboVoucher.addItem(khuyenMai.getTenKM());
+            if (khuyenMai.getNgayKetThuc().isAfter(LocalDateTime.now())) {
+                cboVoucher.addItem(khuyenMai.getTenKM());
+            }
         }
     }
 
@@ -1088,10 +1087,6 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         hoadon.setMaHoaDon(uid.toString());
         hoadon.setIdKhachHang(idkh);
         hoadon.setMaNhanVien(frmTrangChu.nhanVienHienTai.getMaNhanVien());
-//        hoadon.setPhuongThucThanhToan(cboThanhToan.getSelectedItem().toString());
-//        if (cboVoucher.getSelectedIndex() > 0) {
-//            int idGG = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getId();
-//        }
         hoadon.setIdKhuyenMai(idkh);
         hoadon.setNgayTao(LocalDateTime.now());
         hoadon.setGhiChu(txtGhiChu.getText());

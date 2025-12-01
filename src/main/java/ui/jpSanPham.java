@@ -392,7 +392,6 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jScrollPane2.setToolTipText("");
 
         tblSanPham.setBackground(new java.awt.Color(207, 231, 255));
-        tblSanPham.setForeground(new java.awt.Color(13, 71, 161));
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -578,7 +577,6 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jScrollPane3.setForeground(new java.awt.Color(13, 71, 161));
 
         tblNCC.setBackground(new java.awt.Color(207, 231, 255));
-        tblNCC.setForeground(new java.awt.Color(13, 71, 161));
         tblNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -609,7 +607,6 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
         tblChiTiet.setAutoCreateRowSorter(true);
         tblChiTiet.setBackground(new java.awt.Color(207, 231, 255));
-        tblChiTiet.setForeground(new java.awt.Color(13, 71, 161));
         tblChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -660,19 +657,15 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jLabel18.setText("Trạng thái");
         jLabel18.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        txtTenNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtTenNCC.setText("jTextField1");
         txtTenNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtSDTNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtSDTNCC.setText("jTextField1");
         txtSDTNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtEmailNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtEmailNCC.setText("jTextField1");
         txtEmailNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtIDNCC.setForeground(new java.awt.Color(13, 71, 161));
         txtIDNCC.setText("jTextField1");
         txtIDNCC.setFocusable(false);
         txtIDNCC.setPreferredSize(new java.awt.Dimension(200, 25));
@@ -695,19 +688,15 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
             }
         });
 
-        txtMauCT.setForeground(new java.awt.Color(13, 71, 161));
         txtMauCT.setText("jTextField1");
         txtMauCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtChatLieuCT.setForeground(new java.awt.Color(13, 71, 161));
         txtChatLieuCT.setText("jTextField1");
         txtChatLieuCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtLoaiCT.setForeground(new java.awt.Color(13, 71, 161));
         txtLoaiCT.setText("jTextField1");
         txtLoaiCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtKichCoCT.setForeground(new java.awt.Color(13, 71, 161));
         txtKichCoCT.setText("jTextField1");
         txtKichCoCT.setPreferredSize(new java.awt.Dimension(200, 25));
 

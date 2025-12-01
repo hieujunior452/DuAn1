@@ -202,7 +202,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         lblTrangThai.setForeground(new java.awt.Color(13, 71, 161));
         lblTrangThai.setText("Trạng thái");
 
-        txtNgaySinh.setDateFormatString("d/M/yyyy");
+        txtNgaySinh.setDateFormatString("dd/MM/yyyy");
         txtNgaySinh.setPreferredSize(new java.awt.Dimension(0, 25));
 
         txtMatKhau.setText("123456");
@@ -304,7 +304,6 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         );
 
         tblNhanVien.setBackground(new java.awt.Color(207, 231, 255));
-        tblNhanVien.setForeground(new java.awt.Color(13, 71, 161));
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -523,7 +522,6 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         lblEmail1.setText("Tên chức vụ");
 
         tblChucVu.setBackground(new java.awt.Color(207, 231, 255));
-        tblChucVu.setForeground(new java.awt.Color(13, 71, 161));
         tblChucVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

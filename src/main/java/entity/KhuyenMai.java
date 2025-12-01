@@ -7,8 +7,8 @@ package entity;
 /**
  *
  * @author Administrator
- */
-import java.sql.Date;
+ **/
+import java.time.LocalDateTime;
 
 public class KhuyenMai {
 
@@ -16,14 +16,14 @@ public class KhuyenMai {
     public String maKM;
     public String tenKM;
     public int phanTramGiam;
-    public Date ngayBatDau;
-    public Date ngayKetThuc;
+    public LocalDateTime ngayBatDau;
+    public LocalDateTime ngayKetThuc;
     public boolean trangThai;
 
     public KhuyenMai() {
     }
 
-    public KhuyenMai(int id, String maKM, String tenKM, int phanTramGiam, Date ngayBatDau, Date ngayKetThuc, boolean trangThai) {
+    public KhuyenMai(int id, String maKM, String tenKM, int phanTramGiam, LocalDateTime ngayBatDau, LocalDateTime ngayKetThuc, boolean trangThai) {
         this.id = id;
         this.maKM = maKM;
         this.tenKM = tenKM;
@@ -65,19 +65,19 @@ public class KhuyenMai {
         this.phanTramGiam = phanTramGiam;
     }
 
-    public Date getNgayBatDau() {
+    public LocalDateTime getNgayBatDau() {
         return ngayBatDau;
     }
 
-    public void setNgayBatDau(Date ngayBatDau) {
+    public void setNgayBatDau(LocalDateTime ngayBatDau) {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public Date getNgayKetThuc() {
+    public LocalDateTime getNgayKetThuc() {
         return ngayKetThuc;
     }
 
-    public void setNgayKetThuc(Date ngayKetThuc) {
+    public void setNgayKetThuc(LocalDateTime ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
 
