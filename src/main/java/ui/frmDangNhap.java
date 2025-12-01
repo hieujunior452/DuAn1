@@ -250,15 +250,6 @@ public class frmDangNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu", "Thông báo!", JOptionPane.WARNING_MESSAGE);
             return;
         }
-//        for (NhanVien user : repoNV.findAll()) {
-//            if (taiKhoan.trim().equalsIgnoreCase(user.getMaNhanVien()) && matKhauNhap.trim().equals(user.getMatKhau())) {
-//                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                frmTrangChu.nhanVienHienTai = user;
-//                new frmTrangChu().setVisible(true);
-//                found = true;
-//                break;
-//            }
-//        }
         NhanVien nhanVien = repoNV.findByMaNV(taiKhoan);
         if (nhanVien == null) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);

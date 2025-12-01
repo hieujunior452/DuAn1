@@ -13,17 +13,17 @@ import java.math.BigDecimal;
 public class HoaDonChiTiet {
     public int id;
     public int idHoaDon;
+    private String maHoaDon;
     public int idSanPham;
     public int soLuong;
     public BigDecimal donGia;
     public BigDecimal giamGia;
     public BigDecimal thanhTien;
-    public String ghiChu;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(int id, int idHoaDon, int idSanPham, int soLuong, BigDecimal donGia, BigDecimal giamGia, BigDecimal thanhTien, String ghiChu) {
+    public HoaDonChiTiet(int id, int idHoaDon, int idSanPham, int soLuong, BigDecimal donGia, BigDecimal giamGia, BigDecimal thanhTien) {
         this.id = id;
         this.idHoaDon = idHoaDon;
         this.idSanPham = idSanPham;
@@ -31,7 +31,6 @@ public class HoaDonChiTiet {
         this.donGia = donGia;
         this.giamGia = giamGia;
         this.thanhTien = thanhTien;
-        this.ghiChu = ghiChu;
     }
 
     public BigDecimal getGiamGia() {
@@ -56,6 +55,14 @@ public class HoaDonChiTiet {
 
     public void setIdHoaDon(int idHoaDon) {
         this.idHoaDon = idHoaDon;
+    }
+
+    public String getMaHoaDon() {
+        return maHoaDon;
+    }
+
+    public void setMaHoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
     }
 
     public int getIdSanPham() {
@@ -89,13 +96,4 @@ public class HoaDonChiTiet {
     public void setThanhTien(BigDecimal thanhTien) {
         this.thanhTien = thanhTien;
     }
-
-    public String getGhiChu() {
-        return ghiChu;
-    }
-
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
-    }
-    
 }

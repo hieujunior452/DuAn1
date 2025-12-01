@@ -22,6 +22,7 @@ public class KhachHang_Daoimpl implements KhachHang_Dao {
 
     private String sqlCreate = "insert into Khachhang (hoVaTen, sDT, email) output inserted.id values (?,?,?)";
     private String sqlFindByPhone = "select * from Khachhang where sDT = ?";
+    private String sqlFindListByPhone = "select * from Khachhang where sDT like ?";
     private String sqlFindByID = "select * from Khachhang where id = ?";
     private String sqlFindAll = "SELECT \n"
             + "    kh.id,\n"
@@ -125,5 +126,8 @@ public class KhachHang_Daoimpl implements KhachHang_Dao {
 
     public KhachHang findByPhone(String phone) {
         return XQuery.getSingleBean(KhachHang.class, sqlFindByPhone, phone);
+    }
+    public List<KhachHang> findListByPhone(String phone) {
+        return XQuery.getBeanList(KhachHang.class, sqlFindListByPhone, phone);
     }
 }

@@ -3,18 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package daoimpl;
+
 import dao.*;
 import entity.KhuyenMai;
 import java.util.List;
 import util.XQuery;
+
 /**
  *
  * @author Administrator
  */
-public class KhuyenMai_Daoimpl implements KhuyenMai_Dao{
-    
+public class KhuyenMai_Daoimpl implements KhuyenMai_Dao {
+
     private String sqlFindAll = "select * from KhuyenMai";
     private String sqlFindBytenKM = "select * from KhuyenMai where tenKM = ?";
+    private String sqlFindByID = "select * from KhuyenMai where id = ?";
 
     @Override
     public void create(KhuyenMai entity) {
@@ -38,10 +41,11 @@ public class KhuyenMai_Daoimpl implements KhuyenMai_Dao{
 
     @Override
     public KhuyenMai findById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return XQuery.getSingleBean(KhuyenMai.class, sqlFindByID, id);
     }
+
     public KhuyenMai findBytenKM(String id) {
         return XQuery.getSingleBean(KhuyenMai.class, sqlFindBytenKM, id);
     }
-    
+
 }

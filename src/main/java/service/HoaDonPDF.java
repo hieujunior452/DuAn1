@@ -67,7 +67,7 @@ public class HoaDonPDF {
             document.add(table);
             document.add(new Paragraph("======================================"));
             document.add(new Paragraph("Tổng tiền: " + df.format(tongTien)));
-            if (hd.getPhuongThucThanhToan().contains("Tiền mặt")) {
+            if (hd.getPhuongThucThanhToan().equalsIgnoreCase("Tiền mặt")) {
                 document.add(new Paragraph("Tiền khách đưa: " + df.format(hd.getTienKhachDua())));
                 document.add(new Paragraph("Tiền trả lại: " + df.format(hd.getTienTraLai())));
             }

@@ -22,7 +22,7 @@ public class HoaDon {
     private BigDecimal tongTien;
     private BigDecimal tienKhachDua;
     private BigDecimal tienTraLai;
-    private int idKhuyenMai;
+    private Integer idKhuyenMai;
     private String phuongThucThanhToan;
     private int trangThai;
     private String ghiChu;
@@ -37,7 +37,7 @@ public class HoaDon {
         this.ghiChu = ghiChu;
     }
     
-    public HoaDon(String maHoaDon, BigDecimal tongTien, LocalDateTime ngayThanhToan, String phuongThucThanhToan, int trangThai, int idKhuyenMai, String ghiChu) {
+    public HoaDon(String maHoaDon, BigDecimal tongTien, LocalDateTime ngayThanhToan, String phuongThucThanhToan, int trangThai, Integer  idKhuyenMai, String ghiChu) {
         this.maHoaDon = maHoaDon;
         this.tongTien = tongTien;
         this.ngayThanhToan = ngayThanhToan;
@@ -47,7 +47,7 @@ public class HoaDon {
         this.ghiChu = ghiChu;
     }
 
-    public HoaDon(String maHoaDon, BigDecimal tongTien, LocalDateTime ngayThanhToan, BigDecimal tienKhachDua, BigDecimal tienTraLai, String phuongThucThanhToan, int trangThai, int idKhuyenMai, String ghiChu) {
+    public HoaDon(String maHoaDon, BigDecimal tongTien, LocalDateTime ngayThanhToan, BigDecimal tienKhachDua, BigDecimal tienTraLai, String phuongThucThanhToan, int trangThai, Integer  idKhuyenMai, String ghiChu) {
         this.maHoaDon = maHoaDon;
         this.tongTien = tongTien;
         this.ngayThanhToan = ngayThanhToan;
@@ -73,11 +73,11 @@ public class HoaDon {
         this.ghiChu = ghiChu;
     }
 
-    public int getIdKhuyenMai() {
+    public Integer getIdKhuyenMai() {
         return idKhuyenMai;
     }
 
-    public void setIdKhuyenMai(int idKhuyenMai) {
+    public void setIdKhuyenMai(Integer idKhuyenMai) {
         this.idKhuyenMai = idKhuyenMai;
     }
 
