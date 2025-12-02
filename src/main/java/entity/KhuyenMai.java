@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 public class KhuyenMai {
 
     public int id;
-    public String maKM;
     public String tenKM;
     public int phanTramGiam;
+    public int idLoai;
     public LocalDateTime ngayBatDau;
     public LocalDateTime ngayKetThuc;
     public boolean trangThai;
@@ -23,11 +23,20 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
-    public KhuyenMai(int id, String maKM, String tenKM, int phanTramGiam, LocalDateTime ngayBatDau, LocalDateTime ngayKetThuc, boolean trangThai) {
-        this.id = id;
-        this.maKM = maKM;
+    public KhuyenMai(String tenKM, int phanTramGiam, int idLoai, LocalDateTime ngayBatDau, LocalDateTime ngayKetThuc, boolean trangThai) {
         this.tenKM = tenKM;
         this.phanTramGiam = phanTramGiam;
+        this.idLoai = idLoai;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.trangThai = trangThai;
+    }
+    
+    public KhuyenMai(int id, String tenKM, int phanTramGiam, int idLoai, LocalDateTime ngayBatDau, LocalDateTime ngayKetThuc, boolean trangThai) {
+        this.id = id;
+        this.tenKM = tenKM;
+        this.phanTramGiam = phanTramGiam;
+        this.idLoai = idLoai;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
         this.trangThai = trangThai;
@@ -39,14 +48,6 @@ public class KhuyenMai {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getMaKM() {
-        return maKM;
-    }
-
-    public void setMaKM(String maKM) {
-        this.maKM = maKM;
     }
 
     public String getTenKM() {
@@ -65,6 +66,14 @@ public class KhuyenMai {
         this.phanTramGiam = phanTramGiam;
     }
 
+    public int getIdLoai() {
+        return idLoai;
+    }
+
+    public void setIdLoai(int idLoai) {
+        this.idLoai = idLoai;
+    }
+    
     public LocalDateTime getNgayBatDau() {
         return ngayBatDau;
     }

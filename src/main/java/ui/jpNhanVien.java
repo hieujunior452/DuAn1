@@ -19,9 +19,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import controller.Controller_NhanVien;
+import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Frame;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
+import javax.swing.JButton;
 
 /**
  *
@@ -37,13 +41,33 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
     private DefaultTableModel modelNV = new DefaultTableModel();
     private DefaultTableModel modelCV = new DefaultTableModel();
     private String fileAnh = "";
+    MouseAdapter hoverEffect = new MouseAdapter() {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JButton btn = (JButton) e.getSource();
+            btn.setBackground(Color.DARK_GRAY);
+        }
 
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JButton btn = (JButton) e.getSource();
+            btn.setBackground(Color.BLUE);
+        }
+    };
     public jpNhanVien() {
         initComponents();
         this.cboChucVuTimKiem.setVisible(false);
         this.setTableColumnWidths();
         this.fillToTable();
         this.fillToComboBox();
+        btnLamMoi.addMouseListener(hoverEffect);
+        btnLamMoiCV.addMouseListener(hoverEffect);
+        btnSua.addMouseListener(hoverEffect);
+        btnSuaCV.addMouseListener(hoverEffect);
+        btnThem.addMouseListener(hoverEffect);
+        btnThemCV.addMouseListener(hoverEffect);
+        btnXoa.addMouseListener(hoverEffect);
+        btnXoaCV.addMouseListener(hoverEffect);
     }
 
     public void setTableColumnWidths() {
@@ -708,6 +732,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         }
         this.create();
         this.fillToTable();
+        clear();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -717,6 +742,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         }
         this.update();
         this.fillToTable();
+        clear();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -724,6 +750,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
         if (tblNhanVien.getSelectedRow() >= 0) {
             this.delete();
             this.fillToTable();
+            clear();
         } else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng muốn xóa!", "Thông báo", JOptionPane.DEFAULT_OPTION);
         }

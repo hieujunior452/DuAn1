@@ -5,6 +5,7 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,13 +15,13 @@ import javax.swing.JLabel;
  *
  * @author Administrator
  */
-public class frmGetQRThanhToan extends javax.swing.JDialog {
+public class jdGetQRThanhToan extends javax.swing.JDialog {
 
     public static int result = 0;
     /**
      * Creates new form NewJFrame
      */
-    public frmGetQRThanhToan(JFrame parent, String tongTien, String maHD) {
+    public jdGetQRThanhToan(JFrame parent, String tongTien, String maHD) {
         super(parent, true);
         initComponents();
         this.setLocationRelativeTo(parent);
@@ -66,7 +67,17 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
 
         btnHoanThanh.setBackground(java.awt.Color.blue);
         btnHoanThanh.setForeground(new java.awt.Color(255, 255, 255));
+        btnHoanThanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Payment.png"))); // NOI18N
         btnHoanThanh.setText("Hoàn thành");
+        btnHoanThanh.setPreferredSize(new java.awt.Dimension(93, 35));
+        btnHoanThanh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHoanThanhMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHoanThanhMouseExited(evt);
+            }
+        });
         btnHoanThanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHoanThanhActionPerformed(evt);
@@ -75,7 +86,17 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
 
         btnHuy.setBackground(java.awt.Color.blue);
         btnHuy.setForeground(new java.awt.Color(255, 255, 255));
+        btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancel.png"))); // NOI18N
         btnHuy.setText("Hủy");
+        btnHuy.setPreferredSize(new java.awt.Dimension(72, 35));
+        btnHuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHuyMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHuyMouseExited(evt);
+            }
+        });
         btnHuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHuyActionPerformed(evt);
@@ -86,12 +107,14 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblQR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblQR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnHoanThanh)
-                .addGap(17, 17, 17)
-                .addComponent(btnHuy)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnHoanThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,9 +123,9 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
                 .addComponent(lblQR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHoanThanh)
-                    .addComponent(btnHuy))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(btnHoanThanh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,15 +133,35 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
 
     private void btnHoanThanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanThanhActionPerformed
         // TODO add your handling code here:
-        frmGetQRThanhToan.result = 1;
+        jdGetQRThanhToan.result = 1;
         this.dispose();
     }//GEN-LAST:event_btnHoanThanhActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
-        frmGetQRThanhToan.result = 0;
+        jdGetQRThanhToan.result = 0;
         this.dispose();
     }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void btnHoanThanhMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanThanhMouseEntered
+        // TODO add your handling code here:
+        btnHoanThanh.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_btnHoanThanhMouseEntered
+
+    private void btnHoanThanhMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanThanhMouseExited
+        // TODO add your handling code here:
+        btnHoanThanh.setBackground(Color.BLUE);
+    }//GEN-LAST:event_btnHoanThanhMouseExited
+
+    private void btnHuyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyMouseEntered
+        // TODO add your handling code here:
+        btnHoanThanh.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_btnHuyMouseEntered
+
+    private void btnHuyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyMouseExited
+        // TODO add your handling code here:
+        btnHoanThanh.setBackground(Color.BLUE);
+    }//GEN-LAST:event_btnHuyMouseExited
 
     /**
      * @param args the command line arguments
@@ -137,13 +180,13 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -151,7 +194,7 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new frmGetQRThanhToan().setVisible(true);
+//                new jdGetQRThanhToan().setVisible(true);
 //            }public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -166,13 +209,13 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frmGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(jdGetQRThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -180,7 +223,7 @@ public class frmGetQRThanhToan extends javax.swing.JDialog {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new frmGetQRThanhToan().setVisible(true);
+//                new jdGetQRThanhToan().setVisible(true);
 //            }
 //        });
 //    }

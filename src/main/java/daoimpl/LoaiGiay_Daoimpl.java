@@ -21,6 +21,7 @@ public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
     private String sqlFindByName = "select * from LoaiGiay where tenLoai = ?";
     private String sqlCreate = "insert into LoaiGiay values (?)";
     private String sqlDeleteByName = "delete from LoaiGiay where tenLoai = ?";
+    private String sqlFindByID = "select * from LoaiGiay where id = ?";
 
     @Override
     public void create(LoaiGiay entity) {
@@ -44,7 +45,7 @@ public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
 
     @Override
     public LoaiGiay findById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return XQuery.getSingleBean(LoaiGiay.class, sqlFindByID, id);
     }
 
     public void deleteByName(String name) {

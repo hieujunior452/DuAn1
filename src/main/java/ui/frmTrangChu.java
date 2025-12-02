@@ -5,8 +5,12 @@
 package ui;
 
 import entity.NhanVien;
+import java.awt.Color;
 import java.awt.Panel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -29,10 +33,37 @@ public class frmTrangChu extends javax.swing.JFrame {
             true
     );
 
+    MouseAdapter hoverEffect = new MouseAdapter() {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JButton btn = (JButton) e.getSource();
+            btn.setBackground(Color.DARK_GRAY);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JButton btn = (JButton) e.getSource();
+            btn.setBackground(Color.BLUE);
+        }
+    };
+
     public frmTrangChu() {
         initComponents();
         setLocationRelativeTo(this);
         lblTenNguoiDung.setText(nhanVienHienTai.getHoVaTen());
+        if (nhanVienHienTai.getIdCV() != 1) {
+            btnNhanvien.setVisible(false);
+            btnThongke.setVisible(false);
+        }
+        btnBanhang.addMouseListener(hoverEffect);
+        btnHoadon.addMouseListener(hoverEffect);
+        btnKhachhang.addMouseListener(hoverEffect);
+        btnKhuyenmai.addMouseListener(hoverEffect);
+        btnNhanvien.addMouseListener(hoverEffect);
+        btnSanpham.addMouseListener(hoverEffect);
+        btnThoat.addMouseListener(hoverEffect);
+        btnThongke.addMouseListener(hoverEffect);
+        btnTrangchu.addMouseListener(hoverEffect);
     }
 
     /**
@@ -124,6 +155,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnKhuyenmai.setForeground(new java.awt.Color(255, 255, 255));
         btnKhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/coupon (1).png"))); // NOI18N
         btnKhuyenmai.setText("Khuyến mại ");
+        btnKhuyenmai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhuyenmaiActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -206,8 +242,13 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         btnThoat.setBackground(java.awt.Color.blue);
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
-        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Closed door.png"))); // NOI18N
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Log out.png"))); // NOI18N
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
@@ -271,7 +312,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     private void setPanel(JPanel panel) {
         jpMain.removeAll();
         jpMain.add(panel);
-        jpMain.revalidate(); 
+        jpMain.revalidate();
         jpMain.repaint();
     }
 
@@ -299,6 +340,16 @@ public class frmTrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setPanel(new jpHoaDon());
     }//GEN-LAST:event_btnHoadonActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnKhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenmaiActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(new jpKhuyenMai());
+    }//GEN-LAST:event_btnKhuyenmaiActionPerformed
 
     /**
      * @param args the command line arguments

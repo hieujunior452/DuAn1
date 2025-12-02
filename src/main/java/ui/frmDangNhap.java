@@ -7,11 +7,15 @@ package ui;
 import daoimpl.NhanVien_Daoimpl;
 import javax.swing.JOptionPane;
 import entity.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.security.SecureRandom;
 import javax.swing.Icon;
+import javax.swing.JButton;
 import service.MailSender;
 import util.XIcon;
 import util.XJdbc;
@@ -26,13 +30,28 @@ public class frmDangNhap extends javax.swing.JFrame {
 
     private boolean showPassworld = false;
 
+    MouseAdapter hoverEffect = new MouseAdapter() {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JButton btn = (JButton) e.getSource();
+            btn.setBackground(Color.DARK_GRAY);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JButton btn = (JButton) e.getSource();
+            btn.setBackground(Color.BLUE);
+        }
+    };
+
     /**
      * Creates new form frmLogin
      */
     public frmDangNhap() {
         initComponents();
         setLocationRelativeTo(this);
-
+        btnDangNhap.addMouseListener(hoverEffect);
+        btnQuenMatKhau.addMouseListener(hoverEffect);
     }
 
     /**
@@ -87,6 +106,15 @@ public class frmDangNhap extends javax.swing.JFrame {
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Login.png"))); // NOI18N
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.setPreferredSize(new java.awt.Dimension(116, 35));
+        btnDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDangNhapMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDangNhapMouseExited(evt);
+            }
+        });
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangNhapActionPerformed(evt);
@@ -95,8 +123,17 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         btnQuenMatKhau.setBackground(java.awt.Color.blue);
         btnQuenMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        btnQuenMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
+        btnQuenMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pass.png"))); // NOI18N
         btnQuenMatKhau.setText("Quên mật khẩu");
+        btnQuenMatKhau.setPreferredSize(new java.awt.Dimension(140, 35));
+        btnQuenMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnQuenMatKhauMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnQuenMatKhauMouseExited(evt);
+            }
+        });
         btnQuenMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuenMatKhauActionPerformed(evt);
@@ -121,9 +158,9 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addComponent(lblDangNhap)
                         .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnDangNhap)
+                        .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
-                        .addComponent(btnQuenMatKhau))
+                        .addComponent(btnQuenMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblTaiKhoan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -153,8 +190,8 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addComponent(lblShowPassworld, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDangNhap)
-                    .addComponent(btnQuenMatKhau))
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQuenMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
@@ -277,6 +314,26 @@ public class frmDangNhap extends javax.swing.JFrame {
             txtMatKhau.setEchoChar('\u2022');
         }
     }//GEN-LAST:event_lblShowPassworldMouseClicked
+
+    private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
+        // TODO add your handling code here:
+        btnDangNhap.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_btnDangNhapMouseEntered
+
+    private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
+        // TODO add your handling code here:
+        btnDangNhap.setBackground(Color.BLUE);
+    }//GEN-LAST:event_btnDangNhapMouseExited
+
+    private void btnQuenMatKhauMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuenMatKhauMouseEntered
+        // TODO add your handling code here:
+        btnQuenMatKhau.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_btnQuenMatKhauMouseEntered
+
+    private void btnQuenMatKhauMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuenMatKhauMouseExited
+        // TODO add your handling code here:
+        btnQuenMatKhau.setBackground(Color.BLUE);
+    }//GEN-LAST:event_btnQuenMatKhauMouseExited
 
     public String passwordRandom() {
         String pass = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

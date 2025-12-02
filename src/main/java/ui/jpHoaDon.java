@@ -181,6 +181,7 @@ public class jpHoaDon extends javax.swing.JPanel implements Controller_HoaDon {
         jdNgayThanhToan.setDateFormatString("dd/MM/yyyy");
         jdNgayThanhToan.setPreferredSize(new java.awt.Dimension(88, 25));
 
+        btnLoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
         btnLoc.setText("Lọc");
         btnLoc.setPreferredSize(new java.awt.Dimension(75, 25));
         btnLoc.addActionListener(new java.awt.event.ActionListener() {
@@ -211,8 +212,8 @@ public class jpHoaDon extends javax.swing.JPanel implements Controller_HoaDon {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jdNgayThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnXoaLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

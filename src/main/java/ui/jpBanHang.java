@@ -759,9 +759,9 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
 
             }
             if (cboThanhToan.getSelectedIndex() == 1) {
-                frmGetQRThanhToan qr = new frmGetQRThanhToan((JFrame) SwingUtilities.getWindowAncestor(this), parseMoney(txtTongTien.getText()).toString(), txtMaHD.getText());
+                jdGetQRThanhToan qr = new jdGetQRThanhToan((JFrame) SwingUtilities.getWindowAncestor(this), parseMoney(txtTongTien.getText()).toString(), txtMaHD.getText());
                 qr.setVisible(true);
-                if (frmGetQRThanhToan.result == 1) {
+                if (jdGetQRThanhToan.result == 1) {
                     HoaDon hoaDon = new HoaDon(txtMaHD.getText(), parseMoney(txtTongTien.getText()), LocalDateTime.now(), cboThanhToan.getSelectedItem().toString(), 1, idPGG, txtGhiChu.getText());
                     repoHD.updateCK(hoaDon);
                 }
@@ -800,15 +800,16 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                 phanTram = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getPhanTramGiam();
             }
             String voucher = cboVoucher.getSelectedItem().toString().toLowerCase();
+            int idLoaiCuaPhieu = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getIdLoai();
             BigDecimal tongGiam = BigDecimal.ZERO;
             for (HoaDonChiTiet hdct : repoHDCT.findByIdList(idHD)) {
                 BigDecimal tongGia = hdct.getDonGia().multiply(BigDecimal.valueOf(hdct.getSoLuong()));
                 BigDecimal giamGia = BigDecimal.ZERO;
                 if (phanTram > 0) {
-                    String loaiSP = repoSP.findById(hdct.getIdSanPham()).getTenLoai().toLowerCase();
-                    if (voucher.contains("giày") && voucher.contains(loaiSP)) {
+                    int idLoaiSP = repoSP.findById(hdct.getIdSanPham()).getIdLoaiGiay();
+                    if (idLoaiCuaPhieu == idLoaiSP) {
                         giamGia = tongGia.multiply(BigDecimal.valueOf(phanTram)).divide(BigDecimal.valueOf(100));
-                    } else if (!voucher.contains("giày")) {
+                    } else if (idLoaiCuaPhieu == -1) {
                         giamGia = tongGia.multiply(BigDecimal.valueOf(phanTram)).divide(BigDecimal.valueOf(100));
                     } else {
                         giamGia = BigDecimal.ZERO;
@@ -1041,7 +1042,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                 modelHD.addRow(new Object[]{hoaDon.getMaHoaDon(), hoaDon.getHoVaTen(), trangThai, hoaDon.getNgayTao().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy"))});
             }
         }
-        
+
     }
 
     @Override
@@ -1064,7 +1065,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         cboVoucher.removeAllItems();
         cboVoucher.addItem("Không dùng");
         for (KhuyenMai khuyenMai : repoKM.findAll()) {
-            if (khuyenMai.getNgayKetThuc().isAfter(LocalDateTime.now())) {
+            if (khuyenMai.getNgayKetThuc().isAfter(LocalDateTime.now()) && khuyenMai.isTrangThai()) {
                 cboVoucher.addItem(khuyenMai.getTenKM());
             }
         }
