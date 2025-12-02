@@ -618,6 +618,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
             repoHDCT.create(HDCT);
         }
         this.fillToTable();
+        fillToTableFind();
         this.updateTongTien();
         cboVoucherActionPerformed(null);
     }//GEN-LAST:event_iThemActionPerformed
@@ -796,20 +797,23 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         if (!txtMaHD.getText().isEmpty()) {
             int idHD = repoHD.findByMaHD(txtMaHD.getText()).getId();
             int phanTram = 0;
+            KhuyenMai km = null;
             if (cboVoucher.getSelectedIndex() > 0) {
-                phanTram = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getPhanTramGiam();
+                km = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString());
+                if (km == null) {
+                    System.out.println("Không tìm thấy khuyến mãi!");
+                    return;
+                }
+                phanTram = km.getPhanTramGiam();
             }
-            String voucher = cboVoucher.getSelectedItem().toString().toLowerCase();
-            int idLoaiCuaPhieu = repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getIdLoai();
+            int idLoaiCuaPhieu = (km != null) ? km.getIdLoai() : -999;
             BigDecimal tongGiam = BigDecimal.ZERO;
             for (HoaDonChiTiet hdct : repoHDCT.findByIdList(idHD)) {
                 BigDecimal tongGia = hdct.getDonGia().multiply(BigDecimal.valueOf(hdct.getSoLuong()));
                 BigDecimal giamGia = BigDecimal.ZERO;
                 if (phanTram > 0) {
                     int idLoaiSP = repoSP.findById(hdct.getIdSanPham()).getIdLoaiGiay();
-                    if (idLoaiCuaPhieu == idLoaiSP) {
-                        giamGia = tongGia.multiply(BigDecimal.valueOf(phanTram)).divide(BigDecimal.valueOf(100));
-                    } else if (idLoaiCuaPhieu == -1) {
+                    if (idLoaiCuaPhieu == -1 || idLoaiCuaPhieu == idLoaiSP) {
                         giamGia = tongGia.multiply(BigDecimal.valueOf(phanTram)).divide(BigDecimal.valueOf(100));
                     } else {
                         giamGia = BigDecimal.ZERO;
@@ -821,13 +825,16 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                 repoHDCT.update(hdct);
             }
             txtGiamGia.setText(formatMoney(tongGiam));
-            if (cboVoucher.getSelectedIndex() > 0) {
-                HoaDon hoaDon = new HoaDon();
-                hoaDon.setMaHoaDon(txtMaHD.getText());
-                hoaDon.setIdKhuyenMai(repoKM.findBytenKM(cboVoucher.getSelectedItem().toString()).getId());
-                repoHD.updateKhuyenMai(hoaDon);
+            HoaDon hoaDon = new HoaDon();
+            hoaDon.setMaHoaDon(txtMaHD.getText());
+            if (km != null) {
+                hoaDon.setIdKhuyenMai(km.getId());
+            } else {
+                hoaDon.setIdKhuyenMai(null);
             }
+            repoHD.updateKhuyenMai(hoaDon);
             fillToTable();
+            fillToTableFind();
             updateTongTien();
         }
     }//GEN-LAST:event_cboVoucherActionPerformed
@@ -918,7 +925,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
             SanPham sanPham = repoSP.findById(idSP);
             if (tblGioHang.getSelectedColumn() == 2) {
                 String inputSL = JOptionPane.showInputDialog("Nhập số lượng");
-                if (inputSL.isEmpty()) {
+                if (inputSL == null || inputSL.trim().isEmpty()) {
                     return;
                 }
                 int soLuong;
@@ -942,6 +949,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                 hoaDonChiTiet.setSoLuong(soLuong);
                 repoHDCT.updateSL(hoaDonChiTiet);
                 fillToTable();
+                fillToTableFind();
                 this.updateTongTien();
                 cboVoucherActionPerformed(null);
             }

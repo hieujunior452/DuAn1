@@ -24,7 +24,7 @@ public class frmTrangChu extends javax.swing.JFrame {
      * Creates new form frmTrangChu
      */
     public static NhanVien nhanVienHienTai = new NhanVien(
-            "hieu", "123456", "hieu",
+            "admin", "123456", "hieu",
             java.sql.Date.valueOf("2026-11-13"),
             true,
             "hhhhhhhhh", "hhhhhhhhhh", "hhhhhhhhh",

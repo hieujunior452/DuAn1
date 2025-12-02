@@ -34,6 +34,7 @@ public class HoaDon_Daoimpl implements HoaDon_Dao {
 
     public HoaDon_Daoimpl() {
     }
+
     @Override
     public void create(HoaDon entity) {
         XJdbc.executeUpdate(sqlCreate, entity.getMaHoaDon(), entity.getNgayTao(), entity.getIdKhachHang(), entity.getMaNhanVien(), entity.getPhuongThucThanhToan());
@@ -43,15 +44,19 @@ public class HoaDon_Daoimpl implements HoaDon_Dao {
     public void update(HoaDon entity) {
         XJdbc.executeUpdate(sqlUpdateByMaHD, entity.getTongTien(), entity.getNgayThanhToan(), entity.getPhuongThucThanhToan(), entity.getTienKhachDua(), entity.getTienTraLai(), entity.getTrangThai(), entity.getGhiChu(), entity.getIdKhuyenMai(), entity.getMaHoaDon());
     }
+
     public void updateHuyDon(HoaDon entity) {
         XJdbc.executeUpdate(sqlUpdateHuyDon, entity.getTongTien(), entity.getTrangThai(), entity.getGhiChu(), entity.getMaHoaDon());
     }
+
     public void updateCK(HoaDon entity) {
         XJdbc.executeUpdate(sqlUpdateByMaHDCK, entity.getTongTien(), entity.getNgayThanhToan(), entity.getPhuongThucThanhToan(), entity.getTrangThai(), entity.getGhiChu(), entity.getIdKhuyenMai(), entity.getMaHoaDon());
     }
+
     public void updateKhuyenMai(HoaDon entity) {
         XJdbc.executeUpdate(sqlUpdateKhuyenMaiByMaHD, entity.getIdKhuyenMai(), entity.getMaHoaDon());
     }
+
     @Override
     public void deleteById(Integer id) {
         XJdbc.executeUpdate(sqlDeleteById, id);
@@ -66,19 +71,23 @@ public class HoaDon_Daoimpl implements HoaDon_Dao {
     public HoaDon findById(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     public HoaDon findByMaHD(String id) {
-        return  XQuery.getSingleBean(HoaDon.class, sqlFindByMaHD, id);
+        return XQuery.getSingleBean(HoaDon.class, sqlFindByMaHD, id);
     }
+
     public List<HoaDon> findListByMaHD(String maHD) {
-        return XQuery.getBeanList(HoaDon.class, sqlFindListByMaHD, '%'+maHD+'%');
+        return XQuery.getBeanList(HoaDon.class, sqlFindListByMaHD, '%' + maHD + '%');
     }
-    
+
     public List<HoaDon> findListByNgayTao(LocalDate ngayTao, LocalDate ngayThanhToan) {
         return XQuery.getBeanList(HoaDon.class, sqlFindByNgayTao, Date.valueOf(ngayTao), Date.valueOf(ngayThanhToan));
     }
+
     public List<HoaDon> findListByNgayThanhToan(LocalDate ngayTao, LocalDate ngayThanhToan) {
         return XQuery.getBeanList(HoaDon.class, sqlFindByNgayThanhToan, Date.valueOf(ngayTao), Date.valueOf(ngayThanhToan));
     }
+
     public List<HoaDon> find(int index, String maHD, LocalDate ngayTao, LocalDate ngayThanhToan) {
         switch (index) {
             case 0:

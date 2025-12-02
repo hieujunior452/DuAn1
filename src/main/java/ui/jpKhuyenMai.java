@@ -493,7 +493,6 @@ public class jpKhuyenMai extends javax.swing.JPanel implements Controller_Khuyen
         for (LoaiGiay loai : repoL.findAll()) {
             cboLoai.addItem(loai.getTenLoai());
         }
-        cboLoai.addItem("Tất cả");
     }
 
     @Override

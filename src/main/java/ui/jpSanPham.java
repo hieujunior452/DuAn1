@@ -23,6 +23,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import controller.Controller_SanPham;
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 
@@ -677,16 +679,12 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jLabel18.setText("Trạng thái");
         jLabel18.setPreferredSize(new java.awt.Dimension(43, 25));
 
-        txtTenNCC.setText("jTextField1");
         txtTenNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtSDTNCC.setText("jTextField1");
         txtSDTNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtEmailNCC.setText("jTextField1");
         txtEmailNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtIDNCC.setText("jTextField1");
         txtIDNCC.setFocusable(false);
         txtIDNCC.setPreferredSize(new java.awt.Dimension(200, 25));
 
@@ -709,16 +707,12 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
             }
         });
 
-        txtMauCT.setText("jTextField1");
         txtMauCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtChatLieuCT.setText("jTextField1");
         txtChatLieuCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtLoaiCT.setText("jTextField1");
         txtLoaiCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        txtKichCoCT.setText("jTextField1");
         txtKichCoCT.setPreferredSize(new java.awt.Dimension(200, 25));
 
         jLabel19.setForeground(new java.awt.Color(13, 71, 161));
@@ -982,12 +976,12 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here
-        //        if (tblNhanVien.getSelectedRow() >= 0) {
-        //            this.delete();
-        //            this.fillToTable();
-        //        } else {
-        //            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng muốn xóa!", "Thông báo", JOptionPane.DEFAULT_OPTION);
-        //        }
+        if (tblSanPham.getSelectedRow() >= 0) {
+            this.delete();
+            this.fillToTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng muốn xóa!", "Thông báo", JOptionPane.DEFAULT_OPTION);
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -1003,12 +997,16 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
     private void lblAnhSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhSPMouseClicked
         try {
-            JFileChooser f = new JFileChooser();
-            File defaultDirectory = new File("resources/image");
-            f.setCurrentDirectory(defaultDirectory);
-            int result = f.showOpenDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = f.getSelectedFile();
+            FileDialog fd = new FileDialog((Frame) null, "Chọn ảnh nhân viên", FileDialog.LOAD);
+            fd.setDirectory("");
+            fd.setFile("*.jpg;*.png");
+            fd.setVisible(true);
+            if (fd.getFile() != null) {
+                File file = new File(fd.getDirectory(), fd.getFile());
+                if (!file.getName().matches("(?i).+\\.(jpg|jpeg|png)$")) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn file ảnh (.jpg, .png)");
+                    return;
+                }
                 Image img = ImageIO.read(file);
                 fileAnh = file.getPath();
                 int w = lblAnhSP.getWidth();
@@ -1016,7 +1014,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
                 lblAnhSP.setIcon(new ImageIcon(img.getScaledInstance(w, h, Image.SCALE_SMOOTH)));
             }
         } catch (IOException ex) {
-            Logger.getLogger(jpNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_lblAnhSPMouseClicked
 
@@ -1047,6 +1045,8 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
             repoNCC.create(nhaCungCap);
             this.fillToTable();
         }
+        fillToComboBox();
+        clear();
     }//GEN-LAST:event_btnThemMauActionPerformed
 
     private void btnXoaMauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaMauActionPerformed
@@ -1072,6 +1072,8 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
             repoNCC.deleteById(Integer.parseInt(txtIDNCC.getText()));
             this.fillToTable();
         }
+        fillToComboBox();
+        clear();
     }//GEN-LAST:event_btnXoaMauActionPerformed
 
     private void tblChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietMouseClicked
@@ -1199,8 +1201,9 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
     public void setForm(SanPham entity) {
         txtID.setText(String.valueOf(entity.getId()));
         txtTenSP.setText(entity.getTenGiay());
-        txtGiaNhap.setText(String.valueOf(entity.getGiaNhap()));
-        txtGiaBan.setText(String.valueOf(entity.getDonGia()));
+        txtGiaNhap.setText(entity.getGiaNhap().stripTrailingZeros().toPlainString());
+        txtGiaBan.setText(entity.getDonGia().stripTrailingZeros().toPlainString());
+
         txtSoLuong.setText(String.valueOf(entity.getSoLuong()));
         txtMoTa.setText(entity.getMoTa());
         cboMau.setSelectedItem(entity.getTenMau());
