@@ -14,7 +14,6 @@ public class KhachHang {
 
     public int id;
     public String hoVaTen;
-    public boolean gioiTinh;
     public String sDT;
     public String email;
     public int soLuong;
@@ -23,10 +22,9 @@ public class KhachHang {
     public KhachHang() {
     }
 
-    public KhachHang(int id, String hoVaTen, boolean gioiTinh, String sDT, String email, int soLuong, BigDecimal tongTien) {
+    public KhachHang(int id, String hoVaTen, String sDT, String email, int soLuong, BigDecimal tongTien) {
         this.id = id;
         this.hoVaTen = hoVaTen;
-        this.gioiTinh = gioiTinh;
         this.sDT = sDT;
         this.email = email;
         this.soLuong = soLuong;
@@ -47,14 +45,6 @@ public class KhachHang {
 
     public void setHoVaTen(String hoVaTen) {
         this.hoVaTen = hoVaTen;
-    }
-
-    public boolean isGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(boolean gioiTinh) {
-        this.gioiTinh = gioiTinh;
     }
 
     public String getsDT() {
