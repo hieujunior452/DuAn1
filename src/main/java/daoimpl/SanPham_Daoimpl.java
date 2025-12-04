@@ -74,7 +74,8 @@ public class SanPham_Daoimpl implements SanPham_Dao {
             + "join NhaCungCap ncc on sp.idNhaCungCap = ncc.id where sp.id = ?";
     private String sqlDelete = "delete from SanPham where id = ?";
     private String sqlUpdate = "update SanPham set tenGiay=?, soLuong=?,giaNhap=?,idMau=?,size=?,idLoaiGiay=?,idChatLieu=?,hinh=?,donGia=?,trangThai=?,moTa=?,idNhaCungCap=? where id=?";
-    
+    private String sqlUpdateSoLuong = "update SanPham set soLuong=? where id=?";
+
     @Override
     public void create(SanPham entity) {
         XJdbc.executeUpdate(sqlCreate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap());
@@ -91,6 +92,11 @@ public class SanPham_Daoimpl implements SanPham_Dao {
         if (delete > 0) {
             JOptionPane.showMessageDialog(null, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    public void updateSoLuong(int soLuong, int idSP) {
+        XJdbc.executeUpdate(sqlUpdateSoLuong, soLuong, idSP);
+
     }
 
     @Override

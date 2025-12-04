@@ -555,6 +555,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         }
         this.create();
         this.fillToTable();
+        fillToTableFind();
     }//GEN-LAST:event_btnTaoDonActionPerformed
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
@@ -610,12 +611,14 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
             if (hoaDonChiTiet.getIdSanPham() == HDCT.getIdSanPham()) {
                 hoaDonChiTiet.setSoLuong(hoaDonChiTiet.getSoLuong() + soLuong);
                 repoHDCT.updateSL(hoaDonChiTiet);
+                repoSP.updateSoLuong((sanPham.getSoLuong() - soLuong), hoaDonChiTiet.getIdSanPham());
                 check = true;
                 break;
             }
         }
         if (!check) {
             repoHDCT.create(HDCT);
+            repoSP.updateSoLuong((sanPham.getSoLuong() - soLuong), HDCT.getIdSanPham());
         }
         this.fillToTable();
         fillToTableFind();
@@ -703,10 +706,14 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         int kt = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn hủy hóa đơn này không!", "Thông báo", JOptionPane.YES_NO_OPTION);
         if (kt == 0) {
             String lyDoHuyDon = JOptionPane.showInputDialog("Nhập lý do hủy đơn!");
+            for (int i = 0; i < tblGioHang.getRowCount(); i++) {
+                SanPham sanPham = repoSP.findById(Integer.parseInt(tblGioHang.getValueAt(i, 0).toString()));
+                repoSP.updateSoLuong((sanPham.getSoLuong() + Integer.parseInt(tblGioHang.getValueAt(i, 2).toString())), Integer.parseInt(tblGioHang.getValueAt(i, 0).toString()));
+            }
             repoHD.updateHuyDon(new HoaDon(txtMaHD.getText(), parseMoney(txtTongTien.getText()), -1, lyDoHuyDon));
-//            this.delete();
             this.clear();
             this.fillToTable();
+            fillToTableFind();
             JOptionPane.showMessageDialog(this, "Hủy đơn thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -787,6 +794,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
             HoaDonPDF.exportPDF(hd, hoaDonChiTiet, kh, filePath);
             this.clear();
             this.fillToTable();
+            fillToTableFind();
         }
 
 
@@ -959,7 +967,10 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
     private void iXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iXoaActionPerformed
         // TODO add your handling code here:
         int idSP = Integer.parseInt(tblGioHang.getValueAt(tblGioHang.getSelectedRow(), 0).toString());
+        int tongSoLuong = repoSP.findById(idSP).getSoLuong();
+        int soLuongXoa = Integer.parseInt(tblGioHang.getValueAt(tblGioHang.getSelectedRow(), 2).toString());
         repoHDCT.deleteByIdSP(idSP, txtMaHD.getText());
+        repoSP.updateSoLuong((tongSoLuong + soLuongXoa), idSP);
         fillToTable();
         this.updateTongTien();
         cboVoucherActionPerformed(null);
