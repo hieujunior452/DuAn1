@@ -329,11 +329,14 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jScrollPane2.setViewportView(tblSanPham);
 
         btgTrangThai.add(rdoConHang);
+        rdoConHang.setForeground(new java.awt.Color(13, 71, 161));
         rdoConHang.setText("Còn hàng");
 
         btgTrangThai.add(rdoHetHang);
+        rdoHetHang.setForeground(new java.awt.Color(13, 71, 161));
         rdoHetHang.setText("Hết hàng");
 
+        jLabel1.setForeground(new java.awt.Color(13, 71, 161));
         jLabel1.setText("ID");
 
         txtID.setFocusable(false);
@@ -346,20 +349,25 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
         txtTenSP.setPreferredSize(new java.awt.Dimension(71, 25));
 
+        jLabel2.setForeground(new java.awt.Color(13, 71, 161));
         jLabel2.setText("Tên");
 
         txtGiaNhap.setPreferredSize(new java.awt.Dimension(71, 25));
 
+        jLabel3.setForeground(new java.awt.Color(13, 71, 161));
         jLabel3.setText("Giá nhập");
 
         txtGiaBan.setPreferredSize(new java.awt.Dimension(71, 25));
 
+        jLabel4.setForeground(new java.awt.Color(13, 71, 161));
         jLabel4.setText("Giá bán");
 
         txtSoLuong.setPreferredSize(new java.awt.Dimension(71, 25));
 
+        jLabel5.setForeground(new java.awt.Color(13, 71, 161));
         jLabel5.setText("Số lượng");
 
+        jLabel6.setForeground(new java.awt.Color(13, 71, 161));
         jLabel6.setText("Màu");
         jLabel6.setToolTipText("");
 
@@ -369,21 +377,25 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         cboKichCo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboKichCo.setPreferredSize(new java.awt.Dimension(150, 25));
 
+        jLabel7.setForeground(new java.awt.Color(13, 71, 161));
         jLabel7.setText("Kích cỡ");
 
         cboLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboLoai.setPreferredSize(new java.awt.Dimension(150, 25));
 
+        jLabel8.setForeground(new java.awt.Color(13, 71, 161));
         jLabel8.setText("Loại");
 
         cboChatLieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboChatLieu.setPreferredSize(new java.awt.Dimension(150, 25));
 
+        jLabel9.setForeground(new java.awt.Color(13, 71, 161));
         jLabel9.setText("Chất liệu");
 
         cboNhaCungCap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboNhaCungCap.setPreferredSize(new java.awt.Dimension(150, 25));
 
+        jLabel10.setForeground(new java.awt.Color(13, 71, 161));
         jLabel10.setText("Nhà CC");
 
         javax.swing.GroupLayout jpSanPhamLayout = new javax.swing.GroupLayout(jpSanPham);
