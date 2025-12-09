@@ -1,31 +1,21 @@
-﻿---------------------------------------------------------
--- CREATE DATABASE
----------------------------------------------------------
+﻿
 CREATE DATABASE QuanLyGiay;
 GO
 USE QuanLyGiay;
 GO
 
-
----------------------------------------------------------
--- TABLES
----------------------------------------------------------
-
--- 1. ChatLieu
 CREATE TABLE ChatLieu (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenChatLieu NVARCHAR(100) NOT NULL UNIQUE
 );
 
 
--- 2. ChucVu
 CREATE TABLE ChucVu (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenChucVu NVARCHAR(100) NOT NULL UNIQUE
 );
 
 
--- 3. KhachHang
 CREATE TABLE KhachHang (
     id INT IDENTITY(1,1) PRIMARY KEY,
     hoVaTen NVARCHAR(100) NOT NULL,
@@ -34,28 +24,23 @@ CREATE TABLE KhachHang (
 );
 
 
--- 4. KichCo
 CREATE TABLE KichCo (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenKichCo NVARCHAR(100) NOT NULL UNIQUE
 );
 
 
--- 5. Mau
 CREATE TABLE Mau (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenMau NVARCHAR(100) NOT NULL UNIQUE
 );
 
 
--- 6. LoaiGiay
 CREATE TABLE LoaiGiay (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenLoai NVARCHAR(100) NOT NULL UNIQUE
 );
 
-
--- 7. NhaCungCap
 CREATE TABLE NhaCungCap (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenNCC NVARCHAR(100) NOT NULL UNIQUE,
@@ -65,12 +50,6 @@ CREATE TABLE NhaCungCap (
     trangThai BIT DEFAULT 1
 );
 
-
--- 8. ChucVu (for NhanVien)
--- (đã tạo bên trên)
-
-
--- 9. NhanVien
 CREATE TABLE NhanVien (
     id INT IDENTITY(1,1) PRIMARY KEY,
     maNhanVien VARCHAR(20) NOT NULL UNIQUE,
@@ -87,8 +66,6 @@ CREATE TABLE NhanVien (
     FOREIGN KEY (idCV) REFERENCES ChucVu(id)
 );
 
-
--- 10. KhuyenMai
 CREATE TABLE KhuyenMai (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenKM NVARCHAR(100),
@@ -100,8 +77,6 @@ CREATE TABLE KhuyenMai (
     FOREIGN KEY (idLoai) REFERENCES LoaiGiay(id)
 );
 
-
--- 11. SanPham
 CREATE TABLE SanPham (
     id INT IDENTITY(1,1) PRIMARY KEY,
     tenGiay NVARCHAR(100),
@@ -123,8 +98,6 @@ CREATE TABLE SanPham (
     FOREIGN KEY (idNhaCungCap) REFERENCES NhaCungCap(id)
 );
 
-
--- 12. HoaDon
 CREATE TABLE HoaDon (
     id INT IDENTITY(1,1) PRIMARY KEY,
     maHoaDon NVARCHAR(50) UNIQUE,
@@ -144,8 +117,6 @@ CREATE TABLE HoaDon (
     FOREIGN KEY (idKhuyenMai) REFERENCES KhuyenMai(id)
 );
 
-
--- 13. HoaDonChiTiet
 CREATE TABLE HoaDonChiTiet (
     id INT IDENTITY(1,1) PRIMARY KEY,
     idHoaDon INT,
@@ -160,13 +131,6 @@ CREATE TABLE HoaDonChiTiet (
     FOREIGN KEY (idSanPham) REFERENCES SanPham(id)
 );
 
-
-
----------------------------------------------------------
--- INSERT DATA
----------------------------------------------------------
-
--- ChatLieu
 INSERT INTO ChatLieu (tenChatLieu) VALUES
 (N'Cao su'),
 (N'Da'),
@@ -175,32 +139,25 @@ INSERT INTO ChatLieu (tenChatLieu) VALUES
 (N'Vải');
 
 
--- ChucVu
 INSERT INTO ChucVu (tenChucVu) VALUES
 (N'Nhân viên'),
 (N'Quản lý');
 
 
--- KhachHang
 INSERT INTO KhachHang (hoVaTen, sDT, email) VALUES
 (N'Nguyễn Ngọc Hiếu', '0975653220', 'hieudubaizz@gmail.com'),
 (N'Nguyễn Ngọc Hiếu', '0329094765', 'hieudubaizz@gmail.com');
 
-
--- KichCo
 INSERT INTO KichCo (tenKichCo) VALUES
 (N'36'), (N'37'), (N'38'), (N'39'),
 (N'40'), (N'41'), (N'42');
 
 
--- Mau
 INSERT INTO Mau (tenMau) VALUES
 (N'Đen'),
 (N'Đỏ'),
 (N'Tím');
 
-
--- LoaiGiay
 INSERT INTO LoaiGiay (tenLoai) VALUES
 (N'Giày chạy bộ'),
 (N'Giày đá bóng'),
@@ -209,12 +166,10 @@ INSERT INTO LoaiGiay (tenLoai) VALUES
 (N'Sneaker cao cấp');
 
 
--- NhaCungCap (tối thiểu 1 bản ghi)
 INSERT INTO NhaCungCap (tenNCC, diaChi, sDT, email)
 VALUES (N'Nhà cung cấp A', N'Hà Nội', '0900000000', 'nccA@gmail.com');
 
 
--- NhanVien
 INSERT INTO NhanVien
 (maNhanVien, matKhau, hoVaTen, ngaySinh, gioiTinh, diaChi, sDT, email, idCV, hinh, trangThai)
 VALUES
@@ -222,13 +177,11 @@ VALUES
 ('NV02','123','Nhân viên A','2000-01-01',1,N'Hà Nội','0900000001','nv2@gmail.com',1,'hinh2.jpg',1);
 
 
--- KhuyenMai
 INSERT INTO KhuyenMai
 (tenKM, phanTramGiam, ngayBatDau, ngayKetThuc, trangThai, idLoai)
 VALUES (N'Giảm 10% giày chạy bộ', 10, '2024-12-02', '2026-12-02', 1, 1);
 
 
--- SanPham
 INSERT INTO SanPham
 (tenGiay, soLuong, giaNhap, idMau, size, idLoaiGiay, idChatLieu, hinh, donGia, trangThai, moTa, idNhaCungCap)
 VALUES
@@ -237,7 +190,6 @@ VALUES
 (N'Giày mẫu C', 100, 300000, 1, 3, 1, 1, 'c.jpg', 800000, 1, N'Mô tả...', 1);
 
 
--- HoaDon
 INSERT INTO HoaDon
 (maHoaDon, ngayTao, ngayThanhToan, maNhanVien, phuongThucThanhToan,
  tongTien, tienKhachDua, tienTraLai, trangThai, ghiChu, idKhachHang)
@@ -246,8 +198,6 @@ VALUES
 ('HD002','2025-12-02T18:26:14','2025-12-02T18:26:39','NV02',N'Tiền mặt',3040000,5000000,1960000,1,N'',1),
 ('HD003','2025-12-02T18:27:19','2025-12-02T18:27:42','NV02',N'Chuyển khoản',2160000,0,0,1,N'tuyệt',1);
 
-
--- HoaDonChiTiet
 INSERT INTO HoaDonChiTiet
 (idHoaDon, idSanPham, soLuong, donGia, giamGia, thanhTien, maHoaDon)
 VALUES

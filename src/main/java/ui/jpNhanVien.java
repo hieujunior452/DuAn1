@@ -43,33 +43,12 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
     private DefaultTableModel modelNV = new DefaultTableModel();
     private DefaultTableModel modelCV = new DefaultTableModel();
     private String fileAnh = "";
-    MouseAdapter hoverEffect = new MouseAdapter() {
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            JButton btn = (JButton) e.getSource();
-            btn.setBackground(Color.DARK_GRAY);
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            JButton btn = (JButton) e.getSource();
-            btn.setBackground(Color.BLUE);
-        }
-    };
     public jpNhanVien() {
         initComponents();
         this.cboChucVuTimKiem.setVisible(false);
         this.setTableColumnWidths();
         this.fillToTable();
         this.fillToComboBox();
-        btnLamMoi.addMouseListener(hoverEffect);
-        btnLamMoiCV.addMouseListener(hoverEffect);
-        btnSua.addMouseListener(hoverEffect);
-        btnSuaCV.addMouseListener(hoverEffect);
-        btnThem.addMouseListener(hoverEffect);
-        btnThemCV.addMouseListener(hoverEffect);
-        btnXoa.addMouseListener(hoverEffect);
-        btnXoaCV.addMouseListener(hoverEffect);
     }
 
     public void setTableColumnWidths() {

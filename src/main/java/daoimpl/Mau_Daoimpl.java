@@ -24,7 +24,14 @@ public class Mau_Daoimpl implements Mau_Dao {
 
     @Override
     public void create(Mau entity) {
-        XJdbc.executeUpdate(sqlCreate, entity.getTenMau());
+        try {
+            XJdbc.executeUpdate(sqlCreate, entity.getTenMau());
+
+        } catch (Exception e) {
+            if (e.getMessage().contains("UNIQUE")) {
+                JOptionPane.showMessageDialog(null, "Màu đã có trong hệ thống");
+            }
+        }
 
     }
 

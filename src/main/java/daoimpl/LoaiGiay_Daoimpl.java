@@ -25,7 +25,13 @@ public class LoaiGiay_Daoimpl implements LoaiGiay_Dao {
 
     @Override
     public void create(LoaiGiay entity) {
+        try {
         XJdbc.executeUpdate(sqlCreate, entity.getTenLoai());
+        } catch (Exception e) {
+            if (e.getMessage().contains("UNIQUE")) {
+                JOptionPane.showMessageDialog(null, "Loại đã có trong hệ thống");
+            }
+        }
     }
 
     @Override

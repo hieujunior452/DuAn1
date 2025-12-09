@@ -34,21 +34,6 @@ public class frmTrangChu extends javax.swing.JFrame {
             "C:\\Users\\Administrator\\Pictures\\Screenshots\\me.png",
             true
     );
-
-    MouseAdapter hoverEffect = new MouseAdapter() {
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            JButton btn = (JButton) e.getSource();
-            btn.setBackground(Color.DARK_GRAY);
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            JButton btn = (JButton) e.getSource();
-            btn.setBackground(Color.BLUE);
-        }
-    };
-
     public frmTrangChu() {
         initComponents();
         setLocationRelativeTo(this);
@@ -57,15 +42,6 @@ public class frmTrangChu extends javax.swing.JFrame {
             btnNhanvien.setVisible(false);
             btnThongke.setVisible(false);
         }
-        btnBanhang.addMouseListener(hoverEffect);
-        btnHoadon.addMouseListener(hoverEffect);
-        btnKhachhang.addMouseListener(hoverEffect);
-        btnKhuyenmai.addMouseListener(hoverEffect);
-        btnNhanvien.addMouseListener(hoverEffect);
-        btnSanpham.addMouseListener(hoverEffect);
-        btnThoat.addMouseListener(hoverEffect);
-        btnThongke.addMouseListener(hoverEffect);
-        btnTrangchu.addMouseListener(hoverEffect);
         lblAnh.setSize(150, 150);
         ImageIcon icon = new ImageIcon(nhanVienHienTai.getHinh());
         Image img = icon.getImage();

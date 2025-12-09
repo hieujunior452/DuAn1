@@ -3,25 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package daoimpl;
+
 import dao.*;
 import entity.KichCo;
 import java.util.List;
 import javax.swing.JOptionPane;
 import util.XJdbc;
 import util.XQuery;
+
 /**
  *
  * @author Administrator
  */
-public class KichCo_Daoimpl implements KichCo_Dao{
+public class KichCo_Daoimpl implements KichCo_Dao {
 
     private String sqlFindAll = "select * from KichCo";
     private String sqlFindByName = "select * from KichCo where tenKichCo = ?";
     private String sqlCreate = "insert into KichCo values (?)";
     private String sqlDeleteByName = "delete from KichCo where tenKichCo = ?";
+
     @Override
     public void create(KichCo entity) {
-        XJdbc.executeUpdate(sqlCreate, entity.getTenKichCo());
+        try {
+            XJdbc.executeUpdate(sqlCreate, entity.getTenKichCo());
+        } catch (Exception e) {
+            if (e.getMessage().contains("UNIQUE")) {
+                JOptionPane.showMessageDialog(null, "Kích cỡ đã có trong hệ thống");
+            }
+        }
     }
 
     @Override
@@ -46,7 +55,7 @@ public class KichCo_Daoimpl implements KichCo_Dao{
 
     public void deleteByName(String ten) {
         try {
-        XJdbc.executeUpdate(sqlDeleteByName, ten);
+            XJdbc.executeUpdate(sqlDeleteByName, ten);
         } catch (Exception e) {
             if (e.getMessage().contains("The DELETE statement conflicted with the REFERENCE constraint")) {
                 JOptionPane.showMessageDialog(null, "Không thể xóa đang có sản phẩm thuộc kích cỡ này", "Thông báo!", JOptionPane.WARNING_MESSAGE);
@@ -57,5 +66,5 @@ public class KichCo_Daoimpl implements KichCo_Dao{
     public KichCo findByName(String ten) {
         return XQuery.getSingleBean(KichCo.class, sqlFindByName, ten);
     }
-    
+
 }

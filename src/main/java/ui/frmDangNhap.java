@@ -30,28 +30,12 @@ public class frmDangNhap extends javax.swing.JFrame {
 
     private boolean showPassworld = false;
 
-    MouseAdapter hoverEffect = new MouseAdapter() {
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            JButton btn = (JButton) e.getSource();
-            btn.setBackground(Color.DARK_GRAY);
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            JButton btn = (JButton) e.getSource();
-            btn.setBackground(Color.BLUE);
-        }
-    };
-
     /**
      * Creates new form frmLogin
      */
     public frmDangNhap() {
         initComponents();
         setLocationRelativeTo(this);
-        btnDangNhap.addMouseListener(hoverEffect);
-        btnQuenMatKhau.addMouseListener(hoverEffect);
     }
 
     /**

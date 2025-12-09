@@ -24,7 +24,13 @@ public class ChatLieu_Daoimpl implements ChatLieu_Dao {
 
     @Override
     public void create(ChatLieu entity) {
-        XJdbc.executeUpdate(sqlCreate, entity.getTenChatLieu());
+        try {
+            XJdbc.executeUpdate(sqlCreate, entity.getTenChatLieu());
+        } catch (Exception e) {
+            if (e.getMessage().contains("UNIQUE")) {
+                JOptionPane.showMessageDialog(null, "Chất liệu đã có trong hệ thống");
+            }
+        }
     }
 
     @Override
@@ -60,5 +66,5 @@ public class ChatLieu_Daoimpl implements ChatLieu_Dao {
     public ChatLieu findByName(String ten) {
         return XQuery.getSingleBean(ChatLieu.class, sqlFindByName, ten);
     }
-    
+
 }

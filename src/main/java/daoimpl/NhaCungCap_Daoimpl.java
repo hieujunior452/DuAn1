@@ -6,6 +6,7 @@ package daoimpl;
 import dao.*;
 import entity.NhaCungCap;
 import java.util.List;
+import javax.swing.JOptionPane;
 import util.XJdbc;
 import util.XQuery;
 /**
@@ -22,7 +23,13 @@ public class NhaCungCap_Daoimpl implements NhaCungCap_Dao{
 
     @Override
     public void create(NhaCungCap entity) {
+        try {
         XJdbc.executeUpdate(sqlCreate, entity.getTenNCC(), entity.getDiaChi(), entity.getsDT(), entity.getEmail(), entity.isTrangThai());
+        } catch (Exception e) {
+            if (e.getMessage().contains("UNIQUE")) {
+                JOptionPane.showMessageDialog(null, "Nhà cung cấp đã có trong hệ thống");
+            }
+        }
     }
 
     @Override

@@ -868,16 +868,16 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="btnLamMoi1" max="32767" attributes="0"/>
-                                          <Component id="btnXoaMau" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <Component id="btnThemMau" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnThemCT" pref="180" max="32767" attributes="0"/>
+                                          <Component id="btnXoaCT" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnLamMoi1" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="287" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jScrollPane3" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="610" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" pref="648" max="-2" attributes="0"/>
                           </Group>
@@ -938,9 +938,9 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="btnThemMau" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnThemCT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnXoaMau" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnXoaCT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnLamMoi1" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1109,6 +1109,9 @@
                   <Dimension value="[200, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTenNCCKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtSDTNCC">
               <Properties>
@@ -1116,6 +1119,9 @@
                   <Dimension value="[200, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSDTNCCKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmailNCC">
               <Properties>
@@ -1123,6 +1129,9 @@
                   <Dimension value="[200, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailNCCKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIDNCC">
               <Properties>
@@ -1142,6 +1151,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ho&#x1ea1;t &#x111;&#x1ed9;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoHoatDongActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoDungHoatDong">
               <Properties>
@@ -1153,6 +1165,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1eeb;ng ho&#x1ea1;t d&#x1ed9;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoDungHoatDongActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLamMoi1">
               <Properties>
@@ -1246,7 +1261,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnThemMau">
+            <Component class="javax.swing.JButton" name="btnThemCT">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="0" id="blue" palette="1" red="0" type="palette"/>
@@ -1264,10 +1279,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemMauActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemCTActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnXoaMau">
+            <Component class="javax.swing.JButton" name="btnXoaCT">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="0" id="blue" palette="1" red="0" type="palette"/>
@@ -1284,7 +1299,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaMauActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaCTActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane5">
@@ -1304,6 +1319,9 @@
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDiaChiNCCKeyPressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
