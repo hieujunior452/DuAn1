@@ -33,13 +33,13 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
     private String sqlCapNhatNhanVien = "update NhanVien set hoVaTen = ?, ngaySinh = ?, gioiTinh = ?, diaChi = ?, sDT = ?, email = ?, idCV = ?, hinh = ?, trangThai = ? where maNhanVien = ?";
     private String sqlDeleteNhanVien = "delete from NhanVien where maNhanVien = ?";
 
-    @Override
-    public void create(NhanVien entity) {
+    public int createe(NhanVien entity) {
         try {
             int create = XJdbc.executeUpdate(sqlThemNhanVien, entity.getMaNhanVien(), entity.getMatKhau(), entity.getHoVaTen(), entity.getNgaySinh(),
                     entity.isGioiTinh(), entity.getDiaChi(), entity.getsDT(), entity.getEmail(), entity.getIdCV(), entity.getHinh(), entity.isTrangThai());
             if (create > 0) {
                 JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công\n mật khẩu mặc định là : 123456!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+                return create;
             }
         } catch (Exception e) {
             String errorMessage = e.getMessage().toLowerCase();
@@ -50,6 +50,7 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
                 JOptionPane.showMessageDialog(null, "Có lỗi xảy ra trong quá trình thêm nhân viên: \n" + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         }
+        return 0;
     }
 
     @Override
@@ -64,8 +65,8 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
 
     }
 
-    public void updatePassword(String passworld, String maNhanVien) {
-        XJdbc.executeUpdate(sqlUpdatePassworld, passworld, maNhanVien);
+    public int updatePassword(String passworld, String maNhanVien) {
+        return XJdbc.executeUpdate(sqlUpdatePassworld, passworld, maNhanVien);
     }
 
     @Override
@@ -119,6 +120,11 @@ public class NhanVien_Daoimpl implements NhanVien_Dao {
             default:
                 return null;
         }
+    }
+
+    @Override
+    public void create(NhanVien entity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -26,6 +26,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -497,40 +499,44 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
         jPanel1.setBackground(new java.awt.Color(207, 231, 255));
 
-        btnLamMoiCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnLamMoiCV.setBackground(java.awt.Color.blue);
         btnLamMoiCV.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoiCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnLamMoiCV.setText("Làm mới");
+        btnLamMoiCV.setPreferredSize(new java.awt.Dimension(105, 35));
         btnLamMoiCV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiCVActionPerformed(evt);
             }
         });
 
-        btnXoaCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnXoaCV.setBackground(java.awt.Color.blue);
         btnXoaCV.setForeground(new java.awt.Color(255, 255, 255));
         btnXoaCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         btnXoaCV.setText("Xóa");
+        btnXoaCV.setPreferredSize(new java.awt.Dimension(78, 35));
         btnXoaCV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaCVActionPerformed(evt);
             }
         });
 
-        btnSuaCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnSuaCV.setBackground(java.awt.Color.blue);
         btnSuaCV.setForeground(new java.awt.Color(255, 255, 255));
         btnSuaCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         btnSuaCV.setText("Sửa");
+        btnSuaCV.setPreferredSize(new java.awt.Dimension(77, 35));
         btnSuaCV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaCVActionPerformed(evt);
             }
         });
 
-        btnThemCV.setBackground(new java.awt.Color(30, 136, 229));
+        btnThemCV.setBackground(java.awt.Color.blue);
         btnThemCV.setForeground(new java.awt.Color(255, 255, 255));
         btnThemCV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create.png"))); // NOI18N
         btnThemCV.setText("Thêm");
+        btnThemCV.setPreferredSize(new java.awt.Dimension(89, 35));
         btnThemCV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemCVActionPerformed(evt);
@@ -590,12 +596,12 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                             .addComponent(txtTenCV, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(134, 134, 134)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLamMoiCV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnXoaCV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSuaCV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnThemCV, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 725, Short.MAX_VALUE)))
+                            .addComponent(btnThemCV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(725, 725, 725)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -604,13 +610,9 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnThemCV, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnThemCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSuaCV, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnXoaCV, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLamMoiCV, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSuaCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -619,8 +621,12 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTenCV, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(btnXoaCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLamMoiCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -653,7 +659,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
     private void lblAnhNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhNVMouseClicked
         try {
-            FileDialog fd = new FileDialog((Frame) null, "Chọn ảnh nhân viên", FileDialog.LOAD);
+            FileDialog fd = new FileDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Chọn ảnh nhân viên", FileDialog.LOAD);
             fd.setDirectory("");
             fd.setFile("*.jpg;*.png");
             fd.setVisible(true);
@@ -731,8 +737,7 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
             return;
         }
         this.create();
-        this.fillToTable();
-        clear();
+        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -997,7 +1002,13 @@ public class jpNhanVien extends javax.swing.JPanel implements Controller_NhanVie
 
     @Override
     public void create() {;
-        repoNV.create(this.getForm());
+        int thongbao = repoNV.createe(this.getForm());
+        if (thongbao <= 0) {
+            txtMaNV.requestFocus();
+            return;
+        }
+        this.fillToTable();
+        clear();
     }
 
     @Override

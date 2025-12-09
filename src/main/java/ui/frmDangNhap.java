@@ -295,6 +295,7 @@ public class frmDangNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             frmTrangChu.nhanVienHienTai = nhanVien;
             new frmTrangChu().setVisible(true);
+            this.dispose();
             found = true;
         }
         if (!found) {

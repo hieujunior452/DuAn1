@@ -323,7 +323,7 @@ public class jpHoaDon extends javax.swing.JPanel implements Controller_HoaDon {
             if (cboTimKiem.getSelectedIndex() == 1 || cboTimKiem.getSelectedIndex() == 2) {
             ngayTao = jdNgayTao.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Date date = jdNgayThanhToan.getDate();
-            ngayThanhToan = (date == null) ? LocalDate.now() : date.toInstant() .atZone(ZoneId.systemDefault()) .toLocalDate();
+            ngayThanhToan = (date == null) ? LocalDate.now() : date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             fillToTableFind();
         }
         } catch (Exception e) {

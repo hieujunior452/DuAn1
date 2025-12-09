@@ -6,7 +6,9 @@ package daoimpl;
 
 import dao.*;
 import entity.HoaDonChiTiet;
+import entity.ThongKe;
 import java.util.List;
+import ui.jpThongKe;
 import util.XJdbc;
 import util.XQuery;
 
@@ -71,4 +73,65 @@ public class HoaDonChiTiet_Daoimpl implements HoaDonChiTiet_Dao {
         return XQuery.getSingleBean(HoaDonChiTiet.class, sqlFindByID, id);
     }
 
+    public List<ThongKe> findSpThongKe(int index) {
+        switch (index) {
+            case 0:
+                return XQuery.getBeanList(ThongKe.class, "SELECT \n"
+                        + "    sp.id AS IDSanPham,\n"
+                        + "    sp.tenGiay AS TenSanPham,\n"
+                        + "    hdct.donGia AS DonGiaBan,\n"
+                        + "    SUM(hdct.soLuong) AS SoLuongBan,\n"
+                        + "    SUM(hdct.soLuong * hdct.donGia) AS DoanhThu\n"
+                        + "FROM HoaDonChiTiet hdct\n"
+                        + "JOIN SanPham sp ON hdct.idSanPham = sp.id\n"
+                        + "JOIN HoaDon hd ON hdct.idHoaDon = hd.id\n"
+                        + "WHERE CAST(hd.ngayThanhToan AS DATE) BETWEEN ? AND ?\n"
+                        + "  AND hd.trangThai = 1\n"
+                        + "GROUP BY sp.id, sp.tenGiay, hdct.donGia\n"
+                        + "ORDER BY DoanhThu DESC", jpThongKe.tu, jpThongKe.den);
+            case 1:
+                return XQuery.getBeanList(ThongKe.class, "SELECT \n"
+                        + "    sp.id AS IDSanPham,\n"
+                        + "    sp.tenGiay AS TenSanPham,\n"
+                        + "    hdct.donGia AS DonGiaBan,\n"
+                        + "    SUM(hdct.soLuong) AS SoLuongBan,\n"
+                        + "    SUM(hdct.soLuong * hdct.donGia) AS DoanhThu\n"
+                        + "FROM HoaDonChiTiet hdct\n"
+                        + "JOIN SanPham sp ON hdct.idSanPham = sp.id\n"
+                        + "JOIN HoaDon hd ON hdct.idHoaDon = hd.id\n"
+                        + "WHERE MONTH(hd.ngayThanhToan) BETWEEN ? AND ?\n"
+                        + "  AND YEAR(hd.ngayThanhToan) = ?\n"
+                        + "  AND hd.trangThai = 1\n"
+                        + "GROUP BY sp.id, sp.tenGiay, hdct.donGia\n"
+                        + "ORDER BY DoanhThu DESC;", jpThongKe.tu.getMonthValue(), jpThongKe.den.getMonthValue(), jpThongKe.tu.getYear());
+            case 2:
+                return XQuery.getBeanList(ThongKe.class, "SELECT \n"
+                        + "    sp.id AS IDSanPham,\n"
+                        + "    sp.tenGiay AS TenSanPham,\n"
+                        + "    hdct.donGia AS DonGiaBan,\n"
+                        + "    SUM(hdct.soLuong) AS SoLuongBan,\n"
+                        + "    SUM(hdct.soLuong * hdct.donGia) AS DoanhThu\n"
+                        + "FROM HoaDonChiTiet hdct\n"
+                        + "JOIN SanPham sp ON hdct.idSanPham = sp.id\n"
+                        + "JOIN HoaDon hd ON hdct.idHoaDon = hd.id\n"
+                        + "WHERE YEAR(hd.ngayThanhToan) BETWEEN ? AND ?\n"
+                        + "  AND hd.trangThai = 1\n"
+                        + "GROUP BY sp.id, sp.tenGiay, hdct.donGia\n"
+                        + "ORDER BY DoanhThu DESC;", jpThongKe.tu.getYear(), jpThongKe.den.getYear());
+            default:
+                return XQuery.getBeanList(ThongKe.class, "SELECT \n"
+                        + "    sp.id AS IDSanPham,\n"
+                        + "    sp.tenGiay AS TenSanPham,\n"
+                        + "    hdct.donGia AS DonGiaBan,\n"
+                        + "    SUM(hdct.soLuong) AS SoLuongBan,\n"
+                        + "    SUM(hdct.soLuong * hdct.donGia) AS DoanhThu\n"
+                        + "FROM HoaDonChiTiet hdct\n"
+                        + "JOIN SanPham sp ON hdct.idSanPham = sp.id\n"
+                        + "JOIN HoaDon hd ON hdct.idHoaDon = hd.id\n"
+                        + "  AND hd.trangThai = 1\n"
+                        + "GROUP BY sp.id, sp.tenGiay, hdct.donGia\n"
+                        + "ORDER BY DoanhThu DESC;");
+        }
+    }
+;
 }

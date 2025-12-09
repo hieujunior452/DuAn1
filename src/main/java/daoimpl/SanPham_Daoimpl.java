@@ -6,8 +6,13 @@ package daoimpl;
 
 import dao.*;
 import entity.SanPham;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import ui.jpThongKe;
 import util.XJdbc;
 import util.XQuery;
 
@@ -130,4 +135,42 @@ public class SanPham_Daoimpl implements SanPham_Dao {
         }
     }
 
+    public int findSPThongKe(int index) {
+
+        try {
+            String sql = "";
+            ResultSet rs;
+            switch (index) {
+                case 0:
+                    sql = "SELECT SUM(soLuong) FROM SanPham";
+                    rs= XJdbc.executeQuery(sql);
+                    break;
+                case 1:
+                    sql = "SELECT SUM(soLuong) FROM HoaDonChiTiet";
+                    rs= XJdbc.executeQuery(sql);
+                    break;
+                case 2:
+                    sql = "SELECT SUM(soLuong) FROM HoaDonChiTiet hdct join HoaDon hd on hdct.maHoaDon = hd.maHoaDon WHERE CAST(hd.ngayThanhToan AS DATE) BETWEEN ? AND ?";
+                    rs= XJdbc.executeQuery(sql, jpThongKe.tu, jpThongKe.den);
+                    break;
+                case 3:
+                    sql = "SELECT SUM(soLuong) FROM HoaDonChiTiet hdct join HoaDon hd on hdct.maHoaDon = hd.maHoaDon WHERE MONTH(hd.ngayThanhToan) BETWEEN ? AND ? AND YEAR(hd.ngayThanhToan) = ?";
+                    rs= XJdbc.executeQuery(sql, jpThongKe.tu.getMonthValue(), jpThongKe.den.getMonthValue(), jpThongKe.tu.getYear());
+                    break;
+                case 4:
+                    sql = "SELECT SUM(soLuong) FROM HoaDonChiTiet hdct join HoaDon hd on hdct.maHoaDon = hd.maHoaDon WHERE YEAR(hd.ngayThanhToan) BETWEEN ? AND ?";
+                    rs= XJdbc.executeQuery(sql, jpThongKe.tu.getYear(), jpThongKe.den.getYear());
+                    break;
+                default:
+                    return -1;
+            }
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

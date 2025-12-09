@@ -155,12 +155,12 @@ public class jdGetQRThanhToan extends javax.swing.JDialog {
 
     private void btnHuyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyMouseEntered
         // TODO add your handling code here:
-        btnHoanThanh.setBackground(Color.DARK_GRAY);
+        btnHuy.setBackground(Color.DARK_GRAY);
     }//GEN-LAST:event_btnHuyMouseEntered
 
     private void btnHuyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyMouseExited
         // TODO add your handling code here:
-        btnHoanThanh.setBackground(Color.BLUE);
+        btnHuy.setBackground(Color.BLUE);
     }//GEN-LAST:event_btnHuyMouseExited
 
     /**

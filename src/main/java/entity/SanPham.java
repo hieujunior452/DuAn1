@@ -29,7 +29,6 @@ public class SanPham {
     public String tenChatLieu;
     public String tenNCC;
     public String tenKichCo;
-
     public SanPham() {
     }
 
@@ -68,8 +67,6 @@ public class SanPham {
         this.tenNCC = tenNCC;
         this.tenKichCo = tenKichCo;
     }
-    
-    
 
     public int getId() {
         return id;

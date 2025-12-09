@@ -6,10 +6,12 @@ package ui;
 
 import entity.NhanVien;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,12 +26,12 @@ public class frmTrangChu extends javax.swing.JFrame {
      * Creates new form frmTrangChu
      */
     public static NhanVien nhanVienHienTai = new NhanVien(
-            "admin", "123456", "hieu",
+            "NV01", "123456", "Nguyễn Ngọc Hiếu",
             java.sql.Date.valueOf("2026-11-13"),
             true,
             "hhhhhhhhh", "hhhhhhhhhh", "hhhhhhhhh",
             1,
-            "C:\\Users\\Administrator\\Pictures\\Screenshots\\9c492c3ca0127b4319ea94183a68681a.png",
+            "C:\\Users\\Administrator\\Pictures\\Screenshots\\me.png",
             true
     );
 
@@ -64,6 +66,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnThoat.addMouseListener(hoverEffect);
         btnThongke.addMouseListener(hoverEffect);
         btnTrangchu.addMouseListener(hoverEffect);
+        lblAnh.setSize(150, 150);
+        ImageIcon icon = new ImageIcon(nhanVienHienTai.getHinh());
+        Image img = icon.getImage();
+        lblAnh.setIcon(new ImageIcon(img.getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH)));
+        lblTenNguoiDung.setText(nhanVienHienTai.getHoVaTen());
     }
 
     /**
@@ -88,14 +95,16 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnThoat = new javax.swing.JButton();
         lblTenNguoiDung = new javax.swing.JLabel();
         lblAnh = new javax.swing.JLabel();
+        btnDoiMatKhau = new javax.swing.JButton();
         jpMain = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Trang chủ");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(187, 222, 251));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setPreferredSize(new java.awt.Dimension(226, 720));
         jPanel2.setRequestFocusEnabled(false);
         jPanel2.setVerifyInputWhenFocusTarget(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
@@ -107,11 +116,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 25;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnTrangchu, gridBagConstraints);
 
         btnKhachhang.setBackground(java.awt.Color.blue);
@@ -126,10 +135,10 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipady = -12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnKhachhang, gridBagConstraints);
 
         btnNhanvien.setBackground(java.awt.Color.blue);
@@ -144,11 +153,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.ipady = -12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(27, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnNhanvien, gridBagConstraints);
 
         btnKhuyenmai.setBackground(java.awt.Color.blue);
@@ -163,10 +172,10 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipady = -12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnKhuyenmai, gridBagConstraints);
 
         btnSanpham.setBackground(java.awt.Color.blue);
@@ -181,11 +190,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 29;
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(27, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnSanpham, gridBagConstraints);
 
         btnBanhang.setBackground(java.awt.Color.blue);
@@ -200,25 +209,30 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.ipady = -12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(26, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnBanhang, gridBagConstraints);
 
         btnThongke.setBackground(java.awt.Color.blue);
         btnThongke.setForeground(new java.awt.Color(255, 255, 255));
         btnThongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Best.png"))); // NOI18N
         btnThongke.setText("Thống kê ");
+        btnThongke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongkeActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 29;
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnThongke, gridBagConstraints);
 
         btnHoadon.setBackground(java.awt.Color.blue);
@@ -233,11 +247,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 33;
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 41, 0, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
         jPanel2.add(btnHoadon, gridBagConstraints);
 
         btnThoat.setBackground(java.awt.Color.blue);
@@ -251,12 +265,12 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 51;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(27, 41, 24, 23);
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 5, 0);
         jPanel2.add(btnThoat, gridBagConstraints);
 
         lblTenNguoiDung.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -266,22 +280,46 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 41, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(6, 49, 0, 0);
         jPanel2.add(lblTenNguoiDung, gridBagConstraints);
 
         lblAnh.setForeground(new java.awt.Color(13, 71, 161));
-        lblAnh.setText("Ảnh");
+        lblAnh.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblAnh.setFocusable(false);
+        lblAnh.setMaximumSize(new java.awt.Dimension(150, 150));
+        lblAnh.setMinimumSize(new java.awt.Dimension(150, 150));
+        lblAnh.setPreferredSize(new java.awt.Dimension(150, 150));
+        lblAnh.setRequestFocusEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 118;
-        gridBagConstraints.ipady = 121;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 35, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(66, 49, 0, 39);
         jPanel2.add(lblAnh, gridBagConstraints);
 
+        btnDoiMatKhau.setBackground(java.awt.Color.blue);
+        btnDoiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        btnDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Properties.png"))); // NOI18N
+        btnDoiMatKhau.setText("Đổi mật khẩu");
+        btnDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMatKhauActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);
+        jPanel2.add(btnDoiMatKhau, gridBagConstraints);
+
         jpMain.setBackground(new java.awt.Color(207, 231, 255));
+        jpMain.setMinimumSize(new java.awt.Dimension(1280, 720));
         jpMain.setPreferredSize(new java.awt.Dimension(1280, 720));
         jpMain.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -291,7 +329,7 @@ public class frmTrangChu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -301,7 +339,7 @@ public class frmTrangChu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -343,13 +381,24 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        this.dispose();
+        new frmDangNhap().setVisible(true);
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnKhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenmaiActionPerformed
         // TODO add your handling code here:
         this.setPanel(new jpKhuyenMai());
     }//GEN-LAST:event_btnKhuyenmaiActionPerformed
+
+    private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(new jpThongKe());
+    }//GEN-LAST:event_btnThongkeActionPerformed
+
+    private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
+        // TODO add your handling code here:
+        this.setPanel(new jpDoiMatKhau());
+    }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,6 +437,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBanhang;
+    private javax.swing.JButton btnDoiMatKhau;
     private javax.swing.JButton btnHoadon;
     private javax.swing.JButton btnKhachhang;
     private javax.swing.JButton btnKhuyenmai;
