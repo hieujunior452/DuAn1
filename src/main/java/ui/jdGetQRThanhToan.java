@@ -26,8 +26,7 @@ public class jdGetQRThanhToan extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(parent);
         result = 0;
-        String url = "https://img.vietqr.io/image/mbbank-0329094765-compact.jpg?amount=%s&addInfo=%s&accountName=".formatted(tongTien, formatSpace(maHD));
-        System.out.println(url);
+        String url = "https://img.vietqr.io/image/mbbank-0329094765-compact.jpg?amount=%s&addInfo=%s&accountName=".formatted(tongTien, maHD);
         try {
             URL imageUrl = new URL(url);
             ImageIcon imageIcon = new ImageIcon(imageUrl);

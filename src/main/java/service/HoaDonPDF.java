@@ -15,6 +15,8 @@ import entity.*;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class HoaDonPDF {
@@ -22,6 +24,13 @@ public class HoaDonPDF {
     private static final DecimalFormat df = new DecimalFormat("#,### VNĐ");
     private static SanPham_Daoimpl repoSP = new SanPham_Daoimpl();
 
+    private static String formatDateTime(LocalDateTime dt) {
+        if (dt == null) {
+            return "";
+        }
+        return dt.format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy"));
+    }
+    
     public static void exportPDF(HoaDon hd, List<HoaDonChiTiet> listHDCT, KhachHang kh, String path) {
         try {
             Document document = new Document(PageSize.A4, 20, 20, 20, 20);
@@ -42,7 +51,7 @@ public class HoaDonPDF {
 
             document.add(new Paragraph("======================================"));
             document.add(new Paragraph("Mã hóa đơn: " + hd.getMaHoaDon(), font));
-            document.add(new Paragraph("Ngày tạo: " + hd.getNgayTao(), font));
+            document.add(new Paragraph("Ngày tạo: " + formatDateTime(hd.getNgayTao()), font));
             document.add(new Paragraph("Nhân viên: " + hd.getMaNhanVien(), font));
             document.add(new Paragraph("\nThông tin khách hàng", font));
             document.add(new Paragraph("Tên KH: " + kh.getHoVaTen(), font));

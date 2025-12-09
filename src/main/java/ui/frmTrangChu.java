@@ -277,7 +277,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         btnDoiMatKhau.setBackground(java.awt.Color.blue);
         btnDoiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        btnDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Properties.png"))); // NOI18N
+        btnDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pass.png"))); // NOI18N
         btnDoiMatKhau.setText("Đổi mật khẩu");
         btnDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +288,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipadx = 19;
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 49, 0, 0);

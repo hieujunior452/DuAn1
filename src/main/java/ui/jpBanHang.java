@@ -774,27 +774,32 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                     repoHD.updateCK(hoaDon);
                 }
             }
-            String filePath = null;
-            JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            FileDialog fd = new FileDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Chọn thư mục cần lưu", FileDialog.SAVE);
-            fd.setDirectory("resources/hoadon");
-            fd.setFile(txtMaHD.getText() + ".pdf");
-            fd.setVisible(true);
-            if (fd.getFile() == null) {
-                JOptionPane.showMessageDialog(this, "Bạn đã hủy lưu hóa đơn!");
-                return;
+            if (jdGetQRThanhToan.result == 1) {
+                String filePath = null;
+                JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                FileDialog fd = new FileDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Chọn thư mục cần lưu", FileDialog.SAVE);
+                fd.setDirectory("resources/hoadon");
+                fd.setFile(txtMaHD.getText() + ".pdf");
+                fd.setVisible(true);
+                while (fd.getFile() == null) {
+                    fd.setDirectory("resources/hoadon");
+                    fd.setFile(txtMaHD.getText() + ".pdf");
+                    fd.setVisible(true);
+                }
+                if (fd.getFile() != null) {
+                    File file = new File(fd.getDirectory(), fd.getFile());
+                    filePath = file.getPath();
+                }
+                HoaDon hd = repoHD.findByMaHD(txtMaHD.getText());
+                KhachHang kh = repoKH.findByPhone(txtSDTKH.getText());
+                List<HoaDonChiTiet> hoaDonChiTiet = repoHDCT.findByMaHDList(txtMaHD.getText());
+                HoaDonPDF.exportPDF(hd, hoaDonChiTiet, kh, filePath);
+                this.clear();
+                this.fillToTable();
+                fillToTableFind();
+            } else {
+                JOptionPane.showMessageDialog(this, "Đã hủy thanh toán!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
-            if (fd.getFile() != null) {
-                File file = new File(fd.getDirectory(), fd.getFile());
-                filePath = file.getPath();
-            }
-            HoaDon hd = repoHD.findByMaHD(txtMaHD.getText());
-            KhachHang kh = repoKH.findByPhone(txtSDTKH.getText());
-            List<HoaDonChiTiet> hoaDonChiTiet = repoHDCT.findByMaHDList(txtMaHD.getText());
-            HoaDonPDF.exportPDF(hd, hoaDonChiTiet, kh, filePath);
-            this.clear();
-            this.fillToTable();
-            fillToTableFind();
         }
 
 
