@@ -34,6 +34,7 @@ public class frmTrangChu extends javax.swing.JFrame {
             "C:\\Users\\Administrator\\Pictures\\Screenshots\\me.png",
             true
     );
+
     public frmTrangChu() {
         initComponents();
         setLocationRelativeTo(this);
@@ -357,8 +358,14 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new frmDangNhap().setVisible(true);
+        String[] options = {"Đăng xuất", "Thoát"};
+        int result = JOptionPane.showOptionDialog(this, "Bạn muốn", "Thông báo", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if (result == 0) {
+            this.dispose();
+            new frmDangNhap().setVisible(true);
+        } else if (result == 1) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnKhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenmaiActionPerformed
