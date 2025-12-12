@@ -18,6 +18,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class HoaDonPDF {
 
@@ -59,22 +60,27 @@ public class HoaDonPDF {
             document.add(new Paragraph("Email: " + (kh.getEmail() == null ? "" : kh.getEmail()), font));
             document.add(new Paragraph("======================================"));
             BigDecimal tongTien = BigDecimal.ZERO;
-            PdfPTable table = new PdfPTable(4);
+            BigDecimal tongTienGiam = BigDecimal.ZERO;
+            PdfPTable table = new PdfPTable(5);
             table.setWidthPercentage(100);
             table.addCell(new PdfPCell(new Phrase("Sản phẩm", fontBold)));
             table.addCell(new PdfPCell(new Phrase("SL", fontBold)));
             table.addCell(new PdfPCell(new Phrase("Đơn giá", fontBold)));
+            table.addCell(new PdfPCell(new Phrase("Giảm giá", fontBold)));
             table.addCell(new PdfPCell(new Phrase("Thành tiền", fontBold)));
             for (HoaDonChiTiet hdct : listHDCT) {
                 String tenSp = repoSP.findById(hdct.getIdSanPham()).getTenGiay();
                 table.addCell(new PdfPCell(new Phrase(tenSp, font)));
                 table.addCell(new PdfPCell(new Phrase(String.valueOf(hdct.getSoLuong()), font)));
                 table.addCell(new PdfPCell(new Phrase(df.format(hdct.getDonGia()), font)));
+                table.addCell(new PdfPCell(new Phrase(df.format(hdct.getGiamGia()), font)));
                 table.addCell(new PdfPCell(new Phrase(df.format(hdct.getThanhTien()), font)));
+                tongTienGiam = tongTienGiam.add(hdct.getGiamGia());
                 tongTien = tongTien.add(hdct.getThanhTien());
             }
             document.add(table);
             document.add(new Paragraph("======================================"));
+            document.add(new Paragraph("Tổng tiền được giảm: " + df.format(tongTienGiam)));
             document.add(new Paragraph("Tổng tiền: " + df.format(tongTien)));
             if (hd.getPhuongThucThanhToan().equalsIgnoreCase("Tiền mặt")) {
                 document.add(new Paragraph("Tiền khách đưa: " + df.format(hd.getTienKhachDua())));
@@ -84,7 +90,7 @@ public class HoaDonPDF {
             footer.setAlignment(Element.ALIGN_CENTER);
             document.add(footer);
             document.close();
-            System.out.println("Xuất PDF thành công!");
+            JOptionPane.showMessageDialog(null, "Lưu hóa đơn thành công");
         } catch (Exception e) {
             e.printStackTrace();
         }

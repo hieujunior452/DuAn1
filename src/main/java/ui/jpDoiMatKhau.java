@@ -224,6 +224,19 @@ public class jpDoiMatKhau extends javax.swing.JPanel {
         // TODO add your handling code here:
         String pass = new String(txtMKMoi.getPassword());
         String passNhapLai = new String(txtNhapLaiMKMoi.getPassword());
+        if (passNhapLai.contains(" ")) {
+            lblThongBao.setText("Mật khẩu không được có dấu cách");
+        } else if (!passNhapLai.matches("^[A-Z].*")) {
+            lblThongBao.setText("Ký tự đầu tiên phải là chữ hoa");
+        } else if (passNhapLai.length() <= 6) {
+            lblThongBao.setText("Mật khẩu phải hơn 6 ký tự");
+        } else if (!passNhapLai.matches(".*[0-9].*")) {
+            lblThongBao.setText("Mật khẩu phải chứa ít nhất 1 chữ số");
+        } else if (!passNhapLai.matches(".*[^a-zA-Z0-9].*")) {
+            lblThongBao.setText("Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt");
+        } else {
+            lblThongBao.setText("Mật khẩu hợp lệ!");
+        }
         if (!passNhapLai.equals(pass)) {
             lblThongBao.setText("Mật khẩu nhập lại không khớp");
         } else {

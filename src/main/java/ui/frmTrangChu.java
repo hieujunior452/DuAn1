@@ -30,7 +30,7 @@ public class frmTrangChu extends javax.swing.JFrame {
             java.sql.Date.valueOf("2026-11-13"),
             true,
             "hhhhhhhhh", "hhhhhhhhhh", "hhhhhhhhh",
-            1,
+            2,
             "C:\\Users\\Administrator\\Pictures\\Screenshots\\me.png",
             true
     );
@@ -39,7 +39,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         lblTenNguoiDung.setText(nhanVienHienTai.getHoVaTen());
-        if (nhanVienHienTai.getIdCV() != 1) {
+        if (nhanVienHienTai.getIdCV() == 1) {
             btnNhanvien.setVisible(false);
             btnThongke.setVisible(false);
         }

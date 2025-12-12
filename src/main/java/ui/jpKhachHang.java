@@ -140,7 +140,7 @@ public class jpKhachHang extends javax.swing.JPanel {
         modelKH = (DefaultTableModel) tblKhachHang.getModel();
         modelKH.setRowCount(0);
         for (KhachHang khachHang : repoKH.findAll(index)) {
-            modelKH.addRow(new Object[]{khachHang.getId(), khachHang.getsDT(), khachHang.getsDT(), khachHang.getEmail(), khachHang.getSoLuong(), formatMoney(khachHang.getTongTien())});
+            modelKH.addRow(new Object[]{khachHang.getId(), khachHang.getHoVaTen(), khachHang.getsDT(), khachHang.getEmail(), khachHang.getSoLuong(), formatMoney(khachHang.getTongTien())});
         }
     }
 

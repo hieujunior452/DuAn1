@@ -137,13 +137,13 @@ public class frmDangNhap extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(117, 117, 117)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblDangNhap)
                         .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
+                        .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnQuenMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblTaiKhoan)
@@ -212,7 +212,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         }
         if (username.trim().equalsIgnoreCase(nhanVien.getMaNhanVien())) {
             found = true;
-            String otpRandom = passwordRandom();
+            String otpRandom = OTPRandom();
             MailSender.sendMailOTP(nhanVien.getEmail(), nhanVien.getHoVaTen(), nhanVien.getMaNhanVien(), otpRandom);
             int attempt = 0;
             while (attempt < 3) {
@@ -320,6 +320,15 @@ public class frmDangNhap extends javax.swing.JFrame {
         btnQuenMatKhau.setBackground(Color.BLUE);
     }//GEN-LAST:event_btnQuenMatKhauMouseExited
 
+    public String OTPRandom() {
+        String pass = "0123456789";
+        SecureRandom sd = new SecureRandom();
+        StringBuilder sb = new StringBuilder(6);
+        for (int i = 0; i < 6; i++) {
+            sb.append(pass.charAt(sd.nextInt(pass.length())));
+        }
+        return sb.toString();
+    }
     public String passwordRandom() {
         String pass = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         SecureRandom sd = new SecureRandom();

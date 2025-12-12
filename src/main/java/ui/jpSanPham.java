@@ -26,6 +26,10 @@ import controller.Controller_SanPham;
 import java.awt.FileDialog;
 import java.awt.Frame;
 import java.awt.event.MouseAdapter;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -174,7 +178,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         jLabel12.setAlignmentY(1.0F);
 
         lblAnhSP.setForeground(new java.awt.Color(13, 71, 161));
-        lblAnhSP.setText("Ảnh NV");
+        lblAnhSP.setText("Ảnh SP");
         lblAnhSP.setToolTipText("");
         lblAnhSP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblAnhSP.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,6 +316,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
         btgTrangThai.add(rdoConHang);
         rdoConHang.setForeground(new java.awt.Color(13, 71, 161));
+        rdoConHang.setSelected(true);
         rdoConHang.setText("Còn hàng");
 
         btgTrangThai.add(rdoHetHang);
@@ -645,6 +650,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
         btgTrangThaiNCC.add(rdoHoatDong);
         rdoHoatDong.setForeground(new java.awt.Color(13, 71, 161));
+        rdoHoatDong.setSelected(true);
         rdoHoatDong.setText("Hoạt động");
         rdoHoatDong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -938,6 +944,9 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        if (isCheckSP()) {
+            return;
+        }
         this.update();
         this.fillToTable();
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -957,8 +966,41 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         this.clear();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
+    public boolean isCheckSP() {
+        System.out.println(fileAnh);
+        if (txtTenSP.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập tên nhân viên!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtTenSP.requestFocus();
+            return true;
+        } else if (txtGiaNhap.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá nhập vào!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtGiaNhap.requestFocus();
+            return true;
+        } else if (txtGiaBan.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá bán!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtGiaBan.requestFocus();
+            return true;
+        }else if (txtSoLuong.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Số lượng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtSoLuong.requestFocus();
+            return true;
+        } else if (Integer.parseInt(txtSoLuong.getText()) < 1) {
+            JOptionPane.showMessageDialog(this, "Số lượng không được bé hơn 1!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtSoLuong.requestFocus();
+            return true;
+        }else if (fileAnh.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn ảnh của nhân viên!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            this.lblAnhSPMouseClicked(null);
+            return true;
+        }
+        return false;
+    }
+
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        if (isCheckSP()) {
+            return;
+        }
         this.create();
         this.fillToTable();
     }//GEN-LAST:event_btnThemActionPerformed
@@ -988,7 +1030,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
     private void btnLamMoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoi1ActionPerformed
         // TODO add your handling code here:
-        clear();
+        clearCT();
     }//GEN-LAST:event_btnLamMoi1ActionPerformed
 
     private void btnThemCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTActionPerformed
@@ -1047,6 +1089,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
     private void tblChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietMouseClicked
         // TODO add your handling code here:
+        clearCT();
         if (tblChiTiet.getSelectedColumn() == 0 && tblChiTiet.getValueAt(tblChiTiet.getSelectedRow(), tblChiTiet.getSelectedColumn()) != null) {
             txtMauCT.setText(tblChiTiet.getValueAt(tblChiTiet.getSelectedRow(), tblChiTiet.getSelectedColumn()).toString());
             btnXoaCT.setText("Xóa màu");
@@ -1075,6 +1118,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
     private void tblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNCCMouseClicked
         // TODO add your handling code here:
+        clearCT();
         NhaCungCap nhaCungCap = repoNCC.findById(Integer.parseInt(tblNCC.getValueAt(tblNCC.getSelectedRow(), 0).toString()));
         txtIDNCC.setText(String.valueOf(nhaCungCap.getId()));
         txtTenNCC.setText(nhaCungCap.getTenNCC());
@@ -1260,7 +1304,7 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         }
         modelCT = (DefaultTableModel) tblChiTiet.getModel();
         modelCT.setRowCount(0);
-        int max = Math.max(Math.max(repoM.findAll().size(), repoKC.findAll().size()),  Math.max(repoCL.findAll().size(), repoCL.findAll().size()));
+        int max = Math.max(Math.max(repoM.findAll().size(), repoKC.findAll().size()), Math.max(repoCL.findAll().size(), repoCL.findAll().size()));
         for (int i = 0; i < max; i++) {
             modelCT.addRow(new Object[]{null, null, null, null});
         }
@@ -1359,6 +1403,19 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
 
     @Override
     public void clear() {
+        txtID.setText("");
+        txtTenSP.setText("");
+        txtGiaNhap.setText("");
+        txtGiaBan.setText("");
+        txtSoLuong.setText("");
+        txtMoTa.setText("");
+        cboMau.setSelectedIndex(0);
+        cboKichCo.setSelectedIndex(0);
+        cboLoai.setSelectedIndex(0);
+        cboChatLieu.setSelectedIndex(0);
+        cboNhaCungCap.setSelectedIndex(0);
+    }
+    public void clearCT() {
         txtIDNCC.setText("");
         txtTenNCC.setText("");
         txtSDTNCC.setText("");
@@ -1368,11 +1425,9 @@ public class jpSanPham extends javax.swing.JPanel implements Controller_SanPham 
         txtKichCoCT.setText("");
         txtLoaiCT.setText("");
         txtChatLieuCT.setText("");
-        btgTrangThaiNCC.clearSelection();
         btnThemCT.setText("Thêm");
         btnXoaCT.setText("Xóa");
     }
-
     @Override
     public void setEditable(boolean editable) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

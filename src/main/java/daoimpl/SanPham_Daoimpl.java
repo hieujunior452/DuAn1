@@ -83,12 +83,18 @@ public class SanPham_Daoimpl implements SanPham_Dao {
 
     @Override
     public void create(SanPham entity) {
-        XJdbc.executeUpdate(sqlCreate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap());
+        int i = XJdbc.executeUpdate(sqlCreate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap());
+        if (i > 0) {
+            JOptionPane.showMessageDialog(null, "Thêm sản phẩm thành công!");
+        }
     }
 
     @Override
     public void update(SanPham entity) {
-        XJdbc.executeUpdate(sqlUpdate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap(), entity.getId());
+        int i = XJdbc.executeUpdate(sqlUpdate, entity.getTenGiay(), entity.getSoLuong(), entity.getGiaNhap(), entity.getIdMau(), entity.getSize(), entity.getIdLoaiGiay(), entity.getIdchatLieu(), entity.getHinh(), entity.getDonGia(), entity.isTrangThai(), entity.getMoTa(), entity.getIdNhaCungCap(), entity.getId());
+        if (i > 0) {
+            JOptionPane.showMessageDialog(null, "Thêm sản phẩm thành công!");
+        }
     }
 
     @Override
@@ -101,7 +107,6 @@ public class SanPham_Daoimpl implements SanPham_Dao {
 
     public void updateSoLuong(int soLuong, int idSP) {
         XJdbc.executeUpdate(sqlUpdateSoLuong, soLuong, idSP);
-
     }
 
     @Override

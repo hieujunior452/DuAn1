@@ -62,7 +62,6 @@ public class KhachHang_Daoimpl implements KhachHang_Dao {
 
     public int getOrCreateCustomer(String name, String phone, String email) {
         KhachHang kh = findByPhone(phone);
-
         if (kh != null) {
             return kh.getId();
         }
