@@ -1016,6 +1016,7 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
         }
         if (evt.getButton() == MouseEvent.BUTTON1) {
             int idSP = Integer.parseInt(tblGioHang.getValueAt(tblGioHang.getSelectedRow(), 0).toString());
+            int soLuongHientai = Integer.parseInt(tblGioHang.getValueAt(tblGioHang.getSelectedRow(), 2).toString());
             SanPham sanPham = repoSP.findById(idSP);
             if (tblGioHang.getSelectedColumn() == 2) {
                 String inputSL = JOptionPane.showInputDialog("Nhập số lượng");
@@ -1036,6 +1037,9 @@ public class jpBanHang extends javax.swing.JPanel implements Controller_BanHang 
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ, vui lòng nhập số!");
                     return;
+                }
+                if (soLuong < soLuongHientai) {
+                    repoSP.updateSoLuong(sanPham.getSoLuong() + (soLuongHientai - soLuong), idSP);
                 }
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setMaHoaDon(txtMaHD.getText());
