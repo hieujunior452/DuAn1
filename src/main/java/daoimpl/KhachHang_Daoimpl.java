@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import util.XJdbc;
 import util.XQuery;
 
@@ -62,8 +63,11 @@ public class KhachHang_Daoimpl implements KhachHang_Dao {
 
     public int getOrCreateCustomer(String name, String phone, String email) {
         KhachHang kh = findByPhone(phone);
-        if (kh != null) {
+        if (kh != null && kh.getHoVaTen().equals(name)) {
             return kh.getId();
+        } else if (kh != null && !kh.getHoVaTen().equals(name)) {
+            JOptionPane.showMessageDialog(null, "Số điện thoại đã có người sử dụng!\n" + kh.getHoVaTen());
+            return -1;
         }
         KhachHang newKH = new KhachHang();
         newKH.setHoVaTen(name);
