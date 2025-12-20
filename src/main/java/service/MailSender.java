@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 public class MailSender {
 
     private static String fromEmail = "Tài khoản Gmail";
-    private static String appPassword = "App Password lấy từ gmail yêu cầu tài khoản phải bật xác thực 2 yếu tố nhé";
+    private static String appPassword = "App Password lấy từ gmail yêu cầu tài khoản phải bật xác thực 2 yếu tố nhé.";
 
     public static void sendMailPassword(String toEmail, String fullName, String userName, String password) {
 
