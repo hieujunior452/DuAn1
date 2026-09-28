@@ -259,26 +259,13 @@ Các hạn chế dưới đây được rà soát trực tiếp từ mã nguồn
 
 ---
 
-## 9. Ghi chú cần kiểm tra
-
-`[CẦN KIỂM TRA]` — các điểm cần xác nhận trước khi đưa vào CV hoặc demo:
-
-- `[CẦN KIỂM TRA]` **Thông tin tác giả**: tên *Nguyễn Ngọc Hiếu* lấy từ `daataaa.sql` và phần hardcode trong `frmTrangChu`; GitHub là `hieujunior452`. Cần xác nhận đây có phải tên thật / tên muốn ghi trong CV không.
-- `[CẦN KIỂM TRA]` **Dự án cá nhân hay nhóm**: `pom.xml` đặt `groupId` là `nhom4`, nhưng theo mô tả đây là dự án cá nhân với vai trò DEV. Cần chốt lại cách ghi trong CV.
-- `[CẦN KIỂM TRA]` **Ảnh giao diện**: mục 7 đang để trống, cần chụp bổ sung. Thư mục `anhnv/` (6 ảnh) và `hoadon/` (2 file PDF) trong repo chỉ là ảnh/PDF mẫu, chưa chắc là ảnh chụp màn hình giao diện.
-- `[CẦN KIỂM TRA]` **Dữ liệu mẫu ảnh**: `daataaa.sql` chỉ lưu tên file (`hinh1.jpg`, `hinh2.jpg`), nên ảnh có thể không hiển thị khi chạy trên máy khác.
-- `[CẦN KIỂM TRA]` **Chưa xác nhận build**: README viết bằng cách đọc trực tiếp mã nguồn, chưa chạy `mvn clean package` trên máy sạch.
-- `[CẦN KIỂM TRA]` **Dữ liệu mẫu trong `daataaa.sql`**: có họ tên, email và số điện thoại thật — nên thay bằng dữ liệu giả trước khi chia sẻ rộng.
-
----
-
-## 10. Thông tin tác giả
+## 9. Thông tin tác giả
 
 | | |
 |---|---|
-| **Họ tên** | Nguyễn Ngọc Hiếu `[CẦN KIỂM TRA]` |
+| **Họ tên** | Nguyễn Ngọc Hiếu |
 | **Vai trò** | DEV — thiết kế & lập trình toàn bộ chức năng (dự án cá nhân) |
-| **Email** | `[CẦN KIỂM TRA — điền email của bạn]` |
-| **SĐT** | `[CẦN KIỂM TRA — điền số điện thoại của bạn]` |
+| **Email** | `tkredao02@gmail.com` |
+| **SĐT** | `` |
 | **GitHub** | [github.com/hieujunior452](https://github.com/hieujunior452) |
-| **LinkedIn** | `[CẦN KIỂM TRA — điền link nếu có]` |
+| **LinkedIn** | `` |
